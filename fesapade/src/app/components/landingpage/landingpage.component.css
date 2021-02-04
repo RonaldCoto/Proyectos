@@ -1,0 +1,204 @@
+*{
+    box-sizing: hidden;
+}
+header,
+section{
+    overflow-x: hidden;
+}
+
+header a{
+    font-family: Sniglet,cursive;
+}
+
+header li{
+    font-family: Sniglet,cursive;
+    font-size: 0.95em;
+    
+
+}
+
+header .nav-item:last-child{
+    padding-right: 10.5em;
+}
+
+header .nav-item{
+    padding: 0.9em;
+}
+
+header .navbar-brand{
+    padding-left: 8rem;
+}
+
+header .nav-link:hover{
+    color: #c60035;
+}
+
+header .navbar-brand:hover{
+    color: #c60035;
+}
+
+.navbar{
+    background-color: #364151;
+    opacity: 0.8;
+    
+}
+nav img:hover{
+    width: 45px;
+    height: 45px;
+    transition: all 0.5s ease;
+}
+
+/*section 3 */
+.col-4{  
+    padding: 0; 
+}
+.col-3{
+    padding: 0;  
+}
+.col-6{  
+    padding: 0;
+}
+
+.img-1{
+    float: right;
+    width: 100%;
+    object-fit: cover;
+}
+.img-2{
+    
+    float: right;
+    width: 100%;
+    object-fit: cover;
+}
+.img-3{
+    float: right;
+    width: 100%;
+    object-fit: cover;
+}
+/*efects*/
+.contenedor{
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contenedor figure{
+    padding: 0;
+    position: relative;
+    height: 195px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.contenedor figure img{
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 500ms ease-out;
+}
+.contenedor figure .capa{
+    position: absolute;
+    padding: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(54, 65, 81, 0.6);
+    transition: all 500ms ease-out;
+    opacity: 0;
+    visibility: hidden;
+    text-align: center;
+}
+.contenedor figure:hover > .capa{
+    opacity: 1;
+    visibility: visible;
+}
+.contenedor figure:hover > .capa h3{
+    margin-top: 50px;
+    margin-bottom: 15px;
+
+}
+.contenedor figure:hover > img{
+    transform: scale(1.3);
+}
+.contenedor figure > .capa h3{
+    color: white;
+    font-weight: 400px;
+    margin-bottom: 120px;
+    transition: all 500ms ease-out;
+    margin-top: 30px;
+}
+.contenedor figure > .capa p{
+    color: white;
+    font-size: 12px;
+    line-height: 1.5;
+    width: 100%;
+    max-width: 220px;
+    margin: auto;
+}
+
+
+
+
+.contenedor2{
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contenedor2 figure{
+    padding: 0;
+    position: relative;
+    height: 195px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.contenedor2 figure img{
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 500ms ease-out;
+}
+.contenedor2 figure .capa{
+    position: absolute;
+    padding: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(198, 0, 53, 0.6);
+    transition: all 500ms ease-out;
+    opacity: 0;
+    visibility: hidden;
+    text-align: center;
+}
+.contenedor2 figure:hover > .capa{
+    opacity: 1;
+    visibility: visible;
+}
+.contenedor2 figure:hover > .capa h3{
+    margin-top: 50px;
+    margin-bottom: 15px;
+
+}
+.contenedor2 figure:hover > img{
+    transform: scale(1.3);
+}
+.contenedor2 figure > .capa h3{
+    color: white;
+    font-weight: 400px;
+    margin-bottom: 120px;
+    transition: all 500ms ease-out;
+    margin-top: 30px;
+}
+.contenedor2 figure > .capa p{
+    color: white;
+    font-size: 12px;
+    line-height: 1.5;
+    width: 100%;
+    max-width: 220px;
+    margin: auto;
+}
+/*end efects*/
+/*end section 3 */
+
+
