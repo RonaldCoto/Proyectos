@@ -201,4 +201,21 @@ nav img:hover{
 /*end efects*/
 /*end section 3 */
 
+/*footer*/
+footer{
+    background:rgba(54, 65, 81);
+    overflow-x: hidden;
+    padding: 14vmin 18vmin;
 
+}
+footer p > span{
+    color: #c60035;
+}
+.column i{
+    color: #c60035;
+}
+
+.column i+i{
+    padding: 0 0.4em;
+}
+/*end footer*/
