@@ -7,11 +7,11 @@ section{
 }
 
 header a{
-    font-family: Sniglet,cursive;
+    font-family: 'Roboto', sans-serif;
 }
 
 header li{
-    font-family: Sniglet,cursive;
+    font-family: 'Roboto', sans-serif;
     font-size: 0.95em;
     
 
@@ -47,6 +47,61 @@ nav img:hover{
     height: 45px;
     transition: all 0.5s ease;
 }
+/*section 1 */
+.section-1{
+    background: #262D38;
+}
+.numbers .rect h1{
+    font-size: 3rem;
+    color: #c60035;
+    
+}
+
+.numbers .rect p{
+    color: #c60035;
+    font-family: 'Roboto', sans-serif;
+}
+/*end section 1 */
+
+/*section 2 */
+.section-2{
+    padding: 20vmin 0;
+
+}
+.section-2 .row .col-md-6 .pray img{
+    opacity: 0.8;
+    width: 80%;
+    border-radius: 0.2em;
+}
+
+.section-2 .row .col-md-6:last-child{
+    position: relative;
+}
+
+.section-2 .row .col-md-6 .panel{
+    position: absolute;
+    top: 7vmin;
+    left: -18vmin;
+    background: white;
+    border-radius: 3px;
+    text-align: left;
+    padding: 13vmin 5vmin 20vmin 2vmin;
+    box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.2);
+    font-family: 'Roboto', sans-serif;
+    z-index: 1;
+}
+
+.section-2 .row .col-md-6 .panel h1{
+    font-weight: bold;
+    padding: 0.4em 0;
+    font-size: 2em;
+}
+
+.section-2 .row .col-md-6 .panel p{
+    font-size: 0.9em;
+    color: rgba(0, 0, 0, 0.5);
+}
+/*end section 2 */
 
 /*section 3 */
 .col-4{  
@@ -201,6 +256,44 @@ nav img:hover{
 /*end efects*/
 /*end section 3 */
 
+/*section 4*/
+
+/*end section 4*/
+.section-4 .container h1{
+    font-size: 6vmin;
+    padding-top: 14vmin;
+}
+
+.section-4 .team{
+    padding: 0n 4vmin;
+}
+
+.section-4 .card{
+    width: 22rem;
+    margin-top: 4vmin;
+}
+
+.section-4 .card .card-text{
+    padding: 0.5em;
+}
+
+.section-4 .card .card-body>a{
+    font-size: 1.5em;
+
+}
+
+.border-radius{
+    border-radius: 340px;
+    width: 60%;
+}
+
+/*section-5*/
+.section-5 .container h1{
+    font-size: 6vmin;
+    padding-top: 14vmin;
+}
+/*end section-5*/
+
 /*footer*/
 footer{
     background:rgba(54, 65, 81);
@@ -210,6 +303,7 @@ footer{
 }
 footer p > span{
     color: #c60035;
+    
 }
 .column i{
     color: #c60035;
@@ -219,3 +313,61 @@ footer p > span{
     padding: 0 0.4em;
 }
 /*end footer*/
+/*mobile-design*/
+@media only screen and (max-width: 768px) {
+    header .navbar-brand{
+        padding-left: 1rem;
+    }
+    .section-2 .row .col-md-6 .panel{
+        position: initial;
+        width: initial;
+        height: initial;
+    }
+    .section-4 .team{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+
+    .section-4 .carousel-inner{
+        width: 24rem;
+    }
+  }
+
+  @media only screen and (max-width: 425px) {
+    footer .row .col-md-2{
+        margin-top: 8vmin;
+
+    }
+  }
+
+  @media only screen and (max-width: 425px) {
+    .numbers .rect h1{
+        font-size: 20px;
+
+    }
+    
+    .numbers .rect p{
+        font-size: 0.65rem;
+    }
+
+    .icon{
+        width: 40px;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .numbers .rect h1{
+        font-size: 30px;
+
+    }
+    
+    .numbers .rect p{
+        font-size: 0.75rem;
+    }
+
+    .icon{
+        width: 50px;
+    }
+  }
+/*end mobile-design*/
