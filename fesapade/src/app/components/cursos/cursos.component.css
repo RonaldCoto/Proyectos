@@ -1,0 +1,171 @@
+*{  
+    box-sizing: hidden;
+}
+/*menu*/
+header,
+section{
+    overflow-x: hidden;
+}
+
+header a{
+    font-family: 'Roboto', sans-serif;
+}
+
+header li{
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95em;
+    
+
+}
+
+header .nav-item:last-child{
+    padding-right: 10.5em;
+}
+
+header .nav-item{
+    padding: 0.9em;
+}
+
+header .navbar-brand{
+    padding-left: 8rem;
+}
+
+header .nav-link:hover{
+    color: #c60035;
+}
+
+header .navbar-brand:hover{
+    color: #c60035;
+}
+
+.navbar{
+    background-color: #364151;
+    opacity: 0.9;
+    
+}
+nav img:hover{
+    width: 45px;
+    height: 45px;
+    transition: all 0.5s ease;
+}
+/*end menu*/
+
+/*section-1*/
+.section-4 .container h1{
+    font-size: 6vmin;
+    padding-top: 20vmin;
+}
+
+.section-4 .team{
+    padding: 0n 4vmin;
+}
+
+.section-4 .card{
+    width: 22rem;
+    margin-top: 4vmin;
+    margin-bottom: 10vmin;
+}
+
+.section-4 .card .card-text{
+    padding: 0.5em;
+}
+
+.section-4 .card .card-body>a{
+    font-size: 1.5em;
+
+}
+
+.card-body .btn-content{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 13px;
+    font-weight: bolder;
+    font-family: 'Roboto', sans-serif;
+
+    
+}
+
+.card-body button{
+    text-transform:uppercase;
+    background: none;
+    border:2px solid #364151;
+    padding: 12px 20px;
+    min-width: 200px;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: color 0.4 linear;
+
+}
+
+.card-body button:hover{
+    color: #fff;
+
+}
+
+.card-body button::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #364151;
+    z-index: -1;
+    transition: transform 0.5s;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(0, 5, 1.6, 0.4, 0.7);
+}
+.btn2::before{
+    transform: scaleX(0);
+
+}
+.btn2:hover::before{
+    transform: scaleX(1);
+    
+}
+/*end section-1*/
+
+/*footer*/
+footer{
+    background:rgba(54, 65, 81);
+    overflow-x: hidden;
+    padding: 14vmin 18vmin;
+
+}
+footer p > span{
+    color: #c60035;
+    
+}
+.column i{
+    color: #c60035;
+}
+
+.column i+i{
+    padding: 0 0.4em;
+}
+/*end footer*/
+
+/*mobile-design*/
+@media only screen and (max-width: 768px) {
+    header .navbar-brand{
+        padding-left: 1rem;
+    }
+    .section-2 .row .col-md-6 .panel{
+        position: initial;
+        width: initial;
+        height: initial;
+    }
+    .section-4 .team{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+
+    .section-4 .carousel-inner{
+        width: 24rem;
+    }
+  }
+  /*end mobile-design*/
