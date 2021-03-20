@@ -7,3 +7,7 @@ instalaciones
          "node_modules/popper.js/dist/umd/popper.min.js",
          "node_modules/bootstrap/dist/js/bootstrap.min.js"
    *npm i --save-dev @types/jquery
+   *npm install ngx-toastr --save
+   *npm install @popperjs/core
+   *npm install jspdf@1.5.3 html2canvas
+   *npm install @types/jspdf @types/html2canvas -D
