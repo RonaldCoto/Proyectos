@@ -9,14 +9,17 @@ $con=retornarConexion();
 
 
 
-// Creando el formato de la consulta
+/* Creando el formato de la consulta
 $registros = $con->prepare("SELECT *
-                       FROM   federados
+                       FROM   empleados
                        WHERE  email = :emailusuario AND passwrod = :passusuario" );
 // Indicando los datos
 $registros->execute(array(':emailusuario' => $params->email, ':passusuario' => $params->password));
-
-//$registros=mysqli_query($con,"select * from articulos");
+*/
+$registros=mysqli_query($con,"select * from federados");
+//$registros = $con->prepare("SELECT * FROM  federados" );
+// Indicando los datos
+//$registros->execute();
 $vec=[];  
 while ($reg=mysqli_fetch_array($registros))  
 {

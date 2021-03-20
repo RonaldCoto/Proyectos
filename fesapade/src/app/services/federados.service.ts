@@ -4,10 +4,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class FederadosService {
-  url='C:/xampp/htdocs/Proyectos/fesapade/src/app/recursos/crud_federados/'; 
+  url='http://localhost/Proyectos/fesapade/src/app/recursos/crud_federados/'; 
   constructor(private http: HttpClient) { }
-  recuperarTodos(usuario) {
-    return this.http.post(`${this.url}validarfederados.php`,JSON.stringify(usuario) );
+  recuperarTodos() {
+    return this.http.get(`${this.url}validarfederados.php` );
     }
     alta(articulo) {
     return this.http.post(`${this.url}alta.php`, JSON.stringify(articulo));

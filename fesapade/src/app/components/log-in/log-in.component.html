@@ -1,48 +1,36 @@
 <body>
     <!--INICIO MENU -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="#">
-        <img src="../../assets/img/logo.png" width="170" height="70" loading="lazy">
-      </a>
-      <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
-        aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+    <header>
+      <div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <a class="navbar-brand" routerLink="/index"><img src="../../../assets/logo.png" width="30" height="30"
+          class="d-inline-block align-top" alt=""></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="mr-auto"></div>
+        <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#servicios">Servicios<span class="sr-only"></span></a>
+            <a class="nav-link" routerLink="/index">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <!-- routerLink="/editar-cliente"-->
-            <a class="nav-link" href="#ofertas">Ofertas</a>
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/cursos">Cursos</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#consejos">Consejos</a>
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/galeria">Galeria</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#acercade">Acerca de</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">About</a>
           </li>
-          <li class="nav-item" *ngIf="!authService.userData">
-            <a class="nav-link" routerLink="/sign-in">Iniciar sesión</a>
-          </li>
+        
         </ul>
       </div>
     </nav>
-    <!--FIN MENU -->
-    <div class="container-fluid" id="header">
-      <div class="row bg-vet">
-        <div class="col-lg-8">
-          <div class="fondo mr-5"></div>
-        </div>
-        <div class="col-lg-4 my-auto">
-          <div class="parrafo">
-            <p>Emergencia?<br>
-              2265-7895</p>
-          </div>
-        </div>
-      </div>
-    </div>
+</div>
+  </header>
+     <!--FIN MENU -->
     <!--INICIO FORMULARIO DE SESION -->
     <div class="registro">
       <div class="contenido">
@@ -58,33 +46,33 @@
                     <div class="displayTable">
                       <div class="displayTableCell">
                         <div class="authBlock">
-                          <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"
-                                  aria-hidden="true"></i></span>
+                          <form [formGroup]="contacto">
+          
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" [(ngModel)]="contacto2.email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">El email es obligatorio</div>
+                                    <div *ngIf="f.email.errors.email">Por favor, ingresa tu Email</div>
+                                </div>
                             </div>
-                            <input type="text" class="form-control" placeholder="Correo" #userEmail required>
-                          </div>
-  
-                          <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text" id="basic-addon1"><i class="fa fa-key"
-                                  aria-hidden="true"></i></span>
-                            </div>
-                            <input type="password" class="form-control" placeholder="Contraseña"  #userPassword required>
-                          </div>
-                          <br>
-                          <div class="row">
-                            <div class="col-lg-3">
-                              <!-- Calling SignIn Api from AuthService -->
-                              <div class="form-group">
-                                <input type="button" class="btn btn-reg btn-lg float-left" value="Iniciar sesión"
-                                  (click)="authService.SignIn(userEmail.value, userPassword.value)">
-                              </div>
-                            </div>
-                            <hr>
                            
-                          </div>
+                       
+                            <div class="form-group">
+                               <label>Password</label>
+                               <input type="text" [(ngModel)]="contacto2.password" formControlName="password" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                               <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                   <div *ngIf="f.password.errors.required">Por favor, ingresa tu password</div>
+                               </div>
+                           </div> 
+                   
+                            <div class="form-group">
+                                     
+                               <button style="margin: 10px" class="btn btn-success" (click)="IniciarSeccion()"> Iniciar Sesión </button>
+                     
+                              </div>
+                   
+                   </form>
                         </div>
                       </div>
                     </div>

@@ -29,9 +29,23 @@
             <li class="nav-item active">
               <a class="nav-link" href="#">About</a>
             </li>
-            <li class="nav-item active">
-              <button class="btn btn-outline-danger my-2 my-sm-0" routerLink="/log-in">Log In</button>
+            <li class="nav-item">
+              <a class="nav-link"></a>
+          </li>
+            <li class="nav-item active" *ngIf="loginbtn">
+              <a class="btn btn-outline-danger my-2 my-sm-0" routerLink="/login">Log In</a>
             </li>
+            <li class="nav-item active" *ngIf="logoutbtn">
+              <a class="btn btn-outline-danger my-2 my-sm-0" (click)="redirect()"  >
+               Perfil
+              </a>
+            </li>
+            <li class="nav-item active" *ngIf="logoutbtn">
+              <a class="btn btn-outline-danger my-2 my-sm-0" (click)="logout()"  >
+               Cerrar Sesión
+              </a>
+            </li>
+           
           </ul>
         </div>
       </nav>

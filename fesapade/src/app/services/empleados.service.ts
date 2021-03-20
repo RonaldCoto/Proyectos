@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class EmpleadosService {
-  url='C:/xampp/htdocs/Proyectos/fesapade/src/app/recursos/crud_empleados/'; 
+  url='http://localhost/Proyectos/fesapade/src/app/recursos/crud_empleados/'; 
   constructor(private http: HttpClient) { }
   recuperarTodos() {
     return this.http.get(`${this.url}validarempleados.php` );
