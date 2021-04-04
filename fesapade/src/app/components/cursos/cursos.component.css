@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 *{  
     box-sizing: hidden;
+    font-family: 'Roboto', sans-serif;
 }
 /*menu*/
 header,
@@ -31,11 +33,11 @@ header .navbar-brand{
 }
 
 header .nav-link:hover{
-    color: #c60035;
+    color: #007bff;
 }
 
 header .navbar-brand:hover{
-    color: #c60035;
+    color: #007bff;
 }
 
 .navbar{
@@ -136,11 +138,11 @@ footer{
 
 }
 footer p > span{
-    color: #c60035;
+    color: #007bff;
     
 }
 .column i{
-    color: #c60035;
+    color: #007bff;
 }
 
 .column i+i{

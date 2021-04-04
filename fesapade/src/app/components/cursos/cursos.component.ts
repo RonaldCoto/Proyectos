@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+//declare const myFun: any;
 @Component({
   selector: 'app-cursos',
   templateUrl: './cursos.component.html',
@@ -10,6 +10,7 @@ export class CursosComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+   // myFun();
   }
 
 }

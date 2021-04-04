@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./instructor.component.css']
 })
 export class InstructorComponent implements OnInit {
-
+  //variable para mostrar u ocultar el sidebar
+  contentHighlighted: boolean = false;
   constructor() { }
 
   ngOnInit(): void {

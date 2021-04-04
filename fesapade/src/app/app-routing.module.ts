@@ -29,7 +29,8 @@ const routes: Routes = [
     {path: 'galeria', component:GaleriaComponent},
     {path: 'login', component:LogInComponent,canActivate:[Auth4Guard]},
     {path: 'administrador', component:AdministradorComponent,canActivate:[AuthGuard]},
-    {path: 'instructor', component:InstructorComponent,canActivate:[Auth2Guard]},
+    {path: 'instructor', component:InstructorComponent},
+    //{path: 'instructor', component:InstructorComponent,canActivate:[Auth2Guard]} cuando este el login
 ];
 
 @NgModule({

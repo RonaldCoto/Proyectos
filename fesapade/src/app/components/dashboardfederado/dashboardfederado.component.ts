@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboardfederado.component.css']
 })
 export class DashboardfederadoComponent implements OnInit {
-
+  //variable para mostrar u ocultar el sidebar
+  contentHighlighted: boolean = false;
   constructor() { }
 
   ngOnInit(): void {

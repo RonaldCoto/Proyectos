@@ -6,7 +6,8 @@ import { AuthService } from "../../services/auth.service";
   styleUrls: ['./administrador.component.css']
 })
 export class AdministradorComponent implements OnInit {
-
+  //variable para mostrar u ocultar el sidebar
+  contentHighlighted: boolean = false;
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {

@@ -27,16 +27,16 @@
               <a class="nav-link" routerLink="/galeria">Galeria</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" routerLink="/instructor">About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link"></a>
           </li>
             <li class="nav-item active" *ngIf="loginbtn">
-              <a class="btn btn-outline-danger my-2 my-sm-0" routerLink="/login">Log In</a>
+              <a class="btn btn-outline-primary my-2 my-sm-0" routerLink="/login">Log In</a>
             </li>
             <li class="nav-item active" *ngIf="logoutbtn">
-              <a class="btn btn-outline-danger my-2 my-sm-0" (click)="redirect()"  >
+              <a class="btn btn-outline-primary my-2 my-sm-0" (click)="redirect()"  >
                Perfil
               </a>
             </li>
@@ -92,16 +92,16 @@
             <div class="col-3">
               <img class="icon" src="../../../assets/icon2.png" alt="">
               <div class="rect">
-                <h1>2950</h1>
-                <p>Saltos libres</p>
+                <h1 class="text-muted">2950</h1>
+                <p class="text-muted">Saltos libres</p>
               </div>
             </div>
             <div class="col-3">
               <img class="icon" src="../../../assets/quality.png" alt="">
 
               <div class="rect">
-                <h1>3000</h1>
-                <p>Certificaciones</p>
+                <h1 class="text-muted">3000</h1>
+                <p class="text-muted">Certificaciones</p>
               </div>
 
 
@@ -110,8 +110,8 @@
               <img class="icon" src="../../../assets/group.png" alt="">
 
               <div class="rect">
-                <h1>500</h1>
-                <p>Miembros de comunidad</p>
+                <h1 class="text-muted">500</h1>
+                <p class="text-muted">Miembros de comunidad</p>
               </div>
 
 
@@ -120,8 +120,8 @@
               <img class="icon" src="../../../assets/trophy.png" alt="">
 
               <div class="rect">
-                <h1>2000</h1>
-                <p>Reconocimientos</p>
+                <h1 class="text-muted">2000</h1>
+                <p class="text-muted">Reconocimientos</p>
               </div>
 
 
