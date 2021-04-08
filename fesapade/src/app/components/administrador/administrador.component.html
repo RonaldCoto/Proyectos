@@ -31,11 +31,56 @@
           <div class="main__title">
        
             <div class="main__greeting">
-              <h1>Hola Javier</h1>
-              <p>Bienvenido al dashboard de administrador</p>
+              <h1>Adminisitrar empleados</h1>
+              <br>
             </div>
           </div>
 
+          <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Categoría</th>
+                    <th scope="col">Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Otto</th>
+                    <td>Mark</td>
+                    <td>safsafsffcfs</td>
+                    <td>@mdo</td>
+                    <td>Administrador</td>
+                    <td>
+                        <div class="btn-group">
+                            <a type="button" routerLink="/admin-editar-empleado" class="btn btn-primary btn-lg" title="Editar"><i
+                                    class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            <a type="button" class="btn btn-danger btn-lg" title="Eliminar"><i
+                                    class="fa fa-trash-o" aria-hidden="true"></i></a>
+
+                        </div>
+                </tr>
+                <tr>
+                    <th scope="row">Thornton</th>
+                    <td>Jacob</td>
+                    <td>sfsfsfgsdgfer</td>
+                    <td>@fat</td>
+                    <td>Instructor</td>
+                    <td>
+                        <div class="btn-group">
+                            <a type="button" routerLink="/admin-editar-empleado" class="btn btn-primary btn-lg" title="Editar"><i
+                                    class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            <a type="button"  class="btn btn-danger btn-lg" title="Eliminar"><i
+                                    class="fa fa-trash-o" aria-hidden="true"></i></a>
+
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
           <!-- MAIN TITLE ENDS HERE -->
 
          
@@ -59,12 +104,12 @@
         <div class="sidebar__menu">
           <div class="sidebar__link">
             <i class="fa fa-home"></i>
-            <a href="#">Home</a>
+            <a routerLink="/index">Home</a>
           </div>
           <h2>Empleados</h2>
           <div class="sidebar__link">
             <i class="fa fa-user-plus" aria-hidden="true"></i>
-            <a href="#">Agregar empleado</a>
+            <a routerLink="/add-empleado">Agregar empleado</a>
           </div>
           <div class="sidebar__link active_menu_link">
             <i class="fa fa-wrench"></i>
@@ -74,31 +119,31 @@
           <h2>Federados</h2>
           <div class="sidebar__link">
             <i class="fa fa-user-plus"></i>
-            <a href="#">Agregar federado</a>
+            <a routerLink="/add-federado">Agregar federado</a>
           </div>
           <div class="sidebar__link">
             <i class="fa fa-wrench"></i>
-            <a href="#">Administrar federado</a>
+            <a routerLink="/admin-federado">Administrar federado</a>
           </div>
           
           <h2>Cursos</h2>
           <div class="sidebar__link">
             <i class="fa fa-plus"></i>
-            <a href="#">Crear curso</a>
+            <a routerLink="/crear-curso">Crear curso</a>
           </div>
           <div class="sidebar__link">
             <i class="fa fa-wrench"></i>
-            <a href="#">Administrar curso</a>
+            <a routerLink="/admin-curso">Administrar curso</a>
           </div>
           <div class="sidebar__link">
             <i class="fa fa-graduation-cap"></i>
-            <a href="#">Asignar cursos</a>
+            <a routerLink="/asign-curso-federado">Asignar federado a curso</a>
           </div>
 
           <h2>Perfil</h2>
           <div class="sidebar__link">
             <i class="fa fa-pencil-square-o"></i>
-            <a href="#">Editar mi perfil</a>
+            <a routerLink="/edit-perfil-admin">Editar mi perfil</a>
           </div>
           <div class="sidebar__logout">
             <i class="fa fa-sign-out"></i>

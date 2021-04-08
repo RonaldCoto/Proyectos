@@ -17,7 +17,7 @@
           <a class="active_link">Instructor</a>
         </div>
         <div class="navbar__right">
-          <a href="#">
+          <a>
             <img width="30" src="../../../assets/user.svg" alt="" />
             <!-- <i class="fa fa-user-circle-o" aria-hidden="true"></i> -->
           </a>
@@ -57,7 +57,7 @@
                                                             
                                                             <br><br>
                                                             <div class="btn-content">
-                                                                <button class="btn2">Ir al curso</button>
+                                                                <button class="btn2" role="link" routerLink="/list-federados">Ir al curso</button>
         
                                                             </div>
                                                         </div>
@@ -76,7 +76,7 @@
                                                                 
                                                                 <br><br>
                                                                 <div class="btn-content">
-                                                                    <button class="btn2">Ir al curso</button>
+                                                                    <button class="btn2" role="link" routerLink="/list-federados">Ir al curso</button>
         
                                                                 </div>
                                                             </div>
@@ -96,7 +96,7 @@
                                                             
                                                             <br><br>
                                                             <div class="btn-content">
-                                                                <button class="btn2">Ir al curso</button>
+                                                                <button class="btn2" role="link" routerLink="/list-federados">Ir al curso</button>
         
                                                             </div>
                                                         </div>
@@ -136,11 +136,11 @@
           <h2>Anuncios y evaluaciones</h2>
           <div class="sidebar__link">
             <i class="fa fa-plus" aria-hidden="true"></i>
-            <a href="#">Agregar publicación</a>
+            <a routerLink="/add-publicacion">Agregar publicación</a>
           </div>
           <div class="sidebar__link">
             <i class="fa fa-wrench"></i>
-            <a href="#">Administrar publicaciones</a>
+            <a routerLink="/admin-publicacion">Administrar publicaciones</a>
           </div>
 
           <h2>Académico</h2>
@@ -151,7 +151,7 @@
           <h2>Perfil</h2>
           <div class="sidebar__link">
             <i class="fa fa-pencil-square-o"></i>
-            <a href="#">Editar mi perfil</a>
+            <a routerLink="/edit-perfil">Editar mi perfil</a>
           </div>
           <div class="sidebar__logout">
             <i class="fa fa-sign-out"></i>

@@ -22,6 +22,24 @@ import { EditfederadoComponent } from './components/editfederado/editfederado.co
 import { LogInComponent} from './components/log-in/log-in.component';
 import { AdministradorComponent } from './components/administrador/administrador.component';
 import { InstructorComponent } from './components/instructor/instructor.component';
+import { AddpublicacionComponent } from './components/addpublicacion/addpublicacion.component';
+import { AdministrarpubsComponent } from './components/administrarpubs/administrarpubs.component';
+import { EditarpublicacionComponent } from './components/editarpublicacion/editarpublicacion.component';
+import { ListafederadoComponent } from './components/listafederado/listafederado.component';
+import { EditarperfilComponent } from './components/editarperfil/editarperfil.component';
+import { NotasfederadoComponent } from './components/notasfederado/notasfederado.component';
+import { EditarperfederadoComponent } from './components/editarperfederado/editarperfederado.component';
+import { AddempleadoComponent } from './components/addempleado/addempleado.component';
+import { AddfederadoComponent } from './components/addfederado/addfederado.component';
+import { CrearcursoComponent } from './components/crearcurso/crearcurso.component';
+import { AsignarcursoComponent } from './components/asignarcurso/asignarcurso.component';
+import { EditarperfiladminComponent } from './components/editarperfiladmin/editarperfiladmin.component';
+import { AdministrarfederadoComponent } from './components/administrarfederado/administrarfederado.component';
+import { AdministrarcursosComponent } from './components/administrarcursos/administrarcursos.component';
+import { AdmineditarempleadoComponent } from './components/admineditarempleado/admineditarempleado.component';
+import { AdmineditarfederadoComponent } from './components/admineditarfederado/admineditarfederado.component';
+import { AdmineditarcursoComponent } from './components/admineditarcurso/admineditarcurso.component';
+import { AsignarcursoinstructorComponent } from './components/asignarcursoinstructor/asignarcursoinstructor.component';
 
 
 
@@ -38,6 +56,24 @@ import { InstructorComponent } from './components/instructor/instructor.componen
     LogInComponent,
     AdministradorComponent,
     InstructorComponent,
+    AddpublicacionComponent,
+    AdministrarpubsComponent,
+    EditarpublicacionComponent,
+    ListafederadoComponent,
+    EditarperfilComponent,
+    NotasfederadoComponent,
+    EditarperfederadoComponent,
+    AddempleadoComponent,
+    AddfederadoComponent,
+    CrearcursoComponent,
+    AsignarcursoComponent,
+    EditarperfiladminComponent,
+    AdministrarfederadoComponent,
+    AdministrarcursosComponent,
+    AdmineditarempleadoComponent,
+    AdmineditarfederadoComponent,
+    AdmineditarcursoComponent,
+    AsignarcursoinstructorComponent,
     
   ],
   imports: [

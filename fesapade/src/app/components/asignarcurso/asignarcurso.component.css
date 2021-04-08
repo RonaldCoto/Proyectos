@@ -277,18 +277,28 @@ main {
   border-radius: 5px;
   font-size: 14px;
 }
-/*  table STARTS HERE  */
-thead{
-  background:#364151 ;
-  color: white;
+/*form*/
+.btn{
+    padding: 5px 1rem;
 }
-.table button{
-  padding: 0 2rem;
+.form-control{
+    padding: 3px 1rem;
+    font-size: 15px;
 }
-.table .btn{
-  padding: 3px 6px;
+label{
+    padding: 7px;
 }
-/*  end table  */
+.form-row{
+    padding: 7px;
+    font-size: 15px;
+}
+.alingboton{
+    padding: 0 1rem;
+}
+.alingtitu{
+    padding: 0 5px;
+}
+/*end form*/
 /*  SIDEBAR STARTS HERE  */
 
 #sidebar {
