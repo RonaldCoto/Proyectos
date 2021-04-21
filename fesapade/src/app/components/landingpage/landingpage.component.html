@@ -8,7 +8,7 @@
   <header>
     <div class="container-fluid p-0">
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <a class="navbar-brand" routerLink="/index"><img src="../../../assets/logo.png" width="30" height="30"
+        <a class="navbar-brand" routerLink="/index"><img src="../../../assets/fesapadelogo.png" width="45px"
             class="d-inline-block align-top" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,25 +27,25 @@
               <a class="nav-link" routerLink="/galeria">Galeria</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" routerLink="/instructor">About</a>
+              <a class="nav-link" routerLink="">About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link"></a>
-          </li>
+            </li>
             <li class="nav-item active" *ngIf="loginbtn">
               <a class="btn btn-outline-primary my-2 my-sm-0" routerLink="/login">Log In</a>
             </li>
             <li class="nav-item active" *ngIf="logoutbtn">
-              <a class="btn btn-outline-primary my-2 my-sm-0" (click)="redirect()"  >
-               Perfil
+              <a class="btn btn-outline-primary my-2 my-sm-0" (click)="redirect()">
+                Perfil
               </a>
             </li>
             <li class="nav-item active" *ngIf="logoutbtn">
-              <a class="btn btn-outline-danger my-2 my-sm-0" (click)="logout()"  >
-               Cerrar Sesión
+              <a class="btn btn-outline-danger my-2 my-sm-0" (click)="logout()">
+                Cerrar Sesión
               </a>
             </li>
-           
+
           </ul>
         </div>
       </nav>
@@ -151,11 +151,16 @@
           <div class="panel text-left">
             <h1>Federación Salvadoreña de paracaidismo</h1>
             <p class="pt-4">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam distinctio aliquam porro blanditiis iusto
-              mollitia minima obcaecati officia maxime recusandae!
+              La Federación Salvadoreña de Paracaidismo y Aereodeportes, nace un 17 de marzo de 1994, con el objetivo de
+              fomentar el Paracaidismo como un deporte extremo en nuestro país. Hasta la fecha, contamos con un
+              aproximado de 230 federados, los cuales son parte importante y fundamental para nosotros. Los equipos que
+              poseemos para realizar los saltos, están en perfecto estado y reducen el riesgo de cualquier tipo de
+              accidente.
             </p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita iure, veniam, eos dolorum reprehenderit
-              quam error nobis rem laboriosam illo quos quisquam.</p>
+            <p>Como parte importante para El Salvador, somos la única Escuela de Paracaidismo Civil a nivel
+              Centroamericano. A nuestra escuela pueden asistir personas desde los 16 años, y sin ninguna edad máxima de
+              limite, siempre y cuando las personas no padezcan de ninguna enfermedad que les impida realizar los
+              saltos.</p>
           </div>
         </div>
 
@@ -361,45 +366,44 @@
     </div>
 
   </section>
-<!--end section 4-->
+  <!--end section 4-->
 
   <!--section 5-->
 
   <section class="section-5">
     <div class="container text-center">
-    <h1 class="text-secondary">Nuestros afiliados</h1>
-    <div class="container">
-      <div class="row">
-        <div class="container">
-          <div class="row">
-            <div class="col-3">
-              <div class="container">
-                <a class="partner"><img src="../../../assets/indes.jpg" class="img-fluid" alt="Colorlib Template"></a>
+      <h1 class="text-secondary">Nuestros afiliados</h1>
+      <div class="container">
+        <div class="row">
+          <div class="container">
+            <div class="row">
+              <div class="col-4">
+                <div class="container">
+                  <a class="partner"><img src="../../../assets/uspalogo2018.png" class="img-fluid" width="140px"
+                      alt="Colorlib Template"></a>
+                </div>
               </div>
-            </div>
 
-            <div class="col-3">
-              <div class="container">
-                <a class="partner"><img src="../../../assets/indes.jpg" class="img-fluid" alt="Colorlib Template"></a>
+              <div class="col-4">
+                <div class="container">
+                  <a class="partner"><img src="../../../assets/LOGO 1.png" class="img-fluid" width="130px"
+                      alt="Colorlib Template"></a>
+                </div>
               </div>
-            </div>
 
-            <div class="col-3">
-              <div class="container">
-                <a class="partner"><img src="../../../assets/indes.jpg" class="img-fluid" alt="Colorlib Template"></a>
+              <div class="col-4">
+                <div class="container">
+                  <a class="partner"><img src="../../../assets/fai.jfif" class="img-fluid" width="220px"
+                      alt="Colorlib Template"></a>
+                </div>
               </div>
-            </div>
 
-            <div class="col-3">
-              <div class="container">
-                <a class="partner"><img src="../../../assets/indes.jpg" class="img-fluid" alt="Colorlib Template"></a>
-              </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
   </section>
   <br>
   <br>
@@ -410,25 +414,26 @@
       <div class="row text-left">
         <div class="col-md-5 col-md-5">
           <h1 class="text-light">About Us</h1>
-          <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem illo et dolores!</p>
+          <p class="text-muted">La Federación Salvadoreña de Paracaidismo y Aerodeportes (FESAPADE) es una Federación
+            Deportivo Nacional que engloba todos los Deportes Aéreos en el país.</p>
           <p class="pt-4 text-muted">Copyright ©2021 All rights reserved|Developed By <span>R.Coto and A.Vladimir</span>
           </p>
         </div>
         <div class="col-md-5">
           <h4 class="text-light">Nuestros Cursos</h4>
-          <li class="text-muted">Lorem, ipsum dolor.</li>
-          <li class="text-muted">Lorem, ipsum dolor.</li>
-          <li class="text-muted">Lorem, ipsum dolor.</li>
-          <li class="text-muted">Lorem, ipsum dolor.</li>
+          <li class="text-muted">Paracaidismo básico.</li>
+          <li class="text-muted">Empaque.</li>
+          <li class="text-muted">Salto con línea.</li>
+          <li class="text-muted">Entrenamiento físico y teórico.</li>
         </div>
         <div class="col-md-2 col-sm-12">
           <h4 class="text-light">Síguenos</h4>
           <p class="text-muted">Seamos sociables</p>
           <div class="column">
-            <i class="fa fa-facebook-f"></i>
-            <i class="fa fa-instagram"></i>
-            <i class="fa fa-twitter"></i>
-            <i class="fa fa-youtube-play"></i>
+            <a href="https://es-la.facebook.com/FESAPADE/"><i class="fa fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/fesapade/"><i class="fa fa-instagram"></i></a>
+            <a href="https://twitter.com/FESAPADE"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.youtube.com/channel/UCKwNhAzIUdsQsTo7Uf4R_DQ/featured"><i class="fa fa-youtube-play"></i></a>
           </div>
         </div>
 

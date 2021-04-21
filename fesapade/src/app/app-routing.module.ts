@@ -47,7 +47,7 @@ const routes: Routes = [
     {path: 'galeria', component:GaleriaComponent},
     {path: 'login', component:LogInComponent,canActivate:[Auth4Guard]},
     {path: 'administrador', component:AdministradorComponent,canActivate:[AuthGuard]},
-    {path: 'instructor', component:InstructorComponent},
+    {path: 'instructor', component:InstructorComponent,canActivate:[Auth2Guard]},
     {path: 'add-publicacion', component:AddpublicacionComponent},
     {path: 'admin-publicacion', component:AdministrarpubsComponent},
     {path: 'edit-publicacion', component:EditarpublicacionComponent},

@@ -45,8 +45,8 @@ header .navbar-brand:hover{
     
 }
 nav img:hover{
-    width: 45px;
-    height: 45px;
+    width: 55px;
+    
     transition: all 0.5s ease;
 }
 /*section 1 */
@@ -311,7 +311,7 @@ footer p > span{
     color: #007bff;
 }
 
-.column i+i{
+.column a+a{
     padding: 0 0.4em;
 }
 /*end footer*/

@@ -74,7 +74,7 @@
         <div id="sidebar" [ngClass]="{sidebar_responsive: contentHighlighted}">
             <div class="sidebar__title">
                 <div class="sidebar__img">
-                    <img src="../../../assets/logo.png" alt="logo" />
+                    <img src="../../../assets/fesapadelogo.png" alt="logo" />
                     <h1>Fesapade</h1>
                 </div>
                 <i *ngIf="contentHighlighted" (click)="contentHighlighted = false" class="fa fa-times" id="sidebarIcon"
@@ -125,9 +125,9 @@
                     <i class="fa fa-pencil-square-o"></i>
                     <a routerLink="/edit-perfil-admin">Editar mi perfil</a>
                 </div>
-                <div class="sidebar__logout">
+                <div class="sidebar__logout" *ngIf="logoutbtn">
                     <i class="fa fa-sign-out"></i>
-                    <a href="#">Cerrar sesión</a>
+                    <a routerLink="/login" (click)="logout()">Cerrar sesión</a>
                 </div>
             </div>
         </div>
