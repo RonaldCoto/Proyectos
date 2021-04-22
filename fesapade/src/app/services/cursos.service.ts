@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
-export class EmpleadosService {
-  url='http://localhost/recursos/'; 
+export class CursosService {
+  url='http://localhost/recursos/crud_cursos/'; 
   constructor(private http: HttpClient) { }
-  recuperarTodos() {
-    return this.http.get(`${this.url}validarempleados.php` );
+    listar() {
+    return this.http.get(`${this.url}listar.php` );
     }
-    alta(articulo) {
-    return this.http.post(`${this.url}alta.php`, JSON.stringify(articulo));
+    alta(curso) {
+    return this.http.post(`${this.url}alta.php`, JSON.stringify(curso));
     }
     baja(codigo:number) {
     return this.http.get(`${this.url}baja.php?codigo=${codigo}`);
@@ -18,7 +19,7 @@ export class EmpleadosService {
     seleccionar(codigo:number) {
     return this.http.get(`${this.url}seleccionar.php?codigo=${codigo}`);
     }
-    modificacion(articulo) {
-      return this.http.post(`${this.url}modificacion.php`, JSON.stringify(articulo));
+    modificacion(curso) {
+      return this.http.post(`${this.url}modificacion.php`, JSON.stringify(curso));
       } 
 }

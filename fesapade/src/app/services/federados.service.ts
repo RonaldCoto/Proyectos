@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class FederadosService {
-  url='http://localhost/Proyectos/fesapade/src/app/recursos/crud_federados/'; 
+  url='http://localhost/recursos/'; 
   constructor(private http: HttpClient) { }
   recuperarTodos() {
     return this.http.get(`${this.url}validarfederados.php` );

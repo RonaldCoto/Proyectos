@@ -12,5 +12,11 @@ export class AdministradorComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
+  logout()
+  {
+  this.authService.deleteToken();
+  window.location.href = "/login";
+  
+  }
 }

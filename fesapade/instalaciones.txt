@@ -11,3 +11,5 @@ instalaciones
    *npm install @popperjs/core
    *npm install jspdf@1.5.3 html2canvas
    *npm install @types/jspdf @types/html2canvas -D
+
+   *npm i @types/node -D
