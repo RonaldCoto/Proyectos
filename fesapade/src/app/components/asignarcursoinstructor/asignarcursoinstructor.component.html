@@ -36,15 +36,17 @@
                     </div>
                 </div>
 
-                <form #publicacionForm="ngForm">
+                <form #validatedForm="ngForm">
                     <div class="alingtitu">
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <label for="formGroupExampleInput">Curso</label>
-                                <input type="text" required pattern="^[a-zA-Z\s]*$" class="form-control"
-                                    id="formGroupExampleInput" autocomplete="off" placeholder="Curso 1" readonly>
-
-
+                                <input type="text"  class="form-control" required #curC="ngModel" [(ngModel)]="curs.nombre" name="curso"
+                                    id="formGroupExampleInput"  readonly>
+                                    <div *ngIf="(curC.invalid && (curC.dirty || curC.touched))">
+                                
+                                        <p class="text-danger" *ngIf="curC.errors.required">Campo requerido</p>                    
+                                    </div>
                             </div>
 
                         </div>
@@ -53,16 +55,21 @@
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <label for="inputState">Instructor encargado</label>
-                                <select id="inputState" class="form-control" required>
-                                    <option selected>Oscar</option>
-                                    <option>Mario</option>
-                                </select>
+                                <select id="inputState" class="form-control"  required #instC="ngModel"
+                                 [(ngModel)]="curs.id_empleado" name="instructor">
+                                    <option *ngFor="let emps of empleados"  [value]="emps.id_empleado"
+                                    >{{emps.nombre + ' ' +emps.apellido}}</option> 
+                              </select>
+                              <div *ngIf="(instC.invalid && (instC.dirty || instC.touched))">
+                                
+                                <p class="text-danger" *ngIf="instC.errors.required">Campo requerido</p>                    
+                            </div>
                             </div>
                         </div>
                     </div>
                     <br>
                     <div class="alingboton">
-                        <button type="submit" class="btn btn-primary btn-md">Asignar curso</button>
+                        <button type="submit"  (click)="alta()"  [disabled]="!validatedForm.form.valid" class="btn btn-primary btn-md">Asignar curso</button>
                     </div>
                 </form>
                 <!-- MAIN TITLE ENDS HERE -->
@@ -74,7 +81,7 @@
         <div id="sidebar" [ngClass]="{sidebar_responsive: contentHighlighted}">
             <div class="sidebar__title">
                 <div class="sidebar__img">
-                    <img src="../../../assets/logo.png" alt="logo" />
+                    <img src="../../../assets/fesapadelogo.png" alt="logo" />
                     <h1>Fesapade</h1>
                 </div>
                 <i *ngIf="contentHighlighted" (click)="contentHighlighted = false" class="fa fa-times" id="sidebarIcon"
@@ -125,9 +132,9 @@
                     <i class="fa fa-pencil-square-o"></i>
                     <a routerLink="/edit-perfil-admin">Editar mi perfil</a>
                 </div>
-                <div class="sidebar__logout">
+                <div class="sidebar__logout" *ngIf="logoutbtn">
                     <i class="fa fa-sign-out"></i>
-                    <a href="#">Cerrar sesión</a>
+                    <a routerLink="/login" (click)="logout()">Cerrar sesión</a>
                 </div>
             </div>
         </div>

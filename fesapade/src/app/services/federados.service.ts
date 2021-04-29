@@ -4,22 +4,30 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class FederadosService {
-  url='http://localhost/recursos/'; 
+  url='http://localhost/recursos/crud_federados/'; 
   constructor(private http: HttpClient) { }
-  recuperarTodos() {
-    return this.http.get(`${this.url}validarfederados.php` );
+  //lista de todos los federados
+  listar() {
+    return this.http.get(`${this.url}listar.php` );
     }
-    alta(articulo) {
-    return this.http.post(`${this.url}alta.php`, JSON.stringify(articulo));
+    //insertar nuevo federado
+    alta(federado) {
+    return this.http.post(`${this.url}alta.php`, JSON.stringify(federado));
     }
+    //eliminar un federado
     baja(codigo:number) {
     return this.http.get(`${this.url}baja.php?codigo=${codigo}`);
     }
+    //obtener todos los datos de un federado
     seleccionar(codigo:number) {
     return this.http.get(`${this.url}seleccionar.php?codigo=${codigo}`);
     }
-    modificacion(articulo) {
-      return this.http.post(`${this.url}modificacion.php`, JSON.stringify(articulo));
+       //editar datos de un federado
+    modificacion(federado) {
+      return this.http.post(`${this.url}modificacion.php`, JSON.stringify(federado));
       } 
-
+      //lista todos los federados con estado en "ALTA"
+      lista_de_alta() {
+        return this.http.get(`${this.url}listar_dealta.php` );
+        }
 }

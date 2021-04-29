@@ -13,3 +13,4 @@ instalaciones
    *npm install @types/jspdf @types/html2canvas -D
 
    *npm i @types/node -D
+   *npm install --save path-parse

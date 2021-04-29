@@ -38,35 +38,62 @@
 
 
                 <!-- MAIN TITLE ENDS HERE -->
-                <form #editpublicacionForm="ngForm">
+                <form #addCursoForm="ngForm" enctype="multipart/form-data">
                     <div class="alingtitu">
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <label for="formGroupExampleInput">Nombre</label>
-                                <input type="text" required pattern="^[a-zA-Z\s]*$" class="form-control"
-                                    id="formGroupExampleInput" autocomplete="off" [(ngModel)]="curs.nombre">
-                            </div>
+                                <input type="text" required  class="form-control"
+                                    id="formGroupExampleInput" autocomplete="off" [(ngModel)]="curs.nombre" name="nombre" #nomC="ngModel" >
+                                    <div *ngIf="(nomC.invalid && (nomC.dirty || nomC.touched))">
+                                
+                                        <p class="text-danger" *ngIf="nomC.errors.required">Campo requerido</p>                    
+                                    </div>
+                                </div>
 
                         </div>
                     </div>
                     <div class="alingboton">
                         <div class="form-group col-md-8">
                             <label for="exampleFormControlTextarea1">Descripción</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" [(ngModel)]="curs.descripcion"></textarea>
+                            <textarea class="form-control" required id="exampleFormControlTextarea1" rows="4" [(ngModel)]="curs.descripcion"  #desC="ngModel" name="descripcion"></textarea>
+                            <div *ngIf="(desC.invalid && (desC.dirty || desC.touched))">
+                                
+                                <p class="text-danger" *ngIf="desC.errors.required">Campo requerido</p>                    
+                            </div>
                         </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-15">
+                            <label for="inputState">Estado</label>
+                            <select id="inputState" class="form-control" required [(ngModel)]="curs.estado" name="estado" #estC="ngModel" >
+                                <option value="INICIADO" selected>INICIADO</option>
+                                <option value="FINALIZADO" >FINALIZADO</option>
+                            </select>
+                            <div *ngIf="(estC.invalid && (estC.dirty || estC.touched))">
+                                
+                                <p class="text-danger"  *ngIf="estC.errors.required">Campo requerido</p>                    
+                            </div>
+                        </div>
+  
                     </div>
                     <div class="alingtitu">
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <div class="alingboton">
                                     <label for="exampleFormControlFile1">Imagen de portada</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1" required [(ngModel)]="curs.portada">
+                                    <input type="file" accept="image/*" class="form-control-file" id="exampleFormControlFile1" 
+                                    #porC="ngModel" [(ngModel)]="curs.portada" name="portada" (change)="seleccionarArchivo($event)" >
+                                    <div *ngIf="(porC.invalid && (porC.dirty || porC.touched))">
+                                 
+                                        <p class="text-danger"  *ngIf="porC.errors.accept">Solo se admiten imagenes</p>                    
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group col-md-5">
                                 <div class="alingboton">
                                     <label for="exampleFormControlFile1">Img 1</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile2" required>
+                                    <input type="file" accept="image/*" class="form-control-file" id="exampleFormControlFile2" >
                                 </div>
                             </div>
 
@@ -77,13 +104,13 @@
                             <div class="form-group col-md-5">
                                 <div class="alingboton">
                                     <label for="exampleFormControlFile1">Img 2</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile3" required>
+                                    <input type="file" accept="image/*" class="form-control-file" id="exampleFormControlFile3" >
                                 </div>
                             </div>
                             <div class="form-group col-md-5">
                                 <div class="alingboton">
                                     <label for="exampleFormControlFile1">Img 3</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile4" required>
+                                    <input type="file" accept="image/*" class="form-control-file" id="exampleFormControlFile4" >
                                 </div>
                             </div>
 
@@ -94,7 +121,7 @@
 
                     <br>
                     <div class="alingboton">
-                        <button  (click)="alta()" *ngIf="curs.id == 0" type="submit" class="btn btn-primary btn-md">Crear</button>
+                        <button  (click)="alta()" *ngIf="curs.id == 0" [disabled]="!addCursoForm.form.valid" type="submit" class="btn btn-primary btn-md">Crear</button>
                     </div>
                 </form>
 
@@ -104,7 +131,7 @@
         <div id="sidebar" [ngClass]="{sidebar_responsive: contentHighlighted}">
             <div class="sidebar__title">
                 <div class="sidebar__img">
-                    <img src="../../../assets/logo.png" alt="logo" />
+                    <img src="../../../assets/fesapadelogo.png" alt="logo" />
                     <h1>Fesapade</h1>
                 </div>
                 <i *ngIf="contentHighlighted" (click)="contentHighlighted = false" class="fa fa-times" id="sidebarIcon"
@@ -155,9 +182,9 @@
                     <i class="fa fa-pencil-square-o"></i>
                     <a routerLink="/edit-perfil-admin">Editar mi perfil</a>
                 </div>
-                <div class="sidebar__logout">
+                <div class="sidebar__logout" *ngIf="logoutbtn">
                     <i class="fa fa-sign-out"></i>
-                    <a href="#">Cerrar sesión</a>
+                    <a routerLink="/login" (click)="logout()">Cerrar sesión</a>
                 </div>
             </div>
         </div>

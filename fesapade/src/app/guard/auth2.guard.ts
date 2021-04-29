@@ -29,7 +29,7 @@ export class Auth2Guard implements CanActivate {
   }
   
   this.authService.redirectUrl = routeurl;
-  this.router.navigate(['/index'], {queryParams: { returnUrl: routeurl }} );
+  this.router.navigate(['/login'], {queryParams: { returnUrl: routeurl }} );
   }
   
 }

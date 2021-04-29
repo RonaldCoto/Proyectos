@@ -6,15 +6,20 @@ import { Injectable } from '@angular/core';
 export class ActualizarService {
 
   constructor() { }
-  /* ----------------------ACTUALIZAR CURSOS-----------------*/
- // Funcion que almacena el id del curso 
- setCursoid(idcurso) {
-  localStorage.setItem('Cursoid', idcurso);
+  /* ----------------------ACTUALIZAR CURSOS/EMPLEADOS/FEDERADOS-----------------*/
+ // Funcion que almacena el id del campo seleccionado
+ setSelectedId(idselected) {
+  localStorage.setItem('SelectedId', idselected);
  }
- //Funcion que retorna el id del curso
- getCursoid() {
-  return localStorage.getItem('Cursoid');
+ //Funcion que retorna el id del dal campo seleccionado
+ getSelectedId() {
+  return localStorage.getItem('SelectedId');
   }
+  //eliminacion del id
+  deleteSelectedId() {
+    localStorage.removeItem('SelectedId');
+   
+    }
   
   //miArray: any[] = [];
  //getFromArray(token) {
@@ -22,10 +27,5 @@ export class ActualizarService {
 // }
 
 
-/* ----------------------ACTUALIZAR EMPLEADOS-----------------*/
-
-
-
-/* ----------------------ACTUALIZAR FEDERADOS-----------------*/
 
 }

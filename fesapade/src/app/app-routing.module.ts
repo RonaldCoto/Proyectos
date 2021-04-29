@@ -30,10 +30,16 @@ import {AdmineditarfederadoComponent} from '../app/components/admineditarfederad
 import {AdmineditarcursoComponent} from '../app/components/admineditarcurso/admineditarcurso.component';
 import {AsignarcursoinstructorComponent} from '../app/components/asignarcursoinstructor/asignarcursoinstructor.component';
 //Guardianes 
+//admin
 import { AuthGuard } from "./guard/auth.guard";
+//instructores
 import { Auth2Guard } from "./guard/auth2.guard";
+//federados
 import { Auth3Guard } from "./guard/auth3.guard";
+//no logueados
 import { Auth4Guard } from "./guard/auth4.guard";
+//logueados como instructor o federado
+import { Auth5Guard } from "./guard/auth5.guard";
 import { from } from 'rxjs';
 const routes: Routes = [
     //patmatch para que la ruta coincida completa
@@ -42,30 +48,30 @@ const routes: Routes = [
     {path: 'cursos', component:CursosComponent},
     {path: 'galeria', component:GaleriaComponent},
     {path: 'dashfederado', component:DashboardfederadoComponent,canActivate:[Auth3Guard]},
-    {path: 'editfede', component:EditfederadoComponent},
-    {path: 'cursos', component:CursosComponent, },
+    {path: 'editfede', component:EditfederadoComponent,canActivate:[Auth2Guard]},
+    {path: 'cursos', component:CursosComponent },
     {path: 'galeria', component:GaleriaComponent},
     {path: 'login', component:LogInComponent,canActivate:[Auth4Guard]},
     {path: 'administrador', component:AdministradorComponent,canActivate:[AuthGuard]},
-    {path: 'instructor', component:InstructorComponent},
+    {path: 'instructor', component:InstructorComponent,canActivate:[Auth2Guard]},
     {path: 'add-publicacion', component:AddpublicacionComponent},
     {path: 'admin-publicacion', component:AdministrarpubsComponent},
     {path: 'edit-publicacion', component:EditarpublicacionComponent},
-    {path: 'list-federados', component:ListafederadoComponent},
+    {path: 'list-federados', component:ListafederadoComponent,canActivate:[AuthGuard]},
     {path: 'edit-perfil', component:EditarperfilComponent},
     {path: 'notas-federado', component:NotasfederadoComponent},
-    {path: 'edit-perfil-federado', component:EditarperfederadoComponent},
-    {path: 'add-empleado', component:AddempleadoComponent},
-    {path: 'add-federado', component:AddfederadoComponent},
-    {path: 'admin-federado', component:AdministrarfederadoComponent},
-    {path: 'crear-curso', component:CrearcursoComponent},
-    {path: 'admin-curso', component:AdministrarcursosComponent},
-    {path: 'edit-perfil-admin', component:EditarperfiladminComponent},
-    {path: 'asign-curso-federado', component:AsignarcursoComponent},
-    {path: 'admin-editar-empleado', component:AdmineditarempleadoComponent},
-    {path: 'admin-editar-federado', component:AdmineditarfederadoComponent},
-    {path: 'admin-editar-curso', component:AdmineditarcursoComponent},
-    {path: 'asignar-curso-instructor', component:AsignarcursoinstructorComponent},
+    {path: 'edit-perfil-federado', component:EditarperfederadoComponent,canActivate:[AuthGuard]},
+    {path: 'add-empleado', component:AddempleadoComponent,canActivate:[AuthGuard]},
+    {path: 'add-federado', component:AddfederadoComponent,canActivate:[AuthGuard]},
+    {path: 'admin-federado', component:AdministrarfederadoComponent,canActivate:[AuthGuard]},
+    {path: 'crear-curso', component:CrearcursoComponent,canActivate:[AuthGuard]},
+    {path: 'admin-curso', component:AdministrarcursosComponent,canActivate:[AuthGuard]},
+    {path: 'edit-perfil-admin', component:EditarperfiladminComponent,canActivate:[AuthGuard]},
+    {path: 'asign-curso-federado', component:AsignarcursoComponent,canActivate:[AuthGuard]},
+    {path: 'admin-editar-empleado', component:AdmineditarempleadoComponent,canActivate:[AuthGuard]},
+    {path: 'admin-editar-federado', component:AdmineditarfederadoComponent,canActivate:[AuthGuard]},
+    {path: 'admin-editar-curso', component:AdmineditarcursoComponent,canActivate:[AuthGuard]},
+    {path: 'asignar-curso-instructor', component:AsignarcursoinstructorComponent,canActivate:[AuthGuard]},
     //{path: 'instructor', component:InstructorComponent,canActivate:[Auth2Guard]} cuando este el login
 ];
 

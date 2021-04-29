@@ -14,9 +14,8 @@ import { map } from 'rxjs/operators';
 export class AuthService {
 redirectUrl: string;
 
-URL = 'http://localhost/recursos';
 
-baseUrl:string = "http://localhost/recursos";
+baseUrl:string = "http://localhost/recursos/login";
   // arreglos que guardara la informacion de usuarios para validaciones
   empleado = null;
   federado = null;
@@ -39,29 +38,38 @@ baseUrl:string = "http://localhost/recursos";
     //uso del recurso "login", con envio de parametros "email y password" para realizar la autenticación
     return this.httpClient.post<any>(this.baseUrl + '/login.php', { email, password })
     .pipe(map(Users => {
-    this.setToken(Users[0].name);
-    //establecemos que el logeo se generó con exito
-    this.getLoggedInName.emit(true);
-    //almacenamos información básica en arreglo userData
-    let userData = {
-      id:Users[0].id,
-      id_cate_empleado: Users[0].id_cate_empleado ,
-      nombre: Users[0].nombre,
-      apellido: Users[0].apellido
-    }
-    //guardamos en localstorage la información básica del usuario autenticado
-    localStorage.setItem('usuario', JSON.stringify(userData));
-    //si el usuario es empleado se redirecciona segun su categoria de empleado
-    if(Users[0].id_cate_empleado == 1){
+  
+        //validando si la cuenta de usuario usuario esta de baja
+      if(Users[0].estado=="BAJA"){
+       alert("Su cuenta ha sido dada de baja.\nContacte con el administrador para solucionar este problema."); 
+       this.redirectUrl='/login';
+      }else{
+        this.setToken(Users[0].name);
+        //establecemos que el logeo se generó con exito
+        this.getLoggedInName.emit(true);
+        //almacenamos información básica en arreglo userData
+        let userData = {
+          id_emp:Users[0].id_empleado,
+          id_fed:Users[0].id_federado,
+          id_cate_empleado: Users[0].id_cate_empleado ,
+          nombre: Users[0].nombre,
+          apellido: Users[0].apellido
+        }
+        //guardamos en localstorage la información básica del usuario autenticado
+        localStorage.setItem('usuario', JSON.stringify(userData));
+        //si el usuario es empleado se redirecciona segun su categoria de empleado
+        //1=ADMINISTRADOR, 2=INSTRUCTOR
+        if(Users[0].id_cate_empleado == 1 ){
+          
+          this.redirectUrl='/administrador';
+        }else if(Users[0].id_cate_empleado==2){
+          this.redirectUrl='/instructor'
+        }else{
+          this.redirectUrl='/dashfederado'
+        }
+        return Users;
       
-      this.redirectUrl='/administrador';
-    }else if(Users[0].id_cate_empleado==2){
-      this.redirectUrl='/instructor'
-    }else{
-      this.redirectUrl='/dashfederado'
-    }
-    return Users;
-    
+      }
     }));
     }
   

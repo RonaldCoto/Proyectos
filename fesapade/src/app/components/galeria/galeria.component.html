@@ -7,7 +7,7 @@
 <header>
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-            <a class="navbar-brand" routerLink="/index"><img src="../../../assets/logo.png" width="30" height="30"
+            <a class="navbar-brand" routerLink="/index"><img src="../../../assets/fesapadelogo.png" width="45"
                     class="d-inline-block align-top" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,8 +28,18 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="#">About</a>
                     </li>
-                    <li class="nav-item active">
-                        <button class="btn btn-outline-primary my-2 my-sm-0">Log In</button>
+                    <li class="nav-item active" *ngIf="loginbtn">
+                        <a class="btn btn-outline-primary my-2 my-sm-0" routerLink="/login">Log In</a>
+                    </li>
+                    <li class="nav-item active" *ngIf="logoutbtn">
+                        <a class="btn btn-outline-primary my-2 my-sm-0" (click)="redirect()">
+                            Perfil
+                        </a>
+                    </li>
+                    <li class="nav-item active" *ngIf="logoutbtn">
+                        <a class="btn btn-outline-danger my-2 my-sm-0" (click)="logout()">
+                            Cerrar Sesión
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -48,26 +58,31 @@
             <p class="text-secondary">¡El arte del paracaidismo!</p>
             <div class="row">
                 <div class="column">
-                  <img src="https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
-                  <img src="https://images.pexels.com/photos/2419375/pexels-photo-2419375.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
-                  <img src="https://images.pexels.com/photos/2326290/pexels-photo-2326290.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
-                  <img src="https://images.pexels.com/photos/3251006/pexels-photo-3251006.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
-                  <img src="https://images.pexels.com/photos/1980720/pexels-photo-1980720.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+                    <img src="../../../assets/gal01.jpg" />
+                    <img src="../../../assets/gal02.jpg" />
+                    <img src="../../../assets/gal03.jpg" />
+                    <img src="../../../assets/gal04.jpg" />
+                    <img src="../../../assets/gal05.jpg" height="400px" />
+                    <img src="../../../assets/gal13.jpg">
                 </div>
                 <div class="column">
-                  <img src="https://images.pexels.com/photos/3546429/pexels-photo-3546429.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-                  <img src="https://images.pexels.com/photos/3889868/pexels-photo-3889868.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-                  <img src="https://images.pexels.com/photos/2091160/pexels-photo-2091160.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
-                  <img src="https://images.pexels.com/photos/2019546/pexels-photo-2019546.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+                    <img src="../../../assets/gal06.jpg" height="300px">
+                    <img src="../../../assets/gal07.jpg">
+                    <img src="../../../assets/gal08.jpg">
+                    <img
+                        src="../../../assets/gal15.jpg">
+                        <img
+                        src="../../../assets/gal14.jpg">
                 </div>
                 <div class="column">
-                  <img src="https://images.pexels.com/photos/3889868/pexels-photo-3889868.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
-                  <img src="https://images.pexels.com/photos/2360569/pexels-photo-2360569.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
-                  <img src="https://images.pexels.com/photos/3779785/pexels-photo-3779785.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-                  <img src="https://images.pexels.com/photos/259987/pexels-photo-259987.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-                  <img src="https://images.pexels.com/photos/2350514/pexels-photo-2350514.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <img src="../../../assets/gal09.jpg" />
+                    <img src="../../../assets/gal10.jpg" />
+                    <img
+                        src="../../../assets/gal16.jpg">
+                    <img src="../../../assets/gal11.jpg">
+                    <img src="../../../assets/gal12.jpg">
                 </div>
-              </div>
+            </div>
 
         </div>
 
@@ -76,36 +91,35 @@
     <!--end section 1-->
     <footer>
         <div class="container-fluid p-0">
-            <div class="row text-left">
-                <div class="col-md-5 col-md-5">
-                    <h1 class="text-light">About Us</h1>
-                    <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem illo et
-                        dolores!</p>
-                    <p class="pt-4 text-muted">Copyright ©2021 All rights reserved|Developed By <span>R.Coto and
-                            A.Vladimir</span>
-                    </p>
-                </div>
-                <div class="col-md-5">
-                    <h4 class="text-light">Nuestros Cursos</h4>
-                    <li class="text-muted">Lorem, ipsum dolor.</li>
-                    <li class="text-muted">Lorem, ipsum dolor.</li>
-                    <li class="text-muted">Lorem, ipsum dolor.</li>
-                    <li class="text-muted">Lorem, ipsum dolor.</li>
-                </div>
-                <div class="col-md-2 col-sm-12">
-                    <h4 class="text-light">Síguenos</h4>
-                    <p class="text-muted">Seamos sociables</p>
-                    <div class="column">
-                        <i class="fa fa-facebook-f"></i>
-                        <i class="fa fa-instagram"></i>
-                        <i class="fa fa-twitter"></i>
-                        <i class="fa fa-youtube-play"></i>
-                    </div>
-                </div>
-
-
+          <div class="row text-left">
+            <div class="col-md-5 col-md-5">
+              <h1 class="text-light">About Us</h1>
+              <p class="text-muted">La Federación Salvadoreña de Paracaidismo y Aerodeportes (FESAPADE) es una Federación
+                Deportivo Nacional que engloba todos los Deportes Aéreos en el país.</p>
+              <p class="pt-4 text-muted">Copyright ©2021 All rights reserved|Developed By <span>R.Coto and A.Vladimir</span>
+              </p>
             </div>
+            <div class="col-md-5">
+              <h4 class="text-light">Nuestros Cursos</h4>
+              <li class="text-muted">Paracaidismo básico.</li>
+              <li class="text-muted">Empaque.</li>
+              <li class="text-muted">Salto con línea.</li>
+              <li class="text-muted">Entrenamiento físico y teórico.</li>
+            </div>
+            <div class="col-md-2 col-sm-12">
+              <h4 class="text-light">Síguenos</h4>
+              <p class="text-muted">Seamos sociables</p>
+              <div class="column">
+                <a href="https://es-la.facebook.com/FESAPADE/"><i class="fa fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/fesapade/"><i class="fa fa-instagram"></i></a>
+                <a href="https://twitter.com/FESAPADE"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.youtube.com/channel/UCKwNhAzIUdsQsTo7Uf4R_DQ/featured"><i class="fa fa-youtube-play"></i></a>
+              </div>
+            </div>
+    
+    
+          </div>
         </div>
-    </footer>
+      </footer>
 
 </body>

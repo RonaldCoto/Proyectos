@@ -36,39 +36,55 @@
               </div>
             </div>
   
-            <form #publicacionForm="ngForm">
+            <form #validatedForm="ngForm">
                 <div class="alingtitu">
                     <div class="form-row">
                         <div class="form-group col-md-5">
                             <label for="inputState">Alumno federado</label>
-                            <select id="inputState" class="form-control" required>
-                                <option selected>Oscar</option>
-                                <option>Mario</option>
+                            <br>
+                            <font size=1>(Si un perfil de federado no aparece, verifique que este en 'ALTA')</font>
+                            
+                            <select id="inputState" class="form-control" required  #fedC="ngModel"
+                            [(ngModel)]="matricula.id_federado" name="federado">
+                            <option *ngFor="let fed of federados"  
+                            [value]="fed.id_federado">{{fed.nombre + ' ' +fed.apellido+ ' - '+fed.email}}</option> 
                             </select>
+                            <div *ngIf="(fedC.invalid && (fedC.dirty || fedC.touched))">
+                                
+                              <p class="text-danger" *ngIf="fedC.errors.required">Campo requerido</p>                    
+                          </div>
                         </div>
                     </div>
                 </div>
                 <div class="alingtitu">
-                    <div class="form-row">
-                        <div class="form-group col-md-5">
-                            <label for="inputState">Curso</label>
-                            <select id="inputState" class="form-control" required>
-                                <option selected>Curso 1</option>
-                                <option>Curso 2</option>
-                            </select>
+                   <div class="form-group col-md-5">
+                          <label for="inputState">Curso</label>
+                          <select id="inputState" class="form-control"  autocomplete="off"
+                          [(ngModel)]="matricula.id_asignacion_curso"  required #curC="ngModel" name="curso">
+                            <option *ngFor="let asig of asignaciones"  [value]="asig.id_asignacion_curso">{{asig.nombre}}</option> 
+                          </select>
+                          <div *ngIf="(curC.invalid && (curC.dirty || curC.touched))">
+                                
+                            <p class="text-danger" *ngIf="curC.errors.required">Campo requerido</p>                    
                         </div>
-                        <div class="form-group col-md-5">
-                            <label for="formGroupExampleInput">Instructor</label>
-                            <input type="text" required pattern="^[a-zA-Z\s]*$" class="form-control" id="formGroupExampleInput"
-                            autocomplete="off"  placeholder="Javier" readonly>
-
-
-                        </div>
+                      </div>
+                   <div class="form-row">
+                  </div> 
+                  <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <label for="formGroupExampleInput">Instructor asignado</label>
+                        <input type="text"  class="form-control"  [(ngModel)]="instructor.nombre" name="instructor"
+                            id="formGroupExampleInput"  readonly>
+                          
                     </div>
+
                 </div>
+                
+              </div>
+           
                 <br>
                 <div class="alingboton">
-                    <button type="submit" class="btn btn-primary btn-md">Asignar matrícula</button>
+                    <button type="submit"  (click)="alta()"  [disabled]="!validatedForm.form.valid" class="btn btn-primary btn-md">Asignar matrícula</button>
                 </div>
             </form>
             <!-- MAIN TITLE ENDS HERE -->
@@ -80,7 +96,7 @@
         <div id="sidebar" [ngClass]="{sidebar_responsive: contentHighlighted}">
           <div class="sidebar__title">
             <div class="sidebar__img">
-              <img src="../../../assets/logo.png" alt="logo"/>
+              <img src="../../../assets/fesapadelogo.png" alt="logo"/>
               <h1>Fesapade</h1>
             </div>
             <i
@@ -135,10 +151,10 @@
               <i class="fa fa-pencil-square-o"></i>
               <a routerLink="/edit-perfil-admin">Editar mi perfil</a>
             </div>
-            <div class="sidebar__logout">
+            <div class="sidebar__logout" *ngIf="logoutbtn">
               <i class="fa fa-sign-out"></i>
-              <a href="#">Cerrar sesión</a>
-            </div>
+              <a routerLink="/login" (click)="logout()">Cerrar sesión</a>
+          </div>
           </div>
         </div>
       </div>

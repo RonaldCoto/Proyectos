@@ -7,11 +7,14 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { CommonModule } from "@angular/common";
+
 //Guardianes
 import { AuthGuard } from "./guard/auth.guard";
 import { Auth2Guard } from "./guard/auth2.guard";
 import { Auth3Guard } from "./guard/auth3.guard";
 import { Auth4Guard } from "./guard/auth4.guard";
+import { Auth5Guard } from "./guard/auth5.guard";
 //Componentes
 import { AppComponent } from './app.component';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
@@ -77,13 +80,13 @@ import { AsignarcursoinstructorComponent } from './components/asignarcursoinstru
     
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, CommonModule,
     AppRoutingModule,
     ToastrModule.forRoot(),
     FormsModule,  HttpClientModule,
     BrowserAnimationsModule,ReactiveFormsModule,
   ],
-  providers: [AuthGuard, Auth2Guard, Auth3Guard, Auth4Guard],
+  providers: [AuthGuard, Auth2Guard, Auth3Guard, Auth4Guard,Auth5Guard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -38,29 +38,46 @@
 
 
                 <!-- MAIN TITLE ENDS HERE -->
-                <form #editpublicacionForm="ngForm">
+                <form #validatedForm="ngForm">
                     <div class="alingtitu">
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <label for="formGroupExampleInput">Nombres</label>
-                                <input type="text" required pattern="^[a-zA-Z\s]*$" class="form-control"
-                                    id="formGroupExampleInput" autocomplete="off">
-
-
+                                <input type="text" required pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" class="form-control"  #nomC="ngModel" 
+                                    id="formGroupExampleInput" autocomplete="off" [(ngModel)]="feds.nombre" name="nombre">
+                                    <div *ngIf="(nomC.invalid && (nomC.dirty || nomC.touched))">
+                                        <p class="text-danger" *ngIf="nomC.errors.pattern">Solo se permiten letras</p>
+                                        <p class="text-danger" *ngIf="nomC.errors.required">Campo requerido</p>                    
+                                    </div>
+  
                             </div>
                             <div class="form-group col-md-5">
                                 <label for="formGroupExampleInput">Apellidos</label>
-                                <input type="text" required pattern="^[a-zA-Z\s]*$" class="form-control"
-                                    id="formGroupExampleInput1" autocomplete="off">
-
-
+                                <input type="text" required pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" class="form-control" #apelC="ngModel" 
+                                    id="formGroupExampleInput1" autocomplete="off" [(ngModel)]="feds.apellido" name="apellido">
+                                    <div *ngIf="(apelC.invalid && (apelC.dirty || apelC.touched))">
+                                        <p class="text-danger" *ngIf="apelC.errors.pattern">Solo se permiten letras</p>
+                                        <p class="text-danger" *ngIf="apelC.errors.required">Campo requerido</p>                    
+                                    </div>
+  
                             </div>
                             <div class="form-group col-md-10">
                                 <label for="formGroupExampleInput">Dirección</label>
-                                <input type="text" required pattern="^[a-zA-Z\s]*$" class="form-control"
-                                    id="formGroupExampleInput2" autocomplete="off">
-
-
+                                <input type="text" required pattern="^[#.0-9a-zA-ZñÑáéíóúÁÉÍÓÚ\s,-]+$" class="form-control" #dirC="ngModel" 
+                                    id="formGroupExampleInput2" autocomplete="off" [(ngModel)]="feds.direccion" name="direccion">
+                                    <div *ngIf="(dirC.invalid && (dirC.dirty || dirC.touched))">    
+                                        <p class="text-danger" *ngIf="dirC.errors.required">Campo requerido</p>
+                                        <p class="text-danger" *ngIf="dirC.errors.pattern">Solo se permiten comas</p>                      
+                                    </div>
+  
+                            </div>
+                            <div class="form-group col-md-5">
+                                <label for="formGroupExampleInput">Contraseña</label>
+                                <input type="password" required class="form-control" id="formGroupExampleInput4" #passwdC="ngModel" 
+                                    autocomplete="off" [(ngModel)]="feds.password" name="password">
+                                    <div *ngIf="(passwdC.invalid && (passwdC.dirty || passwdC.touched))">                    
+                                        <p class="text-danger" *ngIf="passwdC.errors.required">Campo requerido</p>                    
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -68,17 +85,36 @@
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <label for="formGroupExampleInput">Email</label>
-                                <input type="email" required pattern="^[a-zA-Z\s]*$" class="form-control"
-                                    id="formGroupExampleInput3" autocomplete="off">
+                                <input type="email" required  pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
+                                class="form-control" id="formGroupExampleInput3" autocomplete="off" 
+                                [(ngModel)]="feds.email" name="email" #emaC="ngModel">
+                                <div *ngIf="(emaC.invalid && (emaC.dirty || emaC.touched))">
+                                    <p class="text-danger" *ngIf="emaC.errors.pattern">Formato de email incorrecto</p>
+                                    <p class="text-danger" *ngIf="emaC.errors.required">Campo requerido</p>                    
+                                </div>
                             </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-15">
+                                    <label for="inputState">Estado</label>
+                                    <select id="inputState" class="form-control" required [(ngModel)]="feds.estado" name="estado" #estC="ngModel" >
+                                        <option value="ALTA" selected>ALTA</option>
+                                        <option value="BAJA" >BAJA</option>
+                                    </select>
+                                    <div *ngIf="(estC.invalid && (estC.dirty || estC.touched))">
+                                        
+                                        <p class="text-danger" *ngIf="estC.errors.required">Campo requerido</p>                    
+                                    </div>
+                                </div>
+          
+                            </div>
+  
                         </div>
                     </div>
-
-
                     <br>
-                    <div class="alingboton">
-                        <button type="submit" class="btn btn-primary btn-md">Actualizar</button>
-                    </div>
+                      <div class="alingboton">
+                          <button type="submit" class="btn btn-primary btn-md"  (click)="modificacion()"   *ngIf="feds.id_federado !== 0"
+                          [disabled]="!validatedForm.form.valid">Actualizar federado</button>
+                      </div>
                 </form>
 
             </div>
@@ -87,7 +123,7 @@
         <div id="sidebar" [ngClass]="{sidebar_responsive: contentHighlighted}">
             <div class="sidebar__title">
                 <div class="sidebar__img">
-                    <img src="../../../assets/logo.png" alt="logo" />
+                    <img src="../../../assets/fesapadelogo.png" alt="logo" />
                     <h1>Fesapade</h1>
                 </div>
                 <i *ngIf="contentHighlighted" (click)="contentHighlighted = false" class="fa fa-times" id="sidebarIcon"
@@ -138,9 +174,9 @@
                     <i class="fa fa-pencil-square-o"></i>
                     <a routerLink="/edit-perfil-admin">Editar mi perfil</a>
                 </div>
-                <div class="sidebar__logout">
+                <div class="sidebar__logout" *ngIf="logoutbtn">
                     <i class="fa fa-sign-out"></i>
-                    <a href="#">Cerrar sesión</a>
+                    <a routerLink="/login" (click)="logout()">Cerrar sesión</a>
                 </div>
             </div>
         </div>

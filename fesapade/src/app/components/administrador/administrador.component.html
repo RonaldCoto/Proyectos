@@ -39,45 +39,31 @@
           <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col">Nombres</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Dirección</th>
+                    <th scope="col">Nombre</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Dirección</th>
                     <th scope="col">Categoría</th>
+                    <th scope="col">Estado</th>
                     <th scope="col">Acción</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">Otto</th>
-                    <td>Mark</td>
-                    <td>safsafsffcfs</td>
-                    <td>@mdo</td>
-                    <td>Administrador</td>
+                <tr  *ngFor="let emps of empleados">
+                    <th scope="row">{{emps.nombre+' '+emps.apellido}}</th>
+                    <td>{{emps.email}}</td>
+                    <td>{{emps.direccion}}</td>
+                    <td>{{emps.cargo}}</td>
+                    <td>{{emps.estado}}</td>
+                    
+
                     <td>
                         <div class="btn-group">
-                            <a type="button" routerLink="/admin-editar-empleado" class="btn btn-primary btn-lg" title="Editar"><i
-                                    class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                            <a type="button" class="btn btn-danger btn-lg" title="Eliminar"><i
-                                    class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            <a type="button" routerLink="/admin-editar-empleado" class="btn btn-primary btn-lg" title="Editar"
+                            (click)="editar(emps.id_empleado)"><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
+                            <a type="button" class="btn btn-danger btn-lg" title="Eliminar" (click)="eliminar(emps.id_empleado)"><i
+                                    class="fa fa-trash-o" aria-hidden="true" ></i></a>
 
                         </div>
-                </tr>
-                <tr>
-                    <th scope="row">Thornton</th>
-                    <td>Jacob</td>
-                    <td>sfsfsfgsdgfer</td>
-                    <td>@fat</td>
-                    <td>Instructor</td>
-                    <td>
-                        <div class="btn-group">
-                            <a type="button" routerLink="/admin-editar-empleado" class="btn btn-primary btn-lg" title="Editar"><i
-                                    class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                            <a type="button"  class="btn btn-danger btn-lg" title="Eliminar"><i
-                                    class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                        </div>
-                    </td>
                 </tr>
             </tbody>
         </table>
@@ -90,7 +76,7 @@
       <div id="sidebar" [ngClass]="{sidebar_responsive: contentHighlighted}">
         <div class="sidebar__title">
           <div class="sidebar__img">
-            <img src="../../../assets/logo.png" alt="logo"/>
+            <img src="../../../assets/fesapadelogo.png" alt="logo"/>
             <h1>Fesapade</h1>
           </div>
           <i
@@ -113,7 +99,7 @@
           </div>
           <div class="sidebar__link active_menu_link">
             <i class="fa fa-wrench"></i>
-            <a href="#">Administrar empleados</a>
+            <a href="/administrador">Administrar empleados</a>
           </div>
 
           <h2>Federados</h2>
@@ -145,10 +131,10 @@
             <i class="fa fa-pencil-square-o"></i>
             <a routerLink="/edit-perfil-admin">Editar mi perfil</a>
           </div>
-          <div class="sidebar__logout">
+          <div class="sidebar__logout" *ngIf="logoutbtn">
             <i class="fa fa-sign-out"></i>
-            <a (click)="logout()">Cerrar sesión</a>
-          </div>
+            <a routerLink="/login" (click)="logout()">Cerrar sesión</a>
+        </div>
         </div>
       </div>
     </div>

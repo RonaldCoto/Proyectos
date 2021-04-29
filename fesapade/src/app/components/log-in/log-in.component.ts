@@ -61,11 +61,12 @@ export class LogInComponent implements OnInit {
     .pipe(first())
     .subscribe(
     data => {
-    const redirect = this.authservice.redirectUrl;
-    this.router.navigate([redirect]);
+    
+      const redirect = this.authservice.redirectUrl;
+       this.router.navigate([redirect]);
     },
     error => {
-    
+      console.log(error);
     alert("Email o password incorrectos"); //ventana de mensaje cuando esta incorrectos los datos
     
     });
