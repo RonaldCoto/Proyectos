@@ -24,7 +24,7 @@ export class CrearcursoComponent{
    estado:null,
    base64textString: null
   }
-  //arreglo que almacenará el nomnre de la imagen seleccionada para subir
+  
   constructor(public authService: AuthService,private cursoServicio: CursosService) { 
     authService.getLoggedInName.subscribe(name => this.changeName(name));
     if(this.authService.isLoggedIn())

@@ -29,6 +29,8 @@ import {AdmineditarempleadoComponent} from '../app/components/admineditaremplead
 import {AdmineditarfederadoComponent} from '../app/components/admineditarfederado/admineditarfederado.component';
 import {AdmineditarcursoComponent} from '../app/components/admineditarcurso/admineditarcurso.component';
 import {AsignarcursoinstructorComponent} from '../app/components/asignarcursoinstructor/asignarcursoinstructor.component';
+import {AddevaluacionComponent} from '../app/components/addevaluacion/addevaluacion.component';
+import {AdministrarevaluacionesComponent} from '../app/components/administrarevaluaciones/administrarevaluaciones.component';
 //Guardianes 
 //admin
 import { AuthGuard } from "./guard/auth.guard";
@@ -54,13 +56,13 @@ const routes: Routes = [
     {path: 'login', component:LogInComponent,canActivate:[Auth4Guard]},
     {path: 'administrador', component:AdministradorComponent,canActivate:[AuthGuard]},
     {path: 'instructor', component:InstructorComponent,canActivate:[Auth2Guard]},
-    {path: 'add-publicacion', component:AddpublicacionComponent},
-    {path: 'admin-publicacion', component:AdministrarpubsComponent},
-    {path: 'edit-publicacion', component:EditarpublicacionComponent},
-    {path: 'list-federados', component:ListafederadoComponent,canActivate:[AuthGuard]},
-    {path: 'edit-perfil', component:EditarperfilComponent},
+    {path: 'add-publicacion', component:AddpublicacionComponent,canActivate:[Auth2Guard]},
+    {path: 'admin-publicacion', component:AdministrarpubsComponent,canActivate:[Auth2Guard]},
+    {path: 'edit-publicacion', component:EditarpublicacionComponent,canActivate:[Auth2Guard]},
+    {path: 'list-federados', component:ListafederadoComponent,canActivate:[Auth2Guard]},
+    {path: 'edit-perfil', component:EditarperfilComponent,canActivate:[Auth2Guard]},
     {path: 'notas-federado', component:NotasfederadoComponent},
-    {path: 'edit-perfil-federado', component:EditarperfederadoComponent,canActivate:[AuthGuard]},
+    {path: 'edit-perfil-federado', component:EditarperfederadoComponent,canActivate:[Auth3Guard]},
     {path: 'add-empleado', component:AddempleadoComponent,canActivate:[AuthGuard]},
     {path: 'add-federado', component:AddfederadoComponent,canActivate:[AuthGuard]},
     {path: 'admin-federado', component:AdministrarfederadoComponent,canActivate:[AuthGuard]},
@@ -72,6 +74,8 @@ const routes: Routes = [
     {path: 'admin-editar-federado', component:AdmineditarfederadoComponent,canActivate:[AuthGuard]},
     {path: 'admin-editar-curso', component:AdmineditarcursoComponent,canActivate:[AuthGuard]},
     {path: 'asignar-curso-instructor', component:AsignarcursoinstructorComponent,canActivate:[AuthGuard]},
+    {path: 'add-evaluacion', component:AddevaluacionComponent,canActivate:[Auth2Guard]},
+    {path: 'admin-evaluacion', component:AdministrarevaluacionesComponent,canActivate:[Auth2Guard]}
     //{path: 'instructor', component:InstructorComponent,canActivate:[Auth2Guard]} cuando este el login
 ];
 

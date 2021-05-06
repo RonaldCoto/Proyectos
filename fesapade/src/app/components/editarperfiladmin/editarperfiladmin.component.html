@@ -74,9 +74,10 @@
                             <div class="form-group col-md-5">
                                 <label for="formGroupExampleInput">Contraseña</label>
                                 <input type="password" required class="form-control" id="formGroupExampleInput4" #passwdC="ngModel" 
-                                    autocomplete="off" [(ngModel)]="emps.password" name="password">
+                                    autocomplete="off"  minlength="8" [(ngModel)]="emps.password" name="password">
                                     <div *ngIf="(passwdC.invalid && (passwdC.dirty || passwdC.touched))">                    
-                                        <p class="text-danger" *ngIf="passwdC.errors.required">Campo requerido</p>                    
+                                        <p class="text-danger" *ngIf="passwdC.errors.required">Campo requerido</p>      
+                                        <p class="text-danger" *ngIf="passwdC.errors.minlength">Debe tener 8 caracteres como minimo</p>               
                                     </div>
                             </div>
                         </div>

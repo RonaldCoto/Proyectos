@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import {EmpleadosService} from '../../services/empleados.service'
+import {EmpleadosService} from '../../services/empleados.service';
 @Component({
   selector: 'app-editarperfiladmin',
   templateUrl: './editarperfiladmin.component.html',

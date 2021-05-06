@@ -19,4 +19,8 @@ export class AsignacionesCursosService {
     seleccionar_empleados_asignados(codigo:number) {
       return this.http.get(`${this.url}seleccionar_empleados_asignados.php?codigo=${codigo}`);
       }
+       //obtener todos los datos de un curso segun el instructor acargo seleccionado
+       seleccionar_cursos_asignados_SI(codigo:number) {
+      return this.http.get(`${this.url}seleccionar_cursos_asignados_segun_instructor.php?codigo=${codigo}`);
+      }
 }
