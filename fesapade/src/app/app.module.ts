@@ -43,6 +43,7 @@ import { AdmineditarempleadoComponent } from './components/admineditarempleado/a
 import { AdmineditarfederadoComponent } from './components/admineditarfederado/admineditarfederado.component';
 import { AdmineditarcursoComponent } from './components/admineditarcurso/admineditarcurso.component';
 import { AsignarcursoinstructorComponent } from './components/asignarcursoinstructor/asignarcursoinstructor.component';
+import { ListpublicacionesComponent } from './components/listpublicaciones/listpublicaciones.component';
 
 
 
@@ -77,6 +78,7 @@ import { AsignarcursoinstructorComponent } from './components/asignarcursoinstru
     AdmineditarfederadoComponent,
     AdmineditarcursoComponent,
     AsignarcursoinstructorComponent,
+    ListpublicacionesComponent,
     
   ],
   imports: [

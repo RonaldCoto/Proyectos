@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-04-2021 a las 23:10:05
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.2
+-- Tiempo de generación: 06-05-2021 a las 23:01:10
+-- Versión del servidor: 10.4.13-MariaDB
+-- Versión de PHP: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -39,7 +38,10 @@ CREATE TABLE `asignaciones_cursos` (
 --
 
 INSERT INTO `asignaciones_cursos` (`id_asignacion_curso`, `id_curso`, `id_empleado`) VALUES
-(12, 1, 6);
+(12, 1, 6),
+(49, 1, 10),
+(45, 13, 9),
+(47, 24, 9);
 
 -- --------------------------------------------------------
 
@@ -79,9 +81,10 @@ CREATE TABLE `cursos` (
 --
 
 INSERT INTO `cursos` (`id_curso`, `nombre`, `descripcion`, `portada`, `estado`) VALUES
-(1, 'curso1', 'curso de prueba', NULL, 'INICIADO'),
-(13, 'curso 2', 'de prueba', NULL, 'INICIADO'),
-(24, 'curso 3', 'prueba de almacen de imagenes', '1619730450123624432_3436219896463843_8828050963999108943_o.jpg', 'FINALIZADO');
+(1, 'curso1', 'curso de prueba', 'intructor.jpg', 'INICIADO'),
+(13, 'curso 2', 'de prueba', '1619730450123624432_3436219896463843_8828050963999108943_o.jpg', 'INICIADO'),
+(24, 'curso 3', 'prueba de almacen de imagenes', '1619730450123624432_3436219896463843_8828050963999108943_o.jpg', 'INICIADO'),
+(25, 'curso paracaida', 'dfadadad', '16200832081.png', 'INICIADO');
 
 -- --------------------------------------------------------
 
@@ -106,7 +109,9 @@ CREATE TABLE `empleados` (
 
 INSERT INTO `empleados` (`id_empleado`, `nombre`, `apellido`, `direccion`, `email`, `password`, `id_cate_empleado`, `estado`) VALUES
 (1, 'adonis', 'arevalo', 'soyapango, San Salvador', 'adonisarevalo503@gmail.com', '9ed660a53803d004219f723faa508a7f127a75d2', 1, 'ALTA'),
-(6, 'instructor', 'instructor', 'ilopango', 'instructor@fesapade.com', 'f4d2eda974f10ce216198ff16d75d7e4aa2e81fc', 2, 'ALTA');
+(6, 'instructor', 'instructor', 'ilopango', 'instructor@fesapade.com', '7c222fb2927d828af22f592134e8932480637c0d', 2, 'ALTA'),
+(9, 'Adriana', 'Martinolli', 'usulutan', 'adriana@gmail.com', '7c222fb2927d828af22f592134e8932480637c0d', 2, 'ALTA'),
+(10, 'Hilda', 'Cortez', 'santa tecla', 'hilda@gmail.com', '7c222fb2927d828af22f592134e8932480637c0d', 2, 'ALTA');
 
 -- --------------------------------------------------------
 
@@ -146,7 +151,9 @@ INSERT INTO `federados` (`id_federado`, `nombre`, `apellido`, `direccion`, `emai
 (1, 'federado', 'de prueba', 'ilopango, san salvador', 'federado1@hotmail.com', '14068d25a61a2b0755296b0b55b4b7bcddd72473', 'ALTA'),
 (2, 'jose', 'perez', 'san salvador', 'joseperez@hotmail.com', '6920cf7d7be6238440a76c44a47969a03fcde487', 'BAJA'),
 (6, 'jose', 'martinez', 'asdf', 'as@as.com', '7c222fb2927d828af22f592134e8932480637c0d', 'ALTA'),
-(8, 'nuefed', 'nuefed', 'cabañas', 'nuefed@nuefed.com', '7c222fb2927d828af22f592134e8932480637c0d', 'ALTA');
+(8, 'nuefed', 'nuefed', 'cabañas', 'nuefed@nuefed.com', '7c222fb2927d828af22f592134e8932480637c0d', 'ALTA'),
+(9, 'Ronald', 'Coto', 'soyapango', 'coto@gmail.com', '7c222fb2927d828af22f592134e8932480637c0d', 'ALTA'),
+(10, 'andrea', 'garcia', 'ilopango', 'andrea@gmail.com', '7c222fb2927d828af22f592134e8932480637c0d', 'ALTA');
 
 -- --------------------------------------------------------
 
@@ -166,7 +173,11 @@ CREATE TABLE `matriculas` (
 
 INSERT INTO `matriculas` (`id_matricula`, `id_federado`, `id_asignacion_curso`) VALUES
 (25, 1, 12),
-(33, 8, 12);
+(33, 8, 12),
+(37, 9, 12),
+(34, 9, 45),
+(35, 10, 12),
+(36, 10, 47);
 
 -- --------------------------------------------------------
 
@@ -192,8 +203,20 @@ CREATE TABLE `publicaciones` (
   `titulo` varchar(250) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `descripcion` varchar(250) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `archivo` varchar(250) COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
+  `fecha_publicacion` date NOT NULL,
   `id_asignacion_curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `publicaciones`
+--
+
+INSERT INTO `publicaciones` (`id_publicacion`, `titulo`, `descripcion`, `archivo`, `fecha_publicacion`, `id_asignacion_curso`) VALUES
+(1, 'prueba', 'asfasffasfd', '1620084297b.txt', '2021-05-04', 45),
+(2, 'publicacion 2', 'publicacion solo para adriana', '1620318820Mi repositorio de git hub.txt', '2021-05-06', 47),
+(3, 'prueba 3', 'aasfsgsgsdfsfsf', '1620318891Metodo de diferencias divididas de Newton.docx', '2021-05-06', 47),
+(4, 'tarea 2', 'realizar esta tarea para sabado', '1620321255ejercicio 3.pdf', '2021-05-06', 45),
+(5, 'publicacion para curso1', 'probando si sirve', '1620326757ejercicio 3.pdf', '2021-05-06', 12);
 
 --
 -- Índices para tablas volcadas
@@ -270,7 +293,7 @@ ALTER TABLE `publicaciones`
 -- AUTO_INCREMENT de la tabla `asignaciones_cursos`
 --
 ALTER TABLE `asignaciones_cursos`
-  MODIFY `id_asignacion_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_asignacion_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias_empleados`
@@ -282,13 +305,13 @@ ALTER TABLE `categorias_empleados`
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `empleados`
 --
 ALTER TABLE `empleados`
-  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `evaluaciones`
@@ -300,13 +323,13 @@ ALTER TABLE `evaluaciones`
 -- AUTO_INCREMENT de la tabla `federados`
 --
 ALTER TABLE `federados`
-  MODIFY `id_federado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_federado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `matriculas`
 --
 ALTER TABLE `matriculas`
-  MODIFY `id_matricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_matricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `notas`
@@ -318,7 +341,7 @@ ALTER TABLE `notas`
 -- AUTO_INCREMENT de la tabla `publicaciones`
 --
 ALTER TABLE `publicaciones`
-  MODIFY `id_publicacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_publicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
