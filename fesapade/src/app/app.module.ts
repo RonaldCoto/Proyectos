@@ -45,6 +45,7 @@ import { AdmineditarcursoComponent } from './components/admineditarcurso/admined
 import { AsignarcursoinstructorComponent } from './components/asignarcursoinstructor/asignarcursoinstructor.component';
 import { AddevaluacionComponent } from './components/addevaluacion/addevaluacion.component';
 import { AdministrarevaluacionesComponent } from './components/administrarevaluaciones/administrarevaluaciones.component';
+import { ListpublicacionesComponent } from './components/listpublicaciones/listpublicaciones.component';
 
 
 
@@ -81,6 +82,7 @@ import { AdministrarevaluacionesComponent } from './components/administrarevalua
     AsignarcursoinstructorComponent,
     AddevaluacionComponent,
     AdministrarevaluacionesComponent,
+    ListpublicacionesComponent,
     
   ],
   imports: [

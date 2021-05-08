@@ -23,4 +23,15 @@ export class AsignacionesCursosService {
        seleccionar_cursos_asignados_SI(codigo:number) {
       return this.http.get(`${this.url}seleccionar_cursos_asignados_segun_instructor.php?codigo=${codigo}`);
       }
+      
+        //obtener cursos de instructor segun su ID
+    lista_cursos(codigo: number) {
+    return this.http.get(`${this.url}listar_cursos_instructor.php?codigo=${codigo}`);
+  }
+
+  //obtener cursos de instructor segun su ID  
+  lista_cursos_select(codigo: number) {
+    return this.http.get(`${this.url}cursos_por_idinstructor.php?codigo=${codigo}`);
+  }
+
 }

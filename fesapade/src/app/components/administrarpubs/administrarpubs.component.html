@@ -42,7 +42,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">No</th>
+                            <th scope="col">Fecha</th>
                             <th scope="col">Título</th>
                             <th scope="col">Descripción</th>
                             <th scope="col">Curso</th>
@@ -50,34 +50,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                        <tr *ngFor="let publi of pubs">
+                            <th scope="row">{{publi.fecha_publicacion}}</th>
+                            <td>{{publi.titulo}}</td>
+                            <td>{{publi.descripcion}}</td>
+                            <td>{{publi.nombre}}</td>
                             <td>
                                 <div class="btn-group">
-                                    <button type="button" routerLink="/edit-publicacion" class="btn btn-primary btn-lg" title="Editar"><i
+                                    <button type="button" routerLink="/edit-publicacion" class="btn btn-primary btn-lg" title="Editar" (click)="pub(publi.id_publicacion)"><i
                                             class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                    <button type="button" class="btn btn-danger btn-lg" title="Eliminar"><i
+                                    <button type="button" class="btn btn-danger btn-lg" title="Eliminar"  (click)="eliminar(publi.id_publicacion)"><i
                                             class="fa fa-trash-o" aria-hidden="true"></i></button>
 
                                 </div>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>
-                                <div class="btn-group">
-                                    <a type="button" routerLink="/edit-publicacion" class="btn btn-primary btn-lg" title="Editar"><i
-                                            class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                    <a type="button"  class="btn btn-danger btn-lg" title="Eliminar"><i
-                                            class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                                </div>
-                            </td>
                         </tr>
                     </tbody>
                 </table>

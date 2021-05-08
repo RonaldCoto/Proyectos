@@ -11,14 +11,13 @@
 $id_curso=intval($params->id_curso);
 $id_empleado=intval($params->id_empleado);
 
-//verificando si el empleado a asignar ya estaba asignado para evitar duplicación
-$registros=$con->prepare("SELECT id_asignacion_curso FROM asignaciones_cursos WHERE (id_curso = :id_curso1 AND id_empleado = :id_empleado1) ");
+//verificando si el curso ya tiene una asignacion, ya que solo habrá un instructor por cruso
+$registros=$con->prepare("SELECT id_asignacion_curso FROM asignaciones_cursos WHERE id_curso = :id_curso1  ");
 $registros->bindParam(':id_curso1',$id_curso );
-$registros->bindParam(':id_empleado1',$id_empleado );
 $registros->execute();
 $vec=[];  
 $vec=$registros->fetchAll(PDO::FETCH_ASSOC);
-//si el empleado no esta asignado al curso se puede asignar
+//si el curso no esta asignado se puede asignar al nuevo instructor
 if($vec == null){
      $insertar=$con->prepare("insert into asignaciones_cursos (id_curso,id_empleado) values (:id_curso,:id_empleado)");
 
@@ -41,7 +40,7 @@ $insertar->execute();
     class Result { }
 $response = new Result();
 $response -> resultado = 'ERROR';
-$response -> mensaje = 'ERROR, este empleado ya se encuentra asignado a este curso.';
+$response -> mensaje = 'ERROR, este curso ya tiene un instructor asignado.';
 header('Content-Type: application/json');
 echo json_encode($response);
 }

@@ -27,5 +27,6 @@ export class CursosService {
     modificacion(curso) {
       return this.http.post(`${this.url}modificacion.php`, JSON.stringify(curso));
       } 
-   
+  
+
 }

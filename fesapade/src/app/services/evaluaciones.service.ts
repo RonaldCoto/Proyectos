@@ -26,4 +26,9 @@ export class EvaluacionesService {
     modificacion(evaluacion) {
       return this.http.post(`${this.url}modificacion.php`, JSON.stringify(evaluacion));
       } 
+
+    //obtener cursos de instructor segun su ID para llenar select 
+  lista_evaluaciones_instructor(codigo: number) {
+    return this.http.get(`${this.url}listar_evaluaciones_instructor.php?codigo=${codigo}`);
+  }
 }

@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 export class ActualizarService {
 
   constructor() { }
-  /* ----------------------ACTUALIZAR CURSOS/EMPLEADOS/FEDERADOS-----------------*/
+  /* -------------------PARA ACTUALIZAR CURSOS/EMPLEADOS/FEDERADOS/EVALUACIONES/PUBLICACIONES/NOTAS-----------------*/
+  
  // Funcion que almacena el id del campo seleccionado
  setSelectedId(idselected) {
   localStorage.setItem('SelectedId', idselected);
@@ -21,10 +22,6 @@ export class ActualizarService {
    
     }
   
-  //miArray: any[] = [];
- //getFromArray(token) {
-   //  return this.miArray[this.miArray.findIndex(item => item.token === token)];
-// }
 
 
 

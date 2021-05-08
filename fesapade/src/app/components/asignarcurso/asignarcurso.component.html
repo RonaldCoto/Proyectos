@@ -59,8 +59,10 @@
                 <div class="alingtitu">
                    <div class="form-group col-md-5">
                           <label for="inputState">Curso</label>
+                          <br>
+                          <font size=1>(Unicamente se listan los cursos con instructor asignado)</font>
                           <select id="inputState" class="form-control"  autocomplete="off"
-                          [(ngModel)]="matricula.id_asignacion_curso"  required #curC="ngModel" name="curso">
+                          [(ngModel)]="matricula.id_asignacion_curso"   required #curC="ngModel" name="curso">
                             <option *ngFor="let asig of asignaciones"  [value]="asig.id_asignacion_curso">{{asig.nombre}}</option> 
                           </select>
                           <div *ngIf="(curC.invalid && (curC.dirty || curC.touched))">
@@ -70,15 +72,7 @@
                       </div>
                    <div class="form-row">
                   </div> 
-                  <div class="form-row">
-                    <div class="form-group col-md-5">
-                        <label for="formGroupExampleInput">Instructor asignado</label>
-                        <input type="text"  class="form-control"  [(ngModel)]="instructor.nombre" name="instructor"
-                            id="formGroupExampleInput"  readonly>
-                          
-                    </div>
-
-                </div>
+                
                 
               </div>
            

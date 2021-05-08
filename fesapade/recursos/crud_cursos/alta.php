@@ -13,7 +13,7 @@ $archivo = $params->base64textString;
     $archivo = base64_decode($archivo);
 //por cada imagen subida se adjuntara el momento actual en segundos con time()
 $fecha= time();
-$portada = $fecha.$portada;
+$portada = $fecha."-".$portada;
 
 //validamos si el nombre del curso ya esta utilizado
 //-----------------------------INICIANDO VALIDACION-----------------------------

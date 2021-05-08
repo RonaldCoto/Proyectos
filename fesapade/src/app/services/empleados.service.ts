@@ -4,31 +4,31 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class EmpleadosService {
-  url='http://localhost/recursos/crud_empleados/'; 
+  url = 'http://localhost/recursos/crud_empleados/';
   constructor(private http: HttpClient) { }
   //lista de todos los empleados
   listar() {
-    return this.http.get(`${this.url}listar.php` );
-    }
-    //insertar nuevo empleado
-    alta(empleado) {
+    return this.http.get(`${this.url}listar.php`);
+  }
+  //insertar nuevo empleado
+  alta(empleado) {
     return this.http.post(`${this.url}alta.php`, JSON.stringify(empleado));
-    }
-    //eliminar un empleado
-    baja(codigo:number) {
+  }
+  //eliminar un empleado
+  baja(codigo: number) {
     return this.http.get(`${this.url}baja.php?codigo=${codigo}`);
-    }
-    //obtener todos los datos de un empleado
-    seleccionar(codigo:number) {
+  }
+  //obtener todos los datos de un empleado
+  seleccionar(codigo: number) {
     return this.http.get(`${this.url}seleccionar.php?codigo=${codigo}`);
-    }
-    //editar datos de un empleado
-    modificacion(empleado) {
-      return this.http.post(`${this.url}modificacion.php`, JSON.stringify(empleado));
-      } 
-        //obtener todos los empleados que sean instructores y esten de alta 
-    lista_de_alta() {
-      return this.http.get(`${this.url}listar_dealta_inst.php?codigo`);
-      }
-      
+  }
+  //editar datos de un empleado
+  modificacion(empleado) {
+    return this.http.post(`${this.url}modificacion.php`, JSON.stringify(empleado));
+  }
+  //obtener todos los empleados que sean instructores y esten de alta 
+  lista_de_alta() {
+    return this.http.get(`${this.url}listar_dealta_inst.php?codigo`);
+  }
+ 
 }

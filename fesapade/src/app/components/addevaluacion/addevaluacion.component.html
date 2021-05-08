@@ -117,7 +117,7 @@
                         <div class="form-group col-md-5">
                             <div class="alingboton">
                                 <label for="exampleFormControlFile1">Añadir un archivo</label>
-                                <input type="file" accept=".xlsx,.xls,image/*,.doc,.docx,.ppt,.pptx,.txt,.pdf" class="form-control-file" id="exampleFormControlFile1" 
+                                <input type="file" accept=".xlsx,.xls,.doc,.docx,.ppt,.pptx,.pdf,.zip,.rar" class="form-control-file" id="exampleFormControlFile1" 
                                 #porC="ngModel" [(ngModel)]="evalua.multimedia" name="multimedia" (change)="seleccionarArchivo($event)" >
                                 <div *ngIf="(porC.invalid && (porC.dirty || porC.touched))">
                              
