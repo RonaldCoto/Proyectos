@@ -40,11 +40,11 @@ $archivo = base64_decode($archivo);
     file_put_contents($filePath, $archivo,FILE_APPEND);
 
 }
-    //si el curso fue modificado..
+    //si el nombre del curso fue modificado..
 if($datos["nombre"] != $params->nombre){
      //se verifica que el nuevo curso no este ocupado
-   $reg=$con->prepare("SELECT id_curso FROM cursos WHERE id_curso=:codigo ");
-$reg->bindParam(':codigo',$codigo);
+   $reg=$con->prepare("SELECT id_curso FROM cursos WHERE nombre=:nombre ");
+$reg->bindParam(':nombre',$params->nombre);
 $reg->execute();
 $vec2=[];  
 $vec2=$reg->fetchAll(PDO::FETCH_ASSOC);

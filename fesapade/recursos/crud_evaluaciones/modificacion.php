@@ -7,90 +7,140 @@
   $params = json_decode($json);
   
   require("../conexion.php");
- 
 
-//el metodo subscribe que llena el formulario de actualizacion convierte a los parametros de los objetos en Strings
-//se convierte el id_curso en valor entero para ejecutar el query
-  $codigo=intval($params->id_curso);
+$porcentaje =$params->porcentaje;
+//pasando a integer el id del curso y evaluacion seleccionado en angular
+$id_curso = intval($params->id_curso);
+$id_evaluacion=intval($params->id_evaluacion);
 
-$portada = $params->portada;
+$multimedia = $params->multimedia;
+$extension = $params->extension;
 
-    
-//validamos si el nombre del curso ya esta utilizado y si el nombre la imagen ya esta registrada para evitar que se reescriba
+//validamos si el nombre de la evaluacion ya esta registrado en el curso seleccionado, y si el archivo fue reemplazado para evitar duplicacion.
 //-----------------------------INICIANDO VALIDACION-----------------------------
-$registros=$con->prepare("SELECT  nombre, portada FROM cursos WHERE id_curso=:codigo" );
-$registros->bindParam(':codigo',$codigo);
+
+//variable que será true si la suma de porcentajes para el curso es menor a 100
+$const = false;
+//variable que será true si el nombre de evaluacion ingresado esta disponible
+$const2 = false;
+
+
+$registros=$con->prepare("SELECT  nombre, multimedia, porcentaje, id_curso FROM evaluaciones WHERE id_evaluacion=:id_evaluacion" );
+$registros->bindParam(':id_evaluacion',$id_evaluacion);
 $registros->execute();
 
-//almacenamiento de datos de curso en arreglo en caso de que exista
+//almacenamiento de datos de evaluacion en arreglo en caso de que exista
 $vec=[];  
 $vec=$registros->fetchAll(PDO::FETCH_ASSOC);
 
-//variable que será true si el curso ingresado esta disponible
-$const = false;
-foreach($vec as $datos){
-    //si la portada es nueva se puede almacenar en el servidor
-if($datos["portada"] != $portada){
-    //por cada imagen subida se adjuntara el momento actual en segundos con time()
-$fecha= time();
-$portada = $fecha.$portada;
+    foreach($vec as $datos){
+    //si el archivo  es nuevo se puede almacenar en el servidor
+if($datos["multimedia"] != $multimedia){
     $archivo = $params->base64textString;
 $archivo = base64_decode($archivo);
-  $filePath = $_SERVER['DOCUMENT_ROOT']."/recursos/imagenes/portadas_cursos/".$portada;
-    file_put_contents($filePath, $archivo,FILE_APPEND);
-
+    //por cada archivo subido se adjuntara el momento actual en segundos con time()
+$fecha= time();
+ $multimedia = $fecha."-".$multimedia;
+//almacenando archivo en servidor
+    $filePath = $_SERVER['DOCUMENT_ROOT']."/recursos/multimedia/archivos_evaluaciones/".$multimedia;
+    file_put_contents($filePath, $archivo);
+//capturando la extencion del archivo
+$extension=pathinfo($filePath, PATHINFO_EXTENSION);
 }
-    //si el curso fue modificado..
-if($datos["nombre"] != $params->nombre){
-     //se verifica que el nuevo curso no este ocupado
-   $reg=$con->prepare("SELECT id_curso FROM cursos WHERE id_curso=:codigo ");
-$reg->bindParam(':codigo',$codigo);
-$reg->execute();
-$vec2=[];  
-$vec2=$reg->fetchAll(PDO::FETCH_ASSOC);
-//si el curso no esta registrado se puede actualizar 
-if($vec2 == null){
-$const=true;
-}
-    //si el nombre del curso no se cambio se guarda como esta
+          //si el nombre de la evaluacion fue modificada o si se cambio de curso
+if(($datos["nombre"] != $params->nombre) || ($datos["id_curso"] != $id_curso) ){
+     //se verifica que el nuevo nombre no este ocupado en el curso seleccionado
+          $reg=$con->prepare("SELECT id_evaluacion FROM evaluaciones WHERE nombre=:nombre AND id_curso=:id_curso");
+          $reg->bindParam(':nombre',$params->nombre);
+          $reg->bindParam(':id_curso',$id_curso);
+          $reg->execute();
+          $vec2=[];  
+          $vec2=$reg->fetchAll(PDO::FETCH_ASSOC);
+                //si la evaluacion no esta registrada se puede actualizar 
+                        if($vec2 == null){
+                        $const2=true;
+                        }
+    //si el nombre de la evaluacion no se cambio o el curso seleccionado es el mismo 
 }else{
-    $const=true;
+    $const2=true;
 }
-}   
-//-----------------------------FINALIZANDO VALIDACION-----------------------------
+        
+ //si el porcentaje ingresado es diferente al existente o si se cambio de curso
+if(($datos["porcentaje"] != $porcentaje) || ($datos["id_curso"] != $id_curso)){
+            //se valida que el nuevo porcentaje no supere el porcentaje maximo
+                 $registros2=$con->prepare("SELECT  SUM(porcentaje) AS suma FROM evaluaciones WHERE id_curso=:idcurso" );
+                 $registros2->bindParam(':idcurso',$id_curso);
+                 $registros2->execute();
 
+            //almacenamiento de suma en arreglo 
+                 $vec2=[];  
+                $vec2=$registros2->fetchAll(PDO::FETCH_ASSOC);
 
+                    foreach($vec2 as $datos){
+                     //si la suma es menor o igual a 100 se habilita la creación de la evaluación
+                     if(($porcentaje)+$datos["suma"] <= 100.00 ){
+                      $const=true;
+                      }   
+                   }
+    //si el porcentaje no se cambio se deja como esta
+}else{
+            $const=true;
+    }
+}
+
+//-----------------------------FIN DE VALIDACION-----------------------------
+
+//si el nombre de evaluacion esta disponible en el curso
+if($const2){
+
+        //si el porcentaje no exede el maximo se actualiza la evaluacion
+    if($const){
     
-//-----------------------------REALIZANDO ACTUALIZACION-----------------------------
-//si $const es verdadero se puede actualizar
-if($const){
-  $modificacion=$con->prepare("UPDATE cursos SET nombre=:nombre, descripcion=:descripcion,portada=:portada,estado=:estado WHERE id_curso=:codigo");
+    $modificacion=$con->prepare("UPDATE evaluaciones SET nombre=:nombre,descripcion=:descripcion,porcentaje=:porcentaje,multimedia=:multimedia
+                        ,extension=:extension,fecha_inicio=:fecha_inicio,fecha_fin=:fecha_fin,id_curso=:id_curso 
+                          WHERE id_evaluacion=:codigo");
 $modificacion->bindParam(':nombre',$params->nombre);
 $modificacion->bindParam(':descripcion',$params->descripcion);
-$modificacion->bindParam(':portada',$portada);
-$modificacion->bindParam(':estado',$params->estado);
-$modificacion->bindParam(':codigo',$codigo);
-
+$modificacion->bindParam(':porcentaje',$params->porcentaje);
+$modificacion->bindParam(':multimedia',$multimedia);
+$modificacion->bindParam(':extension',$extension);
+$modificacion->bindParam(':fecha_inicio',$params->fecha_inicio);
+$modificacion->bindParam(':fecha_fin',$params->fecha_fin);
+$modificacion->bindParam(':id_curso',$id_curso);
+$modificacion->bindParam(':codigo',$id_evaluacion);
 $modificacion->execute();
   
   class Result {}
 
   $response = new Result();
   $response->resultado = 'OK';
-  $response->mensaje = 'Curso modificado.';
+  $response->mensaje = 'Evaluación actualizada con éxito.';
 
   header('Content-Type: application/json');
   echo json_encode($response);  
-     
-}else{
-     class Result {}
+        //si el porcentaje supera el 100%
+        }else{
+        
+         class Result {}
 
   $response = new Result();
   $response->resultado = 'ERROR';
-  $response->mensaje = 'ERROR, el curso ingresado ya esta registrado.';
+  $response->mensaje = 'ERROR. Con el porcentaje ingresado se supera el 100% de la nota para este curso.';
 
   header('Content-Type: application/json');
   echo json_encode($response); 
-}    
- //-----------------------------FINALIZANDO ACTUALIZACION-----------------------------
+    }
+        
+        
+    //si el nombre ya estaba registrado no se puede crear al nuevo curso
+}else{
+    class Result {}
+
+  $response = new Result();
+  $response->resultado = 'ERROR';
+  $response->mensaje = 'Error. El título ingresado ya esta en uso para el curso seleccionado.';
+
+  header('Content-Type: application/json');
+  echo json_encode($response); 
+}
 ?>

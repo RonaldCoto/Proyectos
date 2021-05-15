@@ -84,7 +84,7 @@ export class AddpublicacionComponent {
     this.pub.base64textString = btoa(binaryString);
   }
 
-    //metodo que consume el servicio de empleados para agregar una nueva publicacion
+    //metodo que consume el servicio de publicaciones para agregar una nueva publicacion
     publicar() {
    
       this.publicacionesService.agregar_publicacion(this.pub).subscribe(datos => {

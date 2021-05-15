@@ -75,7 +75,7 @@
             <label for="exampleFormControlFile1">Añadir archivo</label>
             <input type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.zip,.rar"
                 class="form-control-file" id="exampleFormControlFile1" #porC="ngModel"
-                [(ngModel)]="pub.multimedia" name="portada" (change)="seleccionarArchivo($event)">
+                [(ngModel)]="pub.archivo" name="portada" (change)="seleccionarArchivo($event)">
         </div>
         <div *ngIf="(porC.invalid && (porC.dirty || porC.touched))">
 

@@ -58,7 +58,7 @@ export class EditarperfiladminComponent{
       //que posteriormente se desplegará en el formulario para editar.
       let codEmpleado =  this.usuario.id_emp;
       this.empleadoServicio.seleccionar(parseInt(codEmpleado)).subscribe(result => this.emps = result[0]);
-      //una vez traidos los datos limipiamos el id del localstorage
+      
      
     }
     }

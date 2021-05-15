@@ -47,8 +47,8 @@ export class ListpublicacionesComponent {
        //si hay un empleado seleccionado para editar
        if(this.usuario!=null)
      {
-      //se consume el servicio de federados, invocando un metodo que lista los cursos a los que pertenece el federado
-      //actualmente logueado
+      //se consume el servicio de federados, invocando el metodo que lista las publicaciones del curso...
+      //que ha seleccionado el federado
        let codFederado =  this.usuario.id_fed;
        this.federado.lista_publicaciones(parseInt(codFederado),parseInt(this.idcurso)).subscribe(result => this.publi = result);
        

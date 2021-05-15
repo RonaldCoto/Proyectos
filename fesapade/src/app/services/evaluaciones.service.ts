@@ -27,7 +27,7 @@ export class EvaluacionesService {
       return this.http.post(`${this.url}modificacion.php`, JSON.stringify(evaluacion));
       } 
 
-    //obtener cursos de instructor segun su ID para llenar select 
+    //lista de evaluaciones de un instructor segun su id para cursos en estado INICIADO
   lista_evaluaciones_instructor(codigo: number) {
     return this.http.get(`${this.url}listar_evaluaciones_instructor.php?codigo=${codigo}`);
   }

@@ -79,7 +79,7 @@ $insertar->execute();
 
   $response = new Result();
   $response->resultado = 'OK';
-  $response->mensaje = 'Evaluación generada con exito.';
+  $response->mensaje = 'Evaluación generada con éxito.';
 
   header('Content-Type: application/json');
   echo json_encode($response);  
@@ -103,7 +103,7 @@ $insertar->execute();
 
   $response = new Result();
   $response->resultado = 'ERROR';
-  $response->mensaje = 'Error. El titulo ingresado ya esta en uso dentro de este curso.';
+  $response->mensaje = 'Error. El título ingresado ya esta en uso para el curso seleccionado.';
 
   header('Content-Type: application/json');
   echo json_encode($response); 

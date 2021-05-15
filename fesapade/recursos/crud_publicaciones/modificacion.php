@@ -13,7 +13,7 @@ $id_asignacion_curso=intval($params->id_asignacion_curso);
 $id_publicacion=intval($params->id_publicacion);
 $multimedia = $params->archivo;
 $extension = $params->extension;
-//validamos si la archivo fue reemplazado para evitar duplicacion.
+//validamos si el archivo fue reemplazado para evitar duplicacion.
 //-----------------------------INICIANDO VALIDACION-----------------------------
 $registros=$con->prepare("SELECT archivo FROM publicaciones WHERE id_publicacion=:codigo" );
 $registros->bindParam(':codigo',$params->id_publicacion);
@@ -37,9 +37,10 @@ $fecha= time();
 //capturando la extencion del archivo
 $extension=pathinfo($filePath, PATHINFO_EXTENSION);
 }
-}   
+}
+//-----------------------------FIN VALIDACION-----------------------------
 
-
+//-----------------------------REALIZANDO ACTUALIZACION-----------------------------
   $modificacion=$con->prepare("UPDATE publicaciones SET titulo=:titulo,descripcion=:descripcion,archivo=:archivo,extension=:extension,
                         fecha_publicacion=:fecha_publicacion,id_asignacion_curso=:id_asignacion_curso 
                           WHERE id_publicacion=:codigo");

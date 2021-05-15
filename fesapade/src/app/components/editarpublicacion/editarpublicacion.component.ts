@@ -96,7 +96,7 @@ _handleReaderLoaded(readerEvent) {
 }
 
 
-  //metodo que consume el servicio de cursos para modificar un curso segun el id seleccionado
+  //metodo que consume el servicio de publicaciones para modificar una publicacion segun el id seleccionado
   modificacion() {
    console.log(this.pub);
   

@@ -32,6 +32,7 @@ import {AsignarcursoinstructorComponent} from '../app/components/asignarcursoins
 import {AddevaluacionComponent} from '../app/components/addevaluacion/addevaluacion.component';
 import {AdministrarevaluacionesComponent} from '../app/components/administrarevaluaciones/administrarevaluaciones.component';
 import {ListpublicacionesComponent} from '../app/components/listpublicaciones/listpublicaciones.component';
+import {EditarevaluacionComponent} from '../app/components/editarevaluacion/editarevaluacion.component';
 //Guardianes 
 //admin
 import { AuthGuard } from "./guard/auth.guard";
@@ -77,8 +78,9 @@ const routes: Routes = [
     {path: 'asignar-curso-instructor', component:AsignarcursoinstructorComponent,canActivate:[AuthGuard]},
     {path: 'add-evaluacion', component:AddevaluacionComponent,canActivate:[Auth2Guard]},
     {path: 'admin-evaluacion', component:AdministrarevaluacionesComponent,canActivate:[Auth2Guard]},
+    {path: 'edit-evaluacion', component:EditarevaluacionComponent,canActivate:[Auth2Guard]},
     //{path: 'instructor', component:InstructorComponent,canActivate:[Auth2Guard]} cuando este el login
-    {path: 'publicaciones-curso', component:ListpublicacionesComponent},
+    {path: 'publicaciones-curso', component:ListpublicacionesComponent,canActivate:[Auth3Guard]},
 ];
 
 @NgModule({
