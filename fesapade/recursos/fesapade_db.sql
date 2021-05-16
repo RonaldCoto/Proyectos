@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2021 a las 06:13:47
+-- Tiempo de generación: 17-05-2021 a las 00:17:42
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -40,8 +40,7 @@ CREATE TABLE `asignaciones_cursos` (
 
 INSERT INTO `asignaciones_cursos` (`id_asignacion_curso`, `id_curso`, `id_empleado`) VALUES
 (47, 1, 9),
-(65, 24, 9),
-(58, 25, 9);
+(65, 24, 10);
 
 -- --------------------------------------------------------
 
@@ -73,6 +72,9 @@ CREATE TABLE `cursos` (
   `nombre` varchar(250) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `descripcion` varchar(250) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `portada` varchar(250) COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
+  `imagen1` varchar(255) COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
+  `imagen2` varchar(255) COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
+  `imagen3` varchar(255) COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
   `estado` varchar(15) COLLATE utf8mb4_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
@@ -80,10 +82,10 @@ CREATE TABLE `cursos` (
 -- Volcado de datos para la tabla `cursos`
 --
 
-INSERT INTO `cursos` (`id_curso`, `nombre`, `descripcion`, `portada`, `estado`) VALUES
-(1, 'curso1', 'curso de prueba', '16203411870.png', 'INICIADO'),
-(24, 'curso 3', 'prueba de almacen de imagenes', '1619730450123624432_3436219896463843_8828050963999108943_o.jpg', 'INICIADO'),
-(25, 'curso 2', 'de prueba', '16203420721.png', 'INICIADO');
+INSERT INTO `cursos` (`id_curso`, `nombre`, `descripcion`, `portada`, `imagen1`, `imagen2`, `imagen3`, `estado`) VALUES
+(1, 'curso1', 'curso de prueba', '16203411870.png', '1621199689simi.png', '1621199689simi.png', NULL, 'INICIADO'),
+(24, 'curso 3', 'prueba de almacen de imagenes', '1619730450123624432_3436219896463843_8828050963999108943_o.jpg', NULL, NULL, NULL, 'INICIADO'),
+(27, 'curso 4', 'prueba', '1621192649-120955061_395757101830377_9214429469693023586_n.jpg', '1621199612índice.png', '1621194266cb46f7905f7d03e4d7dad7939d66688b.png', '1621200119udb_logo.png', 'INICIADO');
 
 -- --------------------------------------------------------
 
@@ -109,7 +111,7 @@ CREATE TABLE `empleados` (
 INSERT INTO `empleados` (`id_empleado`, `nombre`, `apellido`, `direccion`, `email`, `password`, `id_cate_empleado`, `estado`) VALUES
 (1, 'adonis', 'arevalo', 'soyapango, San Salvador', 'adonisarevalo503@gmail.com', '9ed660a53803d004219f723faa508a7f127a75d2', 1, 'ALTA'),
 (9, 'instructor', 'instructor', 'san salvador', 'instructor@fesapade.com', '7c222fb2927d828af22f592134e8932480637c0d', 2, 'ALTA'),
-(10, 'instructordos', 'instructordos', 'san sanlvador', 'instructor2@fesapade.com', '7c222fb2927d828af22f592134e8932480637c0d', 2, 'ALTA');
+(10, 'instructordos', 'instructord', 'san sanlvador', 'instructor2@fesapade.com', '7c222fb2927d828af22f592134e8932480637c0d', 2, 'ALTA');
 
 -- --------------------------------------------------------
 
@@ -170,7 +172,8 @@ CREATE TABLE `matriculas` (
 --
 
 INSERT INTO `matriculas` (`id_matricula`, `id_federado`, `id_asignacion_curso`) VALUES
-(37, 1, 65);
+(39, 1, 47),
+(40, 9, 65);
 
 -- --------------------------------------------------------
 
@@ -288,7 +291,7 @@ ALTER TABLE `categorias_empleados`
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `empleados`
@@ -300,7 +303,7 @@ ALTER TABLE `empleados`
 -- AUTO_INCREMENT de la tabla `evaluaciones`
 --
 ALTER TABLE `evaluaciones`
-  MODIFY `id_evaluacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_evaluacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `federados`
@@ -312,7 +315,7 @@ ALTER TABLE `federados`
 -- AUTO_INCREMENT de la tabla `matriculas`
 --
 ALTER TABLE `matriculas`
-  MODIFY `id_matricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_matricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `notas`
@@ -324,7 +327,7 @@ ALTER TABLE `notas`
 -- AUTO_INCREMENT de la tabla `publicaciones`
 --
 ALTER TABLE `publicaciones`
-  MODIFY `id_publicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_publicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restricciones para tablas volcadas

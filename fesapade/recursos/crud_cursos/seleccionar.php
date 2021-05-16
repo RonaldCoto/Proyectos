@@ -5,7 +5,7 @@
   require("../conexion.php");
   
 //preparando consulta que traera los datos del curso a editar
-  $registros=$con->prepare("SELECT id_curso, nombre, descripcion, portada, estado FROM cursos WHERE id_curso=:codigo");
+  $registros=$con->prepare("SELECT * FROM cursos WHERE id_curso=:codigo");
 //asignando datos
   $registros->bindParam(':codigo',$_GET['codigo']);
 //ejecutando consulta

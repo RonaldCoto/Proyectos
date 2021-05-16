@@ -91,12 +91,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group col-md-5">
-                                <div class="alingboton">
-                                    <label for="exampleFormControlFile1">Img 1</label>
-                                    <input type="file" accept="image/*" class="form-control-file" id="exampleFormControlFile2" >
-                                </div>
-                            </div>
+                            
 
                         </div>
                     </div>
@@ -104,14 +99,35 @@
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <div class="alingboton">
-                                    <label for="exampleFormControlFile1">Img 2</label>
-                                    <input type="file" accept="image/*" class="form-control-file" id="exampleFormControlFile3" >
+                                    <label for="exampleFormControlFile1">Imagen 1</label>
+                                    <input type="file" accept="image/*" class="form-control-file" id="exampleFormControlFile1" 
+                                    #porC="ngModel" [(ngModel)]="curs.imagen1" name="imagen1" (change)="seleccionarArchivo1($event)" >
+                                    <div *ngIf="(porC.invalid && (porC.dirty || porC.touched))">
+                                 
+                                        <p class="text-danger"  *ngIf="porC.errors.accept">Solo se admiten imagenes</p>                    
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group col-md-5">
                                 <div class="alingboton">
-                                    <label for="exampleFormControlFile1">Img 3</label>
-                                    <input type="file" accept="image/*" class="form-control-file" id="exampleFormControlFile4" >
+                                    <label for="exampleFormControlFile1">Imagen 2</label>
+                                    <input type="file" accept="image/*" class="form-control-file" id="exampleFormControlFile1" 
+                                    #porC="ngModel" [(ngModel)]="curs.imagen2" name="imagen2" (change)="seleccionarArchivo2($event)" >
+                                    <div *ngIf="(porC.invalid && (porC.dirty || porC.touched))">
+                                 
+                                        <p class="text-danger"  *ngIf="porC.errors.accept">Solo se admiten imagenes</p>                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-5">
+                                <div class="alingboton">
+                                    <label for="exampleFormControlFile1">Imagen 3</label>
+                                    <input type="file" accept="image/*" class="form-control-file" id="exampleFormControlFile1" 
+                                    #porC="ngModel" [(ngModel)]="curs.imagen3" name="imagen3" (change)="seleccionarArchivo3($event)" >
+                                    <div *ngIf="(porC.invalid && (porC.dirty || porC.touched))">
+                                 
+                                        <p class="text-danger"  *ngIf="porC.errors.accept">Solo se admiten imagenes</p>                    
+                                    </div>
                                 </div>
                             </div>
 

@@ -6,10 +6,12 @@
 
 //preparando consulta
 // para asignar un federado a un curso se mostrarán todos los cursos que ya tengan instructor y que esten en estado INICIADO
-  $registros=$con->prepare("SELECT AC.id_asignacion_curso, C.nombre 
+  $registros=$con->prepare("SELECT AC.id_asignacion_curso, C.nombre, E.nombre AS instructor, E.apellido 
                             FROM asignaciones_cursos AS AC 
                             INNER JOIN cursos AS C
                             ON AC.id_curso = C.id_curso
+                            INNER JOIN Empleados AS E
+                            ON E.id_empleado = AC.id_empleado
                             WHERE C.estado='INICIADO'");
 
 //ejecutando consulta

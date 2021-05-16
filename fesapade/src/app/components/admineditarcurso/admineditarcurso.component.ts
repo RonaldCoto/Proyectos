@@ -20,14 +20,20 @@ export class AdmineditarcursoComponent{
 
   
   //objeto que almacena los datos del curso para actualizarlos en la bdd
-   curs={
-     id_curso: 0,
+  curs = {
+    id_curso: 0,
     nombre: null,
     descripcion: null,
    portada: null,
+   imagen1:null,
+   imagen2:null,
+   imagen3:null,
    estado:null,
-   base64textString:null
-    }
+   base64textString: null,
+   base64textString1: null,
+   base64textString2: null,
+   base64textString3: null
+  }
   
   constructor(public authService: AuthService,public cursoServicio: CursosService,
     public actualizarService: ActualizarService) { 
@@ -64,7 +70,7 @@ export class AdmineditarcursoComponent{
    //almacenamos el id del localstorage en una variable y mediante el servicio de cursos...
     //consultamos los datos del curso que coincida con el id, estos datos se almacenan en un objeto...
     //que posteriormente se desplegará en el formulario para editar.
-    this.curs = { id_curso:0, descripcion: null, nombre: null, portada: null,estado:null, base64textString:null};
+  
     let codCurso =  this.actualizarService.getSelectedId();
     this.cursoServicio.seleccionar(parseInt(codCurso)).subscribe(result => this.curs = result[0]);
      //una vez traidos los datos limipiamos el id del localstorage
@@ -72,7 +78,7 @@ export class AdmineditarcursoComponent{
   }
   }
 
-  //evento para subida de portada
+  /************************ evento para subida de portada*******************************/
  seleccionarArchivo(event) {
   var files = event.target.files;
    let file = files[0];
@@ -90,6 +96,59 @@ _handleReaderLoaded(readerEvent) {
   this.curs.base64textString = btoa(binaryString);
 }
 
+/************************ evento para subida de imagen 1 *******************************/
+ seleccionarArchivo1(event) {
+  var files = event.target.files;
+   let file = files[0];
+  this.curs.imagen1 = file.name;
+
+  if(files && file) {
+    var reader = new FileReader();
+    reader.onload = this._handleReaderLoaded1.bind(this);
+    reader.readAsBinaryString(file);
+  }
+}
+
+_handleReaderLoaded1(readerEvent) {
+  var binaryString = readerEvent.target.result;
+  this.curs.base64textString1 = btoa(binaryString);
+}
+
+/************************ evento para subida de imagen 2 *******************************/
+seleccionarArchivo2(event) {
+  var files = event.target.files;
+   let file = files[0];
+  this.curs.imagen2 = file.name;
+
+  if(files && file) {
+    var reader = new FileReader();
+    reader.onload = this._handleReaderLoaded2.bind(this);
+    reader.readAsBinaryString(file);
+  }
+}
+
+_handleReaderLoaded2(readerEvent) {
+  var binaryString = readerEvent.target.result;
+  this.curs.base64textString2 = btoa(binaryString);
+}
+
+/************************ evento para subida de imagen 3 *******************************/
+seleccionarArchivo3(event) {
+  var files = event.target.files;
+   let file = files[0];
+  this.curs.imagen3 = file.name;
+
+  if(files && file) {
+    var reader = new FileReader();
+    reader.onload = this._handleReaderLoaded3.bind(this);
+    reader.readAsBinaryString(file);
+  }
+}
+
+_handleReaderLoaded3(readerEvent) {
+  var binaryString = readerEvent.target.result;
+  this.curs.base64textString3 = btoa(binaryString);
+}
 
   //metodo que consume el servicio de cursos para modificar un curso segun el id seleccionado
   modificacion() {
@@ -100,7 +159,20 @@ _handleReaderLoaded(readerEvent) {
    
     
       alert(datos['mensaje']);
-    this.curs = { id_curso:0, descripcion: null, nombre: null, portada: null,estado:null, base64textString:null};
+      this.curs = {
+        id_curso: 0,
+        nombre: null,
+        descripcion: null,
+       portada: null,
+       imagen1:null,
+       imagen2:null,
+       imagen3:null,
+       estado:null,
+       base64textString: null,
+       base64textString1: null,
+       base64textString2: null,
+       base64textString3: null
+      }
     }else{
       alert(datos['mensaje']);
     }

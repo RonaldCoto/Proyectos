@@ -19,7 +19,7 @@ export class AsignarcursoComponent{
   //arreglo para almacenar datos de federados para listar
   federados=null;
   
-  //arreglo que almacena los datos de asignaciones y cursos-asignados para listar
+  //arreglo que almacena los datos de asignaciones, instructores y cursos-asignados para listar
   asignaciones=null;
   //objeto que almacena los datos del instructor a cargo del curso seleccionado
   instructor={
@@ -31,6 +31,20 @@ export class AsignarcursoComponent{
   matricula={
     id_asignacion_curso:null,
     id_federado:null
+  }
+
+ //variable que almacena el nombre del instructor segun el curso seleccionado
+  selectedIns: string = '';
+
+  //evento que se ejecuta tras seleccionar una opcion del select para cursos
+  selectChangeHandler (event: any) {
+    //recorremos el arreglo donde se almacenan los intructores y comparamos con "event.target.value"...
+    //el cual almacena el "id_asignacion_curso" seleccionado
+   this.asignaciones.forEach(element => {
+     if(element.id_asignacion_curso == event.target.value){
+  this.selectedIns = element.instructor+" "+element.apellido;
+}
+   });
   }
   constructor(public authService: AuthService,public federadoServicio: FederadosService,
     public asignacionCursoService: AsignacionesCursosService,public matriculaService: MatriculasService) { 
@@ -83,6 +97,7 @@ export class AsignarcursoComponent{
         id_asignacion_curso:null,
         id_federado:null
       }
+      this.selectedIns= '';
      
       }else{
         alert(datos['mensaje']);

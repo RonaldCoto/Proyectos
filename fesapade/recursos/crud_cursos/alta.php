@@ -8,12 +8,20 @@
   
   require("../conexion.php");
   
+//capturando nombre y decodificando imagenes
 $portada = $params->portada;
 $archivo = $params->base64textString;
     $archivo = base64_decode($archivo);
-//por cada imagen subida se adjuntara el momento actual en segundos con time()
-$fecha= time();
-$portada = $fecha."-".$portada;
+$imagen1 = $params->imagen1;
+$archivo1 = $params->base64textString1;
+    $archivo1 = base64_decode($archivo1);
+$imagen2 = $params->imagen2;
+$archivo2 = $params->base64textString2;
+    $archivo2 = base64_decode($archivo2);
+$imagen3 = $params->imagen3;
+$archivo3 = $params->base64textString3;
+    $archivo3 = base64_decode($archivo3);
+
 
 //validamos si el nombre del curso ya esta utilizado
 //-----------------------------INICIANDO VALIDACION-----------------------------
@@ -28,14 +36,45 @@ $vec=$registros->fetchAll(PDO::FETCH_ASSOC);
 
 //si el nombre no esta registrado se puede crear el nuevo curso
 if($vec == null){
+    
+    //------------------------------validando si se han seleccionado imagenes para subir------------------------------------
+    if($portada != ""){
+        //por cada imagen subida se adjuntara el momento actual en segundos con time()
+    $fecha= time();
+    $portada = $fecha.$portada;
     $filePath = $_SERVER['DOCUMENT_ROOT']."/recursos/imagenes/portadas_cursos/".$portada;
     file_put_contents($filePath, $archivo);
+        }
+     if($imagen1 != ""){
+    $fecha= time();
+    $imagen1 = $fecha.$imagen1;
+    $filePath = $_SERVER['DOCUMENT_ROOT']."/recursos/imagenes/imagenes_cursos/".$imagen1;
+    file_put_contents($filePath, $archivo1);
+        }
+       if($imagen2 != ""){
+    $fecha= time();
+    $imagen2 = $fecha.$imagen2;
+    $filePath = $_SERVER['DOCUMENT_ROOT']."/recursos/imagenes/imagenes_cursos/".$imagen2;
+    file_put_contents($filePath, $archivo2);
+        }
+       if($imagen3 != ""){
+    $fecha= time();
+    $imagen3 = $fecha.$imagen3;
+    $filePath = $_SERVER['DOCUMENT_ROOT']."/recursos/imagenes/imagenes_cursos/".$imagen3;
+    file_put_contents($filePath, $archivo3);
+        }
 
-  $insertar=$con->prepare("INSERT INTO cursos(nombre,descripcion,portada,estado) VALUES
-                  (:nombre,:descripcion,:portada,:estado)");
+//------------------------------fin de validacion de imagenes------------------------------------
+    
+    
+  $insertar=$con->prepare("INSERT INTO cursos(nombre,descripcion,portada,imagen1,imagen2,imagen3,estado) VALUES
+                  (:nombre,:descripcion,:portada,:imagen1,:imagen2,:imagen3,:estado)");
 $insertar->bindParam(':nombre',$params->nombre);
 $insertar->bindParam(':descripcion',$params->descripcion);
 $insertar->bindParam(':portada',$portada);
+$insertar->bindParam(':imagen1',$imagen1);
+$insertar->bindParam(':imagen2',$imagen2);
+$insertar->bindParam(':imagen3',$imagen3);
 $insertar->bindParam(':estado',$params->estado);
 $insertar->execute();
   

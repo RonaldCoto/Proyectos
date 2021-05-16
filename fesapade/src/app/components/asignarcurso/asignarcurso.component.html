@@ -61,7 +61,7 @@
                           <label for="inputState">Curso</label>
                           <br>
                           <font size=1>(Unicamente se listan los cursos con instructor asignado)</font>
-                          <select id="inputState" class="form-control"  autocomplete="off"
+                          <select id="inputState" class="form-control"  autocomplete="off"  (change)="selectChangeHandler($event)"
                           [(ngModel)]="matricula.id_asignacion_curso"   required #curC="ngModel" name="curso">
                             <option *ngFor="let asig of asignaciones"  [value]="asig.id_asignacion_curso">{{asig.nombre}}</option> 
                           </select>
@@ -70,8 +70,16 @@
                             <p class="text-danger" *ngIf="curC.errors.required">Campo requerido</p>                    
                         </div>
                       </div>
-                   <div class="form-row">
-                  </div> 
+                      <br>
+                      <div class="form-row">
+                        <div class="form-group col-md-5">
+                            <label for="formGroupExampleInput">Instructor asignado</label>
+                            <input type="text"  class="form-control" #curC="ngModel" [(ngModel)]="selectedIns" name="instructor"
+                                id="formGroupExampleInput"  readonly>
+                                
+                        </div>
+
+                    </div>
                 
                 
               </div>
