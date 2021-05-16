@@ -68,8 +68,9 @@ if(($datos["nombre"] != $params->nombre) || ($datos["id_curso"] != $id_curso) ){
  //si el porcentaje ingresado es diferente al existente o si se cambio de curso
 if(($datos["porcentaje"] != $porcentaje) || ($datos["id_curso"] != $id_curso)){
             //se valida que el nuevo porcentaje no supere el porcentaje maximo
-                 $registros2=$con->prepare("SELECT  SUM(porcentaje) AS suma FROM evaluaciones WHERE id_curso=:idcurso" );
+                 $registros2=$con->prepare("SELECT  SUM(porcentaje) AS suma FROM evaluaciones WHERE id_curso=:idcurso AND id_evaluacion!=:id_evaluacion" );
                  $registros2->bindParam(':idcurso',$id_curso);
+                 $registros2->bindParam(':id_evaluacion',$id_evaluacion);
                  $registros2->execute();
 
             //almacenamiento de suma en arreglo 

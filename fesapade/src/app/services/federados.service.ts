@@ -36,7 +36,7 @@ export class FederadosService {
   }
 
   //lista todas las publicaciones de los cursos que tiene inscrito con el id del federado logueado
-  lista_publicaciones(codigo: number,idcurso: number) {
+  lista_publicaciones(codigo: number, idcurso: number) {
     return this.http.get(`${this.url}listar_publicaciones.php?codigo=${codigo}&idcurso=${idcurso}`);
   }
 

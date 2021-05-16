@@ -9,7 +9,7 @@
   $registros=$con->prepare("SELECT cur.nombre as nombrecurso, cur.portada , emp.nombre as nombreempleado FROM 
 asignaciones_cursos AS asig 
 INNER JOIN cursos AS cur ON cur.id_curso = asig.id_curso
-INNER JOIN empleados AS emp ON emp.id_empleado = asig.id_empleado WHERE emp.id_empleado=:codigo");
+INNER JOIN empleados AS emp ON emp.id_empleado = asig.id_empleado WHERE emp.id_empleado=:codigo AND cur.estado='INICIADO'");
 //asignando datos
   $registros->bindParam(':codigo',$_GET['codigo']);
 //ejecutando consulta
