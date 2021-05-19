@@ -73,7 +73,7 @@
                           </div>
                           <div class="form-group col-md-5">
                               <label for="formGroupExampleInput">Contraseña</label>
-                              <input type="password" required class="form-control" id="formGroupExampleInput4" #passwdC="ngModel" 
+                              <input type="text" required class="form-control" id="formGroupExampleInput4" #passwdC="ngModel" 
                                   autocomplete="off" minlength="8" [(ngModel)]="emps.password" name="password">
                                   <div *ngIf="(passwdC.invalid && (passwdC.dirty || passwdC.touched))">                    
                                       <p class="text-danger" *ngIf="passwdC.errors.required">Campo requerido</p> 
@@ -181,7 +181,11 @@
             </div>
             <div class="sidebar__link">
               <i class="fa fa-wrench"></i>
-              <a routerLink="/admin-curso">Administrar curso</a>
+              <a routerLink="/admin-curso">Administrar cursos</a>
+            </div>
+            <div class="sidebar__link">
+              <i class="fa fa-folder-open"></i>
+              <a routerLink="/admin-curso-baja">Cursos Finalizados</a>
             </div>
             <div class="sidebar__link">
               <i class="fa fa-graduation-cap"></i>

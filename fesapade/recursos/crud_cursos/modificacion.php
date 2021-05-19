@@ -19,7 +19,7 @@ $imagen2 = $params->imagen2;
 $imagen3 = $params->imagen3;
 
     
-//validamos si el nombre del curso ya esta utilizado y si los nombres de las imagens ya estan registradas para evitar que se reescriban
+//validamos si el nombre del curso ya esta utilizado y si los nombres de las imagenes ya estan registradas para evitar que se reescriban
 //-----------------------------INICIANDO VALIDACION-----------------------------
 $registros=$con->prepare("SELECT  nombre, portada, imagen1, imagen2, imagen3 FROM cursos WHERE id_curso=:codigo" );
 $registros->bindParam(':codigo',$codigo);
@@ -93,13 +93,33 @@ $const=true;
     $const=true;
 }
 }   
+
+    //------------------------------validando si el curso es de tipo VISUAL------------------------------------
+    
+//variable que sera true si el curso en estado visual recibe las 3 imagenes necesarias para publicar, o si esta INICIADO o FINALIZADO
+    $const2=false;
+    
+    if($params->estado == "VISUAL"){
+        //si el curso nuevo es de tipo VISUAL y tiene todas las imagenes asignadas se puede crear
+        if(($portada != "") && ($imagen1 != "") && ($imagen2 != "") && ($imagen3 != "")){
+            $const2=true;
+        }
+        //si el curso no es de tipo VISUAL se puede crear sin importar las fotos asignadas
+    }else{
+        $const2=true;
+    }
+  //------------------------------fin de validacion de tipo VISUAL------------------------------------
+
+
 //-----------------------------FINALIZANDO VALIDACION-----------------------------
 
 
     
 //-----------------------------REALIZANDO ACTUALIZACION-----------------------------
-//si $const es verdadero se puede actualizar
+//si $const y $const2 son verdaderos se puede actualizar el curso
 if($const){
+    if($const2){
+        
   $modificacion=$con->prepare("UPDATE cursos SET nombre=:nombre, descripcion=:descripcion,portada=:portada,imagen1=:imagen1,
                                imagen2=:imagen2,imagen3=:imagen3,estado=:estado WHERE id_curso=:codigo");
 $modificacion->bindParam(':nombre',$params->nombre);
@@ -121,7 +141,17 @@ $modificacion->execute();
 
   header('Content-Type: application/json');
   echo json_encode($response);  
-     
+      }else{
+         class Result {}
+
+  $response = new Result();
+  $response->resultado = 'ERROR';
+  $response->mensaje = 'Error. Un curso en modo VISUAL requiere una portada y 3 fotos.';
+
+  header('Content-Type: application/json');
+  echo json_encode($response);  
+    }
+    
 }else{
      class Result {}
 

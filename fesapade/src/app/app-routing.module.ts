@@ -36,6 +36,10 @@ import {AdministrarevaluacionesComponent} from '../app/components/administrareva
 import {ListpublicacionesComponent} from '../app/components/listpublicaciones/listpublicaciones.component';
 import {EditarevaluacionComponent} from '../app/components/editarevaluacion/editarevaluacion.component';
 import {EditarnotaComponent} from '../app/components/editarnota/editarnota.component';
+import {DetallecursoComponent} from '../app/components/detallecurso/detallecurso.component';
+import {AdministrarcursosbajaComponent} from '../app/components/administrarcursosbaja/administrarcursosbaja.component';
+import {AdminlistafederadoComponent} from '../app/components/adminlistafederado/adminlistafederado.component';
+import {AdminlistanotasComponent} from '../app/components/adminlistanotas/adminlistanotas.component';
 //Guardianes 
 //admin
 import { AuthGuard } from "./guard/auth.guard";
@@ -57,6 +61,7 @@ const routes: Routes = [
     {path: 'dashfederado', component:DashboardfederadoComponent,canActivate:[Auth3Guard]},
     {path: 'editfede', component:EditfederadoComponent,canActivate:[Auth2Guard]},
     {path: 'cursos', component:CursosComponent },
+    {path: 'detalle-cursos', component:DetallecursoComponent },
     {path: 'galeria', component:GaleriaComponent},
     {path: 'login', component:LogInComponent,canActivate:[Auth4Guard]},
     {path: 'administrador', component:AdministradorComponent,canActivate:[AuthGuard]},
@@ -75,11 +80,14 @@ const routes: Routes = [
     {path: 'admin-federado', component:AdministrarfederadoComponent,canActivate:[AuthGuard]},
     {path: 'crear-curso', component:CrearcursoComponent,canActivate:[AuthGuard]},
     {path: 'admin-curso', component:AdministrarcursosComponent,canActivate:[AuthGuard]},
+    {path: 'admin-curso-baja', component:AdministrarcursosbajaComponent,canActivate:[AuthGuard]},
     {path: 'edit-perfil-admin', component:EditarperfiladminComponent,canActivate:[AuthGuard]},
     {path: 'asign-curso-federado', component:AsignarcursoComponent,canActivate:[AuthGuard]},
     {path: 'admin-editar-empleado', component:AdmineditarempleadoComponent,canActivate:[AuthGuard]},
     {path: 'admin-editar-federado', component:AdmineditarfederadoComponent,canActivate:[AuthGuard]},
     {path: 'admin-editar-curso', component:AdmineditarcursoComponent,canActivate:[AuthGuard]},
+    {path: 'admin-lista-federados', component:AdminlistafederadoComponent,canActivate:[AuthGuard]},
+    {path: 'admin-lista-notas', component:AdminlistanotasComponent,canActivate:[AuthGuard]},
     {path: 'asignar-curso-instructor', component:AsignarcursoinstructorComponent,canActivate:[AuthGuard]},
     {path: 'add-evaluacion', component:AddevaluacionComponent,canActivate:[Auth2Guard]},
     {path: 'admin-evaluacion', component:AdministrarevaluacionesComponent,canActivate:[Auth2Guard]},

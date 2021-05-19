@@ -50,6 +50,10 @@ import { EditarevaluacionComponent } from './components/editarevaluacion/editare
 import { AddnotaComponent } from './components/addnota/addnota.component';
 import { EditarnotaComponent } from './components/editarnota/editarnota.component';
 import { ListnotasinstructorComponent } from './components/listnotasinstructor/listnotasinstructor.component';
+import { DetallecursoComponent } from './components/detallecurso/detallecurso.component';
+import { AdministrarcursosbajaComponent } from './components/administrarcursosbaja/administrarcursosbaja.component';
+import { AdminlistafederadoComponent } from './components/adminlistafederado/adminlistafederado.component';
+import { AdminlistanotasComponent } from './components/adminlistanotas/adminlistanotas.component';
 
 
 
@@ -91,6 +95,10 @@ import { ListnotasinstructorComponent } from './components/listnotasinstructor/l
     AddnotaComponent,
     EditarnotaComponent,
     ListnotasinstructorComponent,
+    DetallecursoComponent,
+    AdministrarcursosbajaComponent,
+    AdminlistafederadoComponent,
+    AdminlistanotasComponent,
     
   ],
   imports: [

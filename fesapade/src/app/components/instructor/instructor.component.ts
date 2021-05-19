@@ -39,6 +39,8 @@ export class InstructorComponent{
     }
     logout()
     {
+      //limpiamos el localstorage
+      this.actualizarService.deleteSelectedIdc();
     this.authService.deleteToken();
     window.location.href = "/login";
     
@@ -53,6 +55,7 @@ export class InstructorComponent{
          let codInstructor =  this.usuario.id_emp;
          //cargamos los datos de los cursos en los que el instructor logueado esta a cargo
          this.asignacionesCursosService.lista_cursos(parseInt(codInstructor)).subscribe(result => this.ins = result);
+         
          
          
        }

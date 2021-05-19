@@ -27,6 +27,8 @@ export class EditarnotaComponent{
     nombre:"",
     apellido:"",
     nombre_evaluacion:null,
+    promedio:null,
+    porcentaje:null,
     id_evaluacion:null
   };
 

@@ -44,4 +44,15 @@ export class FederadosService {
   setSelectedIdCurso(idselected) {
     localStorage.setItem('SelectedIdCurso', idselected);
   }
+
+  //lista todas las evaluaciones de los cursos que tiene inscrito con el id del federado logueado
+  lista_evaluaciones(idcurso: number) {
+    return this.http.get(`${this.url}lista_evaluaciones_por_curso.php?idcurso=${idcurso}`);
+  }
+
+  
+  //lista todas las notas de las evaluaciones de los cursos que tiene inscrito con el id del federado logueado
+  lista_notas(codigo: number) {
+    return this.http.get(`${this.url}notas.php?codigo=${codigo}`);
+  }
 }

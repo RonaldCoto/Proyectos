@@ -47,9 +47,37 @@
                     <p>- Descripción:</p>
                     <p class="descripcion">{{pubs.descripcion}}</p>
                     <br>
-                    <a class="enl" target="_blank" href="http://localhost/recursos/multimedia/archivos_publicaciones/{{pubs.archivo}}"> <img class="pdf" src="../../../assets/iconos_extensiones/{{pubs.extension}}.svg" alt="" width="60px">{{pubs.archivo}}</a>
+                    <a class="enl" target="_blank"
+                        href="http://localhost/recursos/multimedia/archivos_publicaciones/{{pubs.archivo}}"> <img
+                            class="pdf" src="../../../assets/iconos_extensiones/{{pubs.extension}}.svg" alt=""
+                            width="60px">{{pubs.archivo}}</a>
                     <br><br>
-                    <hr size="2px" color="gray" />
+                    <hr   size="2px" color="gray" />
+                    <br>
+                </div>
+                <br>
+
+                <br>
+                <div class="main__title">
+
+                    <div class="main__greeting">
+                        <h1>Evaluaciones</h1>
+                        <br>
+                    </div>
+                </div>
+                <div *ngFor="let eva of evalu" class="titulo col-12">
+                    <p class="fechapub">{{eva.fecha_inicio}} - {{eva.fecha_fin}}</p>
+                    <h5>{{eva.nombre}} ({{eva.porcentaje}}%)</h5>
+                    <br>
+                    <p>- Descripción:</p>
+                    <p class="descripcion">{{eva.descripcion}}</p>
+                    <br>
+                    <a class="enl" target="_blank"
+                        href="http://localhost/recursos/multimedia/archivos_evaluaciones/{{eva.multimedia}}"> <img
+                            class="pdf" src="../../../assets/iconos_extensiones/{{eva.extension}}.svg" alt=""
+                            width="60px">{{eva.multimedia}}</a>
+                    <br><br>
+                    <hr  size="2px" color="gray" />
                     <br>
                 </div>
                 <!--Fin de contenido-->

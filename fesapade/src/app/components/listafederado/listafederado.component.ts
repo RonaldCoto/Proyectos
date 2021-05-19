@@ -55,6 +55,7 @@ curso={
 
     ngOnInit() {
      let id_curso = this.actualizarService.getSelectedIdc();
+    
       //utilizamos el mismo metodo que genera un arreglo de federados pero en este caso solo capturamos un objeto...
 //para extraer el nombre del curso
 this.matriculasService.seleccionar_federados_del_curso(parseInt(id_curso)).subscribe(result2 => this.curso = result2[0]);

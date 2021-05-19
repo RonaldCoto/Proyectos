@@ -27,48 +27,47 @@
         <main>
             <div class="main__container">
                 <!-- MAIN TITLE STARTS HERE -->
+                <div>
+                    <div class="main__title" *ngFor="let nombre of nomb">
 
-                <div class="main__title">
-
-                    <div class="main__greeting">
-                        <h1>Notas del curso Gl-05</h1>
-                        <br>
+                        <div class="main__greeting">
+                            <h1>Notas del curso {{nombre.nombrecurso}} </h1>
+                            <br>
+                        </div>
                     </div>
+
+                    <!-- MAIN TITLE ENDS HERE -->
+                    <!--Inicio de contenido-->
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Evaluación</th>
+                                <th scope="col">Nota</th>
+                                <th scope="col">Porcentaje</th>
+                                <th scope="col">Promedio</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let notas of nota">
+                                <th scope="row">{{notas.nombreevaluacion}}</th>
+                                <td>{{notas.nota}}</td>
+                                <td>{{notas.porcentaje}}%</td>
+                                <td>{{notas.promedio}}</td>
+                            </tr>
+                            <tr>
+                              
+                                <td></td>
+                                <td></td>
+                                <td class= "prom" scope="row">Nota Global</td>
+                                <td class= "prom">{{suma}}</td>
+                               
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--Fin de contenido-->
+
                 </div>
-
-
-
-                <!-- MAIN TITLE ENDS HERE -->
-                <!--Inicio de contenido-->
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Evaluación</th>
-                            <th scope="col">Porcentaje</th>
-                            <th scope="col">Nota</th>
-                            <th scope="col">Promedio</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Investigación 1</th>
-                            <td>40%</td>
-                            <td>8</td>
-                            <td>3.2</td>
-                            
-
-                        </tr>
-                        <tr>
-                            <th scope="row">Investigación 2</th>
-                            <td>40%</td>
-                            <td>8</td>
-                            <td>3.2</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!--Fin de contenido-->
-
             </div>
         </main>
 

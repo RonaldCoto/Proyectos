@@ -45,26 +45,24 @@
           <div class="text-center">
             <h1 class="text-dark">Mis cursos</h1>
 
+
             <div class="team row">
-              <div *ngFor="let curso of ins" class="col-md-4 col-12 text-center">
-                <div class="card mr-2 d-inline-block shadow-lg">
-                  <div class="card-img-top">
-                    <img src="http://localhost/recursos/imagenes/portadas_cursos/{{curso.portada}}" alt="Member" class="img-fluid">
-                  </div>
-                  <div class="card-body">
-                    <h3 class="card-title">{{curso.nombrecurso}}</h3>
+              <div *ngFor="let curso of ins" class="card text-center mr-2 shadow bg-white rounded" >
+                <img class="card-img-top" src="http://localhost/recursos/imagenes/portadas_cursos/{{curso.portada}}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{curso.nombrecurso}}</h5>
+                  <br><br><br>
+                </div>
+                
+                <div class="card-footer">
+                  <div class="btn-content">
+                    <button class="btn2" role="link" role="link"  (click)="seleccionar(curso.id_curso)" routerLink="/list-federados">Ir al curso</button>
 
-                    <br><br>
-                    <div class="btn-content">
-                      <button class="btn2" role="link" role="link" routerLink="/list-federados" (click)="seleccionar(curso.id_curso)">Ir al curso</button>
-
-                    </div>
                   </div>
                 </div>
               </div>
-
-
             </div>
+
 
           </div>
 

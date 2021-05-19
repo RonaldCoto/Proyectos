@@ -150,33 +150,40 @@ _handleReaderLoaded3(readerEvent) {
   this.curs.base64textString3 = btoa(binaryString);
 }
 
-  //metodo que consume el servicio de cursos para modificar un curso segun el id seleccionado
+  //metodo que se activa al hacer click en el boton "modificar"
   modificacion() {
-   
-  
-    this.cursoServicio.modificacion(this.curs).subscribe(datos => {    
-    if (datos['resultado'] == 'OK') {
-   
-    
-      alert(datos['mensaje']);
-      this.curs = {
-        id_curso: 0,
-        nombre: null,
-        descripcion: null,
-       portada: null,
-       imagen1:null,
-       imagen2:null,
-       imagen3:null,
-       estado:null,
-       base64textString: null,
-       base64textString1: null,
-       base64textString2: null,
-       base64textString3: null
-      }
-    }else{
-      alert(datos['mensaje']);
+   if(this.curs.estado == "FINALIZADO"){
+    if (confirm('¡ALERTA!\nEsta a punto de finalizar un curso.\nUn curso FINALIZADO no será accesible para ningun instructor ni podrá ser INICIADO de nuevo.\n¿Desea continuar?')){
+ this.update();
+  }
+}else{
+  this.update();
+}
     }
-    });
+
+    //metodo que consume el servicio de cursos para modificar un curso segun el id seleccionado
+    update(){
+      this.cursoServicio.modificacion(this.curs).subscribe(datos => {    
+        if (datos['resultado'] == 'OK') {
+          alert(datos['mensaje']);
+          this.curs = {
+            id_curso: 0,
+            nombre: null,
+            descripcion: null,
+           portada: null,
+           imagen1:null,
+           imagen2:null,
+           imagen3:null,
+           estado:null,
+           base64textString: null,
+           base64textString1: null,
+           base64textString2: null,
+           base64textString3: null
+          }
+        }else{
+          alert(datos['mensaje']);
+        }
+        });
     }
 
 

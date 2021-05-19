@@ -24,9 +24,6 @@
                     <li class="nav-item active">
                         <a class="nav-link" routerLink="/galeria">Galeria</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
                     <li class="nav-item active" *ngIf="loginbtn">
                         <a class="btn btn-outline-primary my-2 my-sm-0" routerLink="/login">Log In</a>
                     </li>
@@ -55,18 +52,38 @@
         <div class="container text-center">
             <h1 class="text-dark">Nuestros cursos disponibles</h1>
             <p class="text-secondary">No dudes. ¡Inscríbete Ya!</p>
+
+
             <div class="team row">
-                <div class="col-md-4 col-12 text-center">
+                <div *ngFor="let curso of curs" class="card text-center mr-2 shadow bg-white rounded">
+                    <img class="card-img-top" src="http://localhost/recursos/imagenes/portadas_cursos/{{curso.portada}}"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{curso.nombre}}</h5>
+                        <p class="card-text">{{curso.descripcion}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-content">
+                            <button role="link" routerLink="/detalle-cursos" class="btn2"
+                                (click)="detallecurso(curso.id_curso)">Ver más</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--end section 1   <div class="team row">
+                <div *ngFor="let curso of curs" class="col-md-4 col-12 text-center">
                     <div class="card mr-2 d-inline-block shadow-lg">
                         <div class="card-img-top">
-                            <img src="../../../assets/intructor.jpg" alt="Member" class="img-fluid">
+                            <img src="http://localhost/recursos/imagenes/portadas_cursos/{{curso.portada}}" alt="Member" class="img-fluid">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">Caida Libre</h3>
+                            <h3 class="card-title">{{curso.nombre}}</h3>
                             <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente in quos dolorum,
-                                delectus doloremque
-                                soluta.
+                                {{curso.descripcion}}
 
                             </p>
                             <p class="text-black-50">Precio: $300.00</p>
@@ -78,57 +95,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-12">
 
-                    <div class="carousel-item active text-center">
-                        <div class="card mr-2 d-inline-block shadow-lg">
-                            <div class="card-img-top">
-                                <img src="../../../assets/intructor.jpg" alt="Member" class="img-fluid">
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title">Skydiving</h3>
-                                <p class="card-text">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente in quos dolorum,
-                                    delectus
-                                    doloremque
-                                    soluta.
-
-                                </p>
-                                <p class="text-black-50">Precio: $200.00</p>
-                                <br><br>
-                                <div class="btn-content">
-                                    <button class="btn2">Ver más</button>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-md-4 col-12 text-center">
-                    <div class="card mr-2 d-inline-block shadow-lg">
-                        <div class="card-img-top">
-                            <img src="../../../assets/instructor2.jpg" alt="Member" class="img-fluid">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Máquina de aire</h3>
-                            <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente in quos dolorum,
-                                delectus doloremque
-                                soluta.
-
-                            </p>
-                            <p class="text-black-50">Precio: $150.00</p>
-                            <br><br>
-                            <div class="btn-content">
-                                <button class="btn2">Ver más</button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div> 1-->
 
         </div>
 
@@ -136,35 +104,38 @@
     <!--end section 1-->
     <footer>
         <div class="container-fluid p-0">
-          <div class="row text-left">
-            <div class="col-md-5 col-md-5">
-              <h1 class="text-light">About Us</h1>
-              <p class="text-muted">La Federación Salvadoreña de Paracaidismo y Aerodeportes (FESAPADE) es una Federación
-                Deportivo Nacional que engloba todos los Deportes Aéreos en el país.</p>
-              <p class="pt-4 text-muted">Copyright ©2021 All rights reserved|Developed By <span>R.Coto and A.Vladimir</span>
-              </p>
+            <div class="row text-left">
+                <div class="col-md-5 col-md-5">
+                    <h1 class="text-light">About Us</h1>
+                    <p class="text-muted">La Federación Salvadoreña de Paracaidismo y Aerodeportes (FESAPADE) es una
+                        Federación
+                        Deportivo Nacional que engloba todos los Deportes Aéreos en el país.</p>
+                    <p class="pt-4 text-muted">Copyright ©2021 All rights reserved|Developed By <span>R.Coto and
+                            A.Vladimir</span>
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <h4 class="text-light">Nuestros Cursos</h4>
+                    <li class="text-muted">Paracaidismo básico.</li>
+                    <li class="text-muted">Empaque.</li>
+                    <li class="text-muted">Salto con línea.</li>
+                    <li class="text-muted">Entrenamiento físico y teórico.</li>
+                </div>
+                <div class="col-md-2 col-sm-12">
+                    <h4 class="text-light">Síguenos</h4>
+                    <p class="text-muted">Seamos sociables</p>
+                    <div class="column">
+                        <a href="https://es-la.facebook.com/FESAPADE/"><i class="fa fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/fesapade/"><i class="fa fa-instagram"></i></a>
+                        <a href="https://twitter.com/FESAPADE"><i class="fa fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/channel/UCKwNhAzIUdsQsTo7Uf4R_DQ/featured"><i
+                                class="fa fa-youtube-play"></i></a>
+                    </div>
+                </div>
+
+
             </div>
-            <div class="col-md-5">
-              <h4 class="text-light">Nuestros Cursos</h4>
-              <li class="text-muted">Paracaidismo básico.</li>
-              <li class="text-muted">Empaque.</li>
-              <li class="text-muted">Salto con línea.</li>
-              <li class="text-muted">Entrenamiento físico y teórico.</li>
-            </div>
-            <div class="col-md-2 col-sm-12">
-              <h4 class="text-light">Síguenos</h4>
-              <p class="text-muted">Seamos sociables</p>
-              <div class="column">
-                <a href="https://es-la.facebook.com/FESAPADE/"><i class="fa fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/fesapade/"><i class="fa fa-instagram"></i></a>
-                <a href="https://twitter.com/FESAPADE"><i class="fa fa-twitter"></i></a>
-                <a href="https://www.youtube.com/channel/UCKwNhAzIUdsQsTo7Uf4R_DQ/featured"><i class="fa fa-youtube-play"></i></a>
-              </div>
-            </div>
-    
-    
-          </div>
         </div>
-      </footer>
+    </footer>
 
 </body>

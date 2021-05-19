@@ -3,9 +3,9 @@
 /*  styling scrollbars  */
 ::-webkit-scrollbar {
   width: 5px;
-  height: 6px;
+ height: 6px;
 }
-
+/*  styling scrollbars  */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px #a5aaad;
   border-radius: 10px;

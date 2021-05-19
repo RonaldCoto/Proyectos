@@ -77,7 +77,7 @@ nav img:hover{
 
 }
 
-.card-body .btn-content{
+.card-footer .btn-content{
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -89,7 +89,7 @@ nav img:hover{
     
 }
 
-.card-body button{
+.card-footer button{
     text-transform:uppercase;
     background: none;
     border:2px solid #364151;
@@ -102,12 +102,12 @@ nav img:hover{
 
 }
 
-.card-body button:hover{
+.card-footer button:hover{
     color: #fff;
 
 }
 
-.card-body button::before{
+.card-footer button::before{
     content: "";
     position: absolute;
     left: 0;
@@ -127,6 +127,9 @@ nav img:hover{
 .btn2:hover::before{
     transform: scaleX(1);
     
+}
+.card-footer{
+    border: none;
 }
 /*end section-1*/
 

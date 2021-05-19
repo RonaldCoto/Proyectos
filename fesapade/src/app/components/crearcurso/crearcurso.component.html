@@ -67,9 +67,8 @@
                         <div class="form-group col-md-15">
                             <label for="inputState">Estado</label>
                             <select id="inputState" class="form-control" required [(ngModel)]="curs.estado" name="estado" #estC="ngModel" >
-                                <option value="INICIADO" selected>INICIADO</option>
-                                <option value="FINALIZADO" >FINALIZADO</option>
-                                <option value="FINALIZADO" >VISUAL</option>
+                                <option value="INICIADO" selected>INICIADO</option>                               
+                                <option value="VISUAL" >VISUAL</option>
                             </select>
                             <div *ngIf="(estC.invalid && (estC.dirty || estC.touched))">
                                 
@@ -189,6 +188,10 @@
                     <i class="fa fa-wrench"></i>
                     <a routerLink="/admin-curso">Administrar curso</a>
                 </div>
+                <div class="sidebar__link">
+                    <i class="fa fa-folder-open"></i>
+                    <a routerLink="/admin-curso-baja">Cursos Finalizados</a>
+                  </div>
                 <div class="sidebar__link">
                     <i class="fa fa-graduation-cap"></i>
                     <a routerLink="/asign-curso-federado">Asignar federado a curso</a>

@@ -17,6 +17,7 @@ export class ListpublicacionesComponent {
 
   //arreglo para almacenar publicaciones de los cursos inscritos del federado segun su ID
   publi = null;
+  evalu = null;
 
   constructor(public authService: AuthService, public federado: FederadosService) {
     authService.getLoggedInName.subscribe(name => this.changeName(name));
@@ -37,6 +38,7 @@ export class ListpublicacionesComponent {
     this.loginbtn = !name;
   }
   logout() {
+    
     this.authService.deleteToken();
     window.location.href = "/login";
 
@@ -52,7 +54,7 @@ export class ListpublicacionesComponent {
        let codFederado =  this.usuario.id_fed;
        this.federado.lista_publicaciones(parseInt(codFederado),parseInt(this.idcurso)).subscribe(result => this.publi = result);
        
-       
+       this.federado.lista_evaluaciones(parseInt(this.idcurso)).subscribe(result => this.evalu = result);
      }
      }
 

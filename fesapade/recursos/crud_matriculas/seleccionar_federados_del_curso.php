@@ -15,7 +15,7 @@ $codigo=$_GET['codigo'];
                             ON M.id_asignacion_curso = AC.id_asignacion_curso
                             INNER JOIN cursos AS C
                             ON C.id_curso = AC.id_curso
-                            WHERE AC.id_curso=:id_curso");
+                            WHERE C.id_curso=:id_curso");
 $registros->bindParam(':id_curso',$codigo);
 //ejecutando consulta
     $registros->execute();

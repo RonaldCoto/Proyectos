@@ -5,8 +5,9 @@
   require("../conexion.php");
   
 //para editar una nota se desplegará el nombre del federado seleccionado y las evaluaciones en las que ya...
-// tiene una nota asignada, en el angular se programará un evento que muestre la nota actual según la evaluación seleccionada
-  $registros=$con->prepare("SELECT N.nota, N.id_matricula, F.nombre, F.apellido, EV.nombre as nombre_evaluacion, EV.id_evaluacion FROM notas AS N
+// tiene una nota asignada, en  angular se programará un evento que muestre la nota actual según la evaluación seleccionada
+  $registros=$con->prepare("SELECT N.nota, N.id_matricula, F.nombre, F.apellido, EV.nombre as nombre_evaluacion,
+  N.promedio, EV.porcentaje, EV.id_evaluacion FROM notas AS N
   INNER JOIN matriculas as M
   ON N.id_matricula = M.id_matricula
   INNER JOIN asignaciones_cursos AS AC
@@ -17,7 +18,7 @@
   ON F.id_federado = M.id_federado
   INNER JOIN evaluaciones as EV
   ON EV.id_evaluacion = N.id_evaluacion
-  WHERE N.id_matricula=:codigo AND C.id_curso=:codigo2");
+  WHERE N.id_matricula=:codigo AND EV.id_curso=:codigo2");
 //asignando datos
   $registros->bindParam(':codigo',$_GET['codigo']);
  $registros->bindParam(':codigo2',$_GET['codigo2']);

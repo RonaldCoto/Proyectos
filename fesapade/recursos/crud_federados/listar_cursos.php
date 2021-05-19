@@ -9,7 +9,7 @@
 INNER JOIN federados AS fed ON fed.id_federado = matri.id_federado
 INNER JOIN asignaciones_cursos AS asig ON asig.id_asignacion_curso = matri.id_asignacion_curso
 INNER JOIN cursos AS cur ON cur.id_curso = asig.id_curso
-INNER JOIN empleados AS emp ON emp.id_empleado = asig.id_empleado WHERE fed.id_federado=:codigo");
+INNER JOIN empleados AS emp ON emp.id_empleado = asig.id_empleado WHERE fed.id_federado=:codigo AND cur.estado='INICIADO'");
 //asignando datos
   $registros->bindParam(':codigo',$_GET['codigo']);
 //ejecutando consulta
