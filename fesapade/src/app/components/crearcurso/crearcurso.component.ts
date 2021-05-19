@@ -15,7 +15,7 @@ export class CrearcursoComponent{
   //variable para mostrar u ocultar el sidebar
   contentHighlighted: boolean = false;
   
-  //objeto que almacena los datos del curso para insterarlos en la bdd
+  //objeto que almacena los datos del curso para insertarlos en la bdd
   curs = {
     id: 0,
     nombre: null,

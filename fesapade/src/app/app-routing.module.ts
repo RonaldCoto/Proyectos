@@ -30,9 +30,12 @@ import {AdmineditarfederadoComponent} from '../app/components/admineditarfederad
 import {AdmineditarcursoComponent} from '../app/components/admineditarcurso/admineditarcurso.component';
 import {AsignarcursoinstructorComponent} from '../app/components/asignarcursoinstructor/asignarcursoinstructor.component';
 import {AddevaluacionComponent} from '../app/components/addevaluacion/addevaluacion.component';
+import {AddnotaComponent} from '../app/components/addnota/addnota.component';
+import {ListnotasinstructorComponent} from '../app/components/listnotasinstructor/listnotasinstructor.component';
 import {AdministrarevaluacionesComponent} from '../app/components/administrarevaluaciones/administrarevaluaciones.component';
 import {ListpublicacionesComponent} from '../app/components/listpublicaciones/listpublicaciones.component';
 import {EditarevaluacionComponent} from '../app/components/editarevaluacion/editarevaluacion.component';
+import {EditarnotaComponent} from '../app/components/editarnota/editarnota.component';
 //Guardianes 
 //admin
 import { AuthGuard } from "./guard/auth.guard";
@@ -59,6 +62,8 @@ const routes: Routes = [
     {path: 'administrador', component:AdministradorComponent,canActivate:[AuthGuard]},
     {path: 'instructor', component:InstructorComponent,canActivate:[Auth2Guard]},
     {path: 'add-publicacion', component:AddpublicacionComponent,canActivate:[Auth2Guard]},
+    {path: 'add-nota', component:AddnotaComponent,canActivate:[Auth2Guard]},
+    {path: 'edit-nota', component:EditarnotaComponent,canActivate:[Auth2Guard]},
     {path: 'admin-publicacion', component:AdministrarpubsComponent,canActivate:[Auth2Guard]},
     {path: 'edit-publicacion', component:EditarpublicacionComponent,canActivate:[Auth2Guard]},
     {path: 'list-federados', component:ListafederadoComponent,canActivate:[Auth2Guard]},
@@ -79,6 +84,7 @@ const routes: Routes = [
     {path: 'add-evaluacion', component:AddevaluacionComponent,canActivate:[Auth2Guard]},
     {path: 'admin-evaluacion', component:AdministrarevaluacionesComponent,canActivate:[Auth2Guard]},
     {path: 'edit-evaluacion', component:EditarevaluacionComponent,canActivate:[Auth2Guard]},
+    {path: 'list-notas-instructor', component:ListnotasinstructorComponent,canActivate:[Auth2Guard]},
     //{path: 'instructor', component:InstructorComponent,canActivate:[Auth2Guard]} cuando este el login
     {path: 'publicaciones-curso', component:ListpublicacionesComponent,canActivate:[Auth3Guard]},
 ];

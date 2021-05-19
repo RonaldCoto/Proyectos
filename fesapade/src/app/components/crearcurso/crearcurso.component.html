@@ -69,6 +69,7 @@
                             <select id="inputState" class="form-control" required [(ngModel)]="curs.estado" name="estado" #estC="ngModel" >
                                 <option value="INICIADO" selected>INICIADO</option>
                                 <option value="FINALIZADO" >FINALIZADO</option>
+                                <option value="FINALIZADO" >VISUAL</option>
                             </select>
                             <div *ngIf="(estC.invalid && (estC.dirty || estC.touched))">
                                 

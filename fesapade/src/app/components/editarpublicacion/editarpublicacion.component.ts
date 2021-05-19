@@ -98,7 +98,6 @@ _handleReaderLoaded(readerEvent) {
 
   //metodo que consume el servicio de publicaciones para modificar una publicacion segun el id seleccionado
   modificacion() {
-   console.log(this.pub);
   
     this.publicacionesService.modificacion(this.pub).subscribe(datos => {    
     if (datos['resultado'] == 'OK') {

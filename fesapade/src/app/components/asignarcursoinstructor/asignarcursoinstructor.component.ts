@@ -20,10 +20,13 @@ export class AsignarcursoinstructorComponent{
     //objeto que almacena los datos del curso para asignar
     curs={
       id_curso: 0,
-     nombre: null,
-     descripcion: null,
-    portada: null,
-    estado:null,
+    nombre: null,
+    descripcion: null,
+   portada: null,
+   imagen1:null,
+   imagen2:null,
+   imagen3:null,
+   estado:null,
     id_empleado:null
      };
     //arreglo para almacenar empleados
@@ -84,7 +87,15 @@ export class AsignarcursoinstructorComponent{
       if (datos['resultado'] == 'OK') {
       alert(datos['mensaje']);
       
-      this.curs = { id_curso:0, descripcion: null, nombre: null, portada: null,estado:null,id_empleado:null};
+      this.curs = { id_curso: 0,
+        nombre: null,
+        descripcion: null,
+       portada: null,
+       imagen1:null,
+       imagen2:null,
+       imagen3:null,
+       estado:null,
+        id_empleado:null};
       this.empleados = null;
       }else{
         alert(datos['mensaje']);

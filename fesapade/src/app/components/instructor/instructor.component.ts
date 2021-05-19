@@ -3,6 +3,7 @@ import { AuthService } from "../../services/auth.service";
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { EmpleadosService } from 'src/app/services/empleados.service';
 import { AsignacionesCursosService } from 'src/app/services/asignaciones-cursos.service';
+import { ActualizarService } from 'src/app/services/actualizar.service';
 @Component({
   selector: 'app-instructor',
   templateUrl: './instructor.component.html',
@@ -18,7 +19,7 @@ export class InstructorComponent{
    //arreglo para almacenar cursos del instructor segun su ID
    ins = null;
   constructor(public authService: AuthService,
-    public asignacionesCursosService: AsignacionesCursosService) { 
+    public asignacionesCursosService: AsignacionesCursosService, public actualizarService: ActualizarService) { 
     authService.getLoggedInName.subscribe(name => this.changeName(name));
     if(this.authService.isLoggedIn())
     {
@@ -55,6 +56,11 @@ export class InstructorComponent{
          
          
        }
+       }
+
+       //metodo que almacena el id del curso seleccionado
+       seleccionar(codigo){
+        this.actualizarService.setSelectedIdc(codigo);
        }
   
 

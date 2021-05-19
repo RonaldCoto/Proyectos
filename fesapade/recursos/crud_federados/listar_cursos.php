@@ -4,7 +4,7 @@
   
   require("../conexion.php");
   
-//preparando consulta que traera los datos del curso a editar
+//preparando consulta que traera los datos de los cursos en los que esta matriculado un federado
   $registros=$con->prepare("SELECT cur.nombre as nombrecurso, cur.portada , emp.nombre as nombreempleado , fed.nombre as nombrefederado, fed.apellido as apellidofederado, asig.id_curso FROM matriculas as matri
 INNER JOIN federados AS fed ON fed.id_federado = matri.id_federado
 INNER JOIN asignaciones_cursos AS asig ON asig.id_asignacion_curso = matri.id_asignacion_curso

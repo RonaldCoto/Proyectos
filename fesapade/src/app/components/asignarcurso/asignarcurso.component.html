@@ -60,7 +60,7 @@
                    <div class="form-group col-md-5">
                           <label for="inputState">Curso</label>
                           <br>
-                          <font size=1>(Unicamente se listan los cursos con instructor asignado)</font>
+                          <font size=1>(Unicamente se listan los cursos con instructor asignado y en estado INICIADO)</font>
                           <select id="inputState" class="form-control"  autocomplete="off"  (change)="selectChangeHandler($event)"
                           [(ngModel)]="matricula.id_asignacion_curso"   required #curC="ngModel" name="curso">
                             <option *ngFor="let asig of asignaciones"  [value]="asig.id_asignacion_curso">{{asig.nombre}}</option> 

@@ -31,7 +31,7 @@
                 <div class="main__title">
 
                     <div class="main__greeting">
-                        <h1>Administrar Evaluaciones</h1>
+                        <h1>Notas de la evaluación: {{evaluacion.nombre_evaluacion}} </h1>
                         <br>
                     </div>
                 </div>
@@ -42,32 +42,21 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">Evaluación</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Nota</th>
                             <th scope="col">Porcentaje</th>
-                            <th scope="col">Inicia</th>
-                            <th scope="col">Termina</th>
-                            <th scope="col">Curso</th>
-                            <th scope="col">Acción</th>
+                            <th scope="col">Promedio</th>
+                        
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let evs of evaluaciones">
-                            <th scope="row">{{evs.nombre}}</th>
-                            <td>{{evs.porcentaje+"%"}}</td>
-                            <td>{{evs.fecha_inicio}}</td>
-                            <td>{{evs.fecha_fin}}</td>
-                            <td>{{evs.nom_curso}}</td>
-                            <td>
-                                <div class="btn-group">
-                                    <button type="button" routerLink="/edit-evaluacion" class="btn btn-primary btn-lg" title="Editar" (click)="seleccionar(evs.id_evaluacion)"><i
-                                            class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                            <button type="button" routerLink="/list-notas-instructor" class="btn btn-dark btn-lg" title="Notas" (click)="seleccionar(evs.id_evaluacion)"><i
-                                                class="fa fa-bars" aria-hidden="true"></i></button>
-                                    <button type="button" class="btn btn-danger btn-lg" title="Eliminar" (click)="eliminar(evs.id_evaluacion)"><i
-                                            class="fa fa-trash-o" aria-hidden="true"></i></button>
-
-                                </div>
-                            </td>
+                        <tr *ngFor="let not of notas">
+                            <th scope="row">{{not.nombre}}</th>
+                            <td>{{not.apellido}}</td>
+                            <td>{{not.nota}}</td>
+                            <td>{{not.porcentaje+"%"}}</td>
+                            <td>{{not.promedio}}</td>
                         </tr>
                     </tbody>
                 </table>

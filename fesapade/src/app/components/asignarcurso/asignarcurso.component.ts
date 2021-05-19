@@ -16,8 +16,11 @@ export class AsignarcursoComponent{
   public usuario = JSON.parse(localStorage.getItem('usuario'));
   //variable para mostrar u ocultar el sidebar
   contentHighlighted: boolean = false;
-  //arreglo para almacenar datos de federados para listar
-  federados=null;
+
+  //arreglo que almacena a federados en estado de ALTA y BAJA
+  federados_pro=null;
+  //arreglo para almacenar datos de federados en ALTA (se llena con .push por lo que no debe ser "=null")
+  federados=[];
   
   //arreglo que almacena los datos de asignaciones, instructores y cursos-asignados para listar
   asignaciones=null;
@@ -63,7 +66,18 @@ export class AsignarcursoComponent{
   }
   ngOnInit() {
      //metodo que consume el servicio de federados para listar los que estan de ALTA.
-    this.federadoServicio.lista_de_alta().subscribe(result => this.federados = result);
+    this.federadoServicio.lista_de_alta().subscribe(result => {
+      //almacenamos a los federados en estado de ALTA y BAJA
+      this.federados_pro = result;
+      //Recorremos el arreglo y excluimos a los que estan de BAJA
+      this.federados_pro.forEach(element => {
+        if(element.estado == "ALTA"){
+          //almacenamos unicamente a los federados en estado de ALTA
+          this.federados.push(element);
+         
+        }
+      });
+    });
   //metodo que consume el servicio asignacionCurso para obtener los datos de cursos que tengan... 
   //un instructor y esten en estado INICIADO
  this.asignacionCursoService.seleccionar_cursos_asignados_iniciados().subscribe(

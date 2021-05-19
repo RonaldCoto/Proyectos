@@ -31,4 +31,8 @@ export class EvaluacionesService {
   lista_evaluaciones_instructor(codigo: number) {
     return this.http.get(`${this.url}listar_evaluaciones_instructor.php?codigo=${codigo}`);
   }
+  //lista de evaluaciones de un curso seleccionado
+  seleccionar_evaluaciones_curso(codigo: number) {
+    return this.http.get(`${this.url}seleccionar_evaluaciones_curso.php?codigo=${codigo}`);
+  }
 }

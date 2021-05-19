@@ -11,5 +11,13 @@ export class MatriculasService {
     alta(matricula) {
     return this.http.post(`${this.url}alta.php`, JSON.stringify(matricula));
     }
+    //obtener todos los federados matriculados en el curso seleccionado
+  seleccionar_federados_del_curso(codigo: number) {
+    return this.http.get(`${this.url}seleccionar_federados_del_curso.php?codigo=${codigo}`);
+  }
+  //obtener datos de un federado segun si id_matricula
+  seleccionar_federados_matricula(codigo: number) {
+    return this.http.get(`${this.url}seleccionar_federados_matricula.php?codigo=${codigo}`);
+  }
    
 }

@@ -31,7 +31,7 @@
                 <div class="main__title">
 
                     <div class="main__greeting">
-                        <h1>Administrar Evaluaciones</h1>
+                        <h1>Asignar nota</h1>
                         <br>
                     </div>
                 </div>
@@ -39,38 +39,57 @@
 
                 <!-- MAIN TITLE ENDS HERE -->
 <!-- Inicio de contenido -->
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Evaluación</th>
-                            <th scope="col">Porcentaje</th>
-                            <th scope="col">Inicia</th>
-                            <th scope="col">Termina</th>
-                            <th scope="col">Curso</th>
-                            <th scope="col">Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let evs of evaluaciones">
-                            <th scope="row">{{evs.nombre}}</th>
-                            <td>{{evs.porcentaje+"%"}}</td>
-                            <td>{{evs.fecha_inicio}}</td>
-                            <td>{{evs.fecha_fin}}</td>
-                            <td>{{evs.nom_curso}}</td>
-                            <td>
-                                <div class="btn-group">
-                                    <button type="button" routerLink="/edit-evaluacion" class="btn btn-primary btn-lg" title="Editar" (click)="seleccionar(evs.id_evaluacion)"><i
-                                            class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                            <button type="button" routerLink="/list-notas-instructor" class="btn btn-dark btn-lg" title="Notas" (click)="seleccionar(evs.id_evaluacion)"><i
-                                                class="fa fa-bars" aria-hidden="true"></i></button>
-                                    <button type="button" class="btn btn-danger btn-lg" title="Eliminar" (click)="eliminar(evs.id_evaluacion)"><i
-                                            class="fa fa-trash-o" aria-hidden="true"></i></button>
+<form #validatedForm="ngForm">
+    <div class="alingtitu">
+        
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label for="formGroupExampleInput">Federado seleccionado</label>
+                    <input type="text" required class="form-control" #fedC="ngModel"  [(ngModel)]="selectedFed.nombre + ' ' + selectedFed.apellido"  name="federado"
+                        id="formGroupExampleInput"  readonly>
+                        <div *ngIf="(fedC.invalid && (fedC.dirty || fedC.touched))">
+                    
+                            <p class="text-danger" *ngIf="fedC.errors.required">Campo requerido</p>                    
+                        </div>
+                </div>
+    
+            </div>
+    
+       <div class="form-group col-md-5">
+              <label for="inputState">Evaluación</label>
+              <br>
+              <font size=1>(Evaluaciones disponibles para este curso)</font>
+              <select id="inputState" class="form-control"  autocomplete="off"  
+              [(ngModel)]="nota.id_evaluacion"   required #evaC="ngModel" name="evaluacion">
+                <option *ngFor="let eva of evaluaciones"  [value]="eva.id_evaluacion">{{eva.nombre}}</option> 
+              </select>
+              <div *ngIf="(evaC.invalid && (evaC.dirty || evaC.touched))">
+                    
+                <p class="text-danger" *ngIf="evaC.errors.required">Campo requerido</p>                    
+            </div>
+          </div>
+            <div class="form-group col-md-5">
+                <label for="formGroupExampleInput">Calificación</label>
+                <input type="number" required class="form-control" min="0.00" max="10.00" pattern="^[0-9]+(.[0-9]{1,2})?$" 
+                    id="formGroupExampleInput" autocomplete="off" [(ngModel)]="nota.nota" 
+                    name="nota" #notC="ngModel" placeholder="10.00">
+                    <div *ngIf="(notC.invalid && (notC.dirty || notC.touched))">
+                        <p class="text-danger" *ngIf="notC.errors.required">Campo requerido</p>  
+                        <p class="text-danger" *ngIf="notC.errors.min">Valor minimo: 0.00</p>
+                        <p class="text-danger" *ngIf="notC.errors.max">Valor máximo: 10.00</p>
+                        <p class="text-danger" *ngIf="notC.errors.pattern">formato incorrecto (Ej. 10.00)</p>                  
+                    </div>
+                </div>
+                
 
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+  </div>
+
+    <br>
+    <div class="alingboton">
+        <button type="submit" *ngIf="selectedFed.nombre != null"  (click)="alta()"  [disabled]="!validatedForm.form.valid" class="btn btn-primary btn-md">Asignar nota</button>
+    </div>
+   
+</form>
 <!-- Fin de contenido -->
             </div>
         </main>
@@ -95,23 +114,23 @@
                     <i class="fa fa-plus" ></i>
                     <a routerLink="/add-publicacion">Agregar publicación</a>
                 </div>
-                <div class="sidebar__link ">
-                    <i class="fa fa-wrench" ></i>
+                <div class="sidebar__link">
+                    <i class="fa fa-wrench"></i>
                     <a routerLink="/admin-publicacion">Administrar publicaciones</a>
                 </div>
                 <h2>Evaluaciones</h2>
                 <div class="sidebar__link ">
-                    <i class="fa fa-plus" ></i>
+                    <i class="fa fa-plus"></i>
                     <a routerLink="/add-evaluacion">Agregar evaluación</a>
                 </div>
-                <div class="sidebar__link active_menu_link">
-                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                <div class="sidebar__link">
+                    <i class="fa fa-wrench" ></i>
                     <a routerLink="/admin-evaluacion">Administrar evaluaciones</a>
                 </div>
 
                 <h2>Académico</h2>
-                <div class="sidebar__link">
-                    <i class="fa fa-th-list"></i>
+                <div class="sidebar__link active_menu_link">
+                    <i class="fa fa-th-list"  aria-hidden="true"></i>
                     <a routerLink="/instructor">Mis cursos</a>
                 </div>
                 <h2>Perfil</h2>
@@ -129,3 +148,4 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="script.js"></script>
 </body>
+
