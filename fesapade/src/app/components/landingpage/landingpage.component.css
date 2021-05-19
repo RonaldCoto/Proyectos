@@ -102,6 +102,7 @@ nav img:hover{
 .section-2 .row .col-md-6 .panel p{
     font-size: 0.9em;
     color: rgba(0, 0, 0, 0.5);
+    text-align:justify;
 }
 /*end section 2 */
 
@@ -145,7 +146,7 @@ nav img:hover{
     position: relative;
     height: 195px;
     overflow: hidden;
-    cursor: pointer;
+    cursor: default;
 }
 .contenedor figure img{
     padding: 0;
@@ -208,7 +209,7 @@ nav img:hover{
     position: relative;
     height: 195px;
     overflow: hidden;
-    cursor: pointer;
+    cursor: default;
 }
 .contenedor2 figure img{
     padding: 0;

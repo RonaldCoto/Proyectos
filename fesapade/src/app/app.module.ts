@@ -47,6 +47,7 @@ import { AddevaluacionComponent } from './components/addevaluacion/addevaluacion
 import { AdministrarevaluacionesComponent } from './components/administrarevaluaciones/administrarevaluaciones.component';
 import { ListpublicacionesComponent } from './components/listpublicaciones/listpublicaciones.component';
 import { EditarevaluacionComponent } from './components/editarevaluacion/editarevaluacion.component';
+import { DetallecursoComponent } from './components/detallecurso/detallecurso.component';
 
 
 
@@ -85,6 +86,7 @@ import { EditarevaluacionComponent } from './components/editarevaluacion/editare
     AdministrarevaluacionesComponent,
     ListpublicacionesComponent,
     EditarevaluacionComponent,
+    DetallecursoComponent,
     
   ],
   imports: [

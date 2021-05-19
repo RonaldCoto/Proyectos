@@ -33,6 +33,7 @@ import {AddevaluacionComponent} from '../app/components/addevaluacion/addevaluac
 import {AdministrarevaluacionesComponent} from '../app/components/administrarevaluaciones/administrarevaluaciones.component';
 import {ListpublicacionesComponent} from '../app/components/listpublicaciones/listpublicaciones.component';
 import {EditarevaluacionComponent} from '../app/components/editarevaluacion/editarevaluacion.component';
+import {DetallecursoComponent} from '../app/components/detallecurso/detallecurso.component';
 //Guardianes 
 //admin
 import { AuthGuard } from "./guard/auth.guard";
@@ -54,6 +55,7 @@ const routes: Routes = [
     {path: 'dashfederado', component:DashboardfederadoComponent,canActivate:[Auth3Guard]},
     {path: 'editfede', component:EditfederadoComponent,canActivate:[Auth2Guard]},
     {path: 'cursos', component:CursosComponent },
+    {path: 'detalle-cursos', component:DetallecursoComponent },
     {path: 'galeria', component:GaleriaComponent},
     {path: 'login', component:LogInComponent,canActivate:[Auth4Guard]},
     {path: 'administrador', component:AdministradorComponent,canActivate:[AuthGuard]},
