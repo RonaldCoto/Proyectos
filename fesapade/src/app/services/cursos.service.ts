@@ -7,9 +7,13 @@ import { HttpClient } from '@angular/common/http';
 export class CursosService {
   url = 'http://localhost/recursos/crud_cursos/';
   constructor(private http: HttpClient) { }
-  //lista de todos los cursos
+  //lista de todos los cursos en ALTA o VISUAL
   listar() {
     return this.http.get(`${this.url}listar.php`);
+  }
+  //lista de todos los cursos
+  listar_finalizado() {
+    return this.http.get(`${this.url}listar_finalizado.php`);
   }
   //insertar un nuevo curso
   alta(curso) {

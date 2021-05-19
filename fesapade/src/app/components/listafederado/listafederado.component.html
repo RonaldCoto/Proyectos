@@ -31,7 +31,7 @@
                 <div class="main__title">
 
                     <div class="main__greeting">
-                        <h1>Listado de federados grupo GL-05</h1>
+                        <h1>Integrantes del curso: {{curso.nombrecurso}}</h1>
                         <br>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">No</th>
+                            
                             <th scope="col">Nombres</th>
                             <th scope="col">Apellidos</th>
                             <th scope="col">Email</th>
@@ -50,37 +50,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                        <tr *ngFor="let feds of federados">
+                            <th scope="row">{{feds.nombre}}</th>
+                            <td>{{feds.apellido}}</td>
+                            <td>{{feds.email}}</td>
+                            
                             <td>
                                 <div class="btn-group">
-                                    <a type="button"  class="btn btn-success btn-lg" title="Agregar nota"><i
-                                        class="fa fa-plus" aria-hidden="true"></i></a>
-                                    <button type="button" routerLink="/edit-publicacion" class="btn btn-primary btn-lg" title="Editar nota"><i
-                                            class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-
-
-                                </div>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>
-                                <div class="btn-group">
-                                    <a type="button"  class="btn btn-success btn-lg" title="Agregar nota"><i
-                                        class="fa fa-plus" aria-hidden="true"></i></a>
-                                    <a type="button" routerLink="/edit-publicacion" class="btn btn-primary btn-lg" title="Editar nota"><i
-                                            class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-
+                                    <button type="button" routerLink="/add-nota" class="btn btn-success btn-lg" title="Asignar Nota" (click)="seleccionar(feds.id_matricula)"><i
+                                            class=" fa fa-plus" aria-hidden="true"></i></button>
+                                    <button type="button" routerLink="/edit-nota" class="btn btn-primary btn-lg" title="Editar Nota" (click)="seleccionar(feds.id_matricula)"><i
+                                                class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
 
                                 </div>
                             </td>
                         </tr>
+                
                     </tbody>
                 </table>
 <!-- Fin de contenido -->

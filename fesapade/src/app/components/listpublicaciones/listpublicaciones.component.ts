@@ -38,6 +38,7 @@ export class ListpublicacionesComponent {
     this.loginbtn = !name;
   }
   logout() {
+    
     this.authService.deleteToken();
     window.location.href = "/login";
 

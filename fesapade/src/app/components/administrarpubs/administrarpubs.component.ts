@@ -11,6 +11,7 @@ import { ActualizarService } from 'src/app/services/actualizar.service';
 export class AdministrarpubsComponent {
   loginbtn: boolean;
   logoutbtn: boolean;
+  //arrreglo que almacena las publicaciones del instructor logueado
   pubs=null;
   public usuario = JSON.parse(localStorage.getItem('usuario'));
   //variable para mostrar u ocultar el sidebar

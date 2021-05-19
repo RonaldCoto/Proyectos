@@ -12,7 +12,7 @@ class Result { }
 
 $response = new Result();
 $response -> resultado = 'OK';
-$response -> mensaje = 'Curso eliminado con exito';
+$response -> mensaje = 'Curso eliminado con éxito';
 
 header('Content-Type: application/json');
 echo json_encode($response);  

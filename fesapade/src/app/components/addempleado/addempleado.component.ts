@@ -13,7 +13,8 @@ export class AddempleadoComponent{
   public usuario = JSON.parse(localStorage.getItem('usuario'));
   //variable para mostrar u ocultar el sidebar
   contentHighlighted: boolean = false;
-
+// contraseña por defecto
+   result = '';
   //objeto que almacena los datos del empleado para insertarlos en la bdd
   emps = {
     id: 0,
@@ -49,6 +50,17 @@ export class AddempleadoComponent{
     this.authService.deleteToken();
     window.location.href = "/login";
     
+    }
+
+    ngOnInit(){
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      const charactersLength = characters.length;
+      for (let i = 0; i <= 8 ; i++) {
+          this.result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+
+      this.emps.password=this.result
+        
     }
 
  //metodo que consume el servicio de empleados para agregar un nuevo empleado

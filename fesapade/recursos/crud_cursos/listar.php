@@ -8,8 +8,8 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 require("../conexion.php");
 
 
-// consulta a tabla empleados con datos ingresados en el formulario de "log-in.component"
-$registros = $con->prepare("SELECT * FROM  cursos" );
+// lista de cursos en estado INICIADO y VISUAL
+$registros = $con->prepare("SELECT * FROM  cursos WHERE estado!='FINALIZADO'" );
 // Indicando los datos
 $registros->execute();
 

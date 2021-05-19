@@ -13,7 +13,8 @@ export class AddfederadoComponent{
   public usuario = JSON.parse(localStorage.getItem('usuario'));
   //variable para mostrar u ocultar el sidebar
   contentHighlighted: boolean = false;
-
+// contraseña por defecto
+result = '';
   //objeto que almacena los datos del federado para insertarlos en la bdd
   feds = {
     id: 0,
@@ -48,6 +49,18 @@ export class AddfederadoComponent{
     this.authService.deleteToken();
     window.location.href = "/login";
     
+    }
+
+    ngOnInit(){
+      //metodo que genera contraseñas por defecto
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      const charactersLength = characters.length;
+      for (let i = 0; i <= 8 ; i++) {
+          this.result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+
+      this.feds.password=this.result
+        
     }
 
     //metodo que consume el servicio de federados para agregar un nuevo federado

@@ -65,7 +65,23 @@ if($vec == null){
         }
 
 //------------------------------fin de validacion de imagenes------------------------------------
+
+    //------------------------------validando si el curso es de tipo VISUAL------------------------------------
     
+//variable que sera true si el curso en estado visual recibe las 3 imagenes necesarias para publicar, o si esta INICIADO o FINALIZADO
+    $const=false;
+    
+    if($params->estado == "VISUAL"){
+        //si el curso nuevo es de tipo VISUAL y tiene todas las imagenes asignadas se puede crear
+        if(($portada != "") && ($imagen1 != "") && ($imagen2 != "") && ($imagen3 != "")){
+            $const=true;
+        }
+        //si el curso no es de tipo VISUAL se puede crear sin importar las fotos asignadas
+    }else{
+        $const=true;
+    }
+  //------------------------------fin de validacion de tipo VISUAL------------------------------------
+    if($const){
     
   $insertar=$con->prepare("INSERT INTO cursos(nombre,descripcion,portada,imagen1,imagen2,imagen3,estado) VALUES
                   (:nombre,:descripcion,:portada,:imagen1,:imagen2,:imagen3,:estado)");
@@ -86,6 +102,18 @@ $insertar->execute();
 
   header('Content-Type: application/json');
   echo json_encode($response);  
+    
+    }else{
+          class Result {}
+
+  $response = new Result();
+  $response->resultado = 'ERROR';
+  $response->mensaje = 'Error. Un curso en modo VISUAL requiere una portada y 3 fotos.';
+
+  header('Content-Type: application/json');
+  echo json_encode($response);  
+    }    
+    
     //si el nombre ya estaba registrado no se puede crear al nuevo curso
 }else{
     class Result {}
