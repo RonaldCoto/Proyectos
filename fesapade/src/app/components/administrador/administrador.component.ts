@@ -50,7 +50,8 @@ export class AdministradorComponent{
     }
     //metodo que consume el servicio de empleados para listar.
   ListarEmpleados() {
-    this.empleadoServicio.listar().subscribe(result => this.empleados = result);
+    
+    this.empleadoServicio.listar(parseInt(this.usuario.id_emp)).subscribe(result => this.empleados = result);
     }
 //metodo que consume el servicio de empleados para eliminar un empleado seleccionado
     eliminar(codigo) {

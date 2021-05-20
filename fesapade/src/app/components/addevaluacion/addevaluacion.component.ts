@@ -87,7 +87,7 @@ _handleReaderLoaded(readerEvent) {
 
     //metodo que consume el servicio de evaluaciones para agregar una nueva evaluacion
   alta() {
-   console.log(this.evalua);
+  
     this.evaluacionServicio.alta(this.evalua).subscribe(datos => {
     if (datos['resultado'] == 'OK') {
     alert(datos['mensaje']);

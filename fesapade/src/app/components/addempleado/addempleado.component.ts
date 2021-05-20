@@ -69,7 +69,7 @@ export class AddempleadoComponent{
   this.empleadoServicio.alta(this.emps).subscribe(datos => {
   if (datos['resultado'] == 'OK') {
   alert(datos['mensaje']);
-  
+  this.generar_cuenta();
   this.emps =  {id: 0,nombre: null,apellido: null,direccion: null,email:null,password:null,id_cate_empleado:0,estado:null
   };
   }else{
@@ -77,5 +77,26 @@ export class AddempleadoComponent{
     alert(datos['mensaje']);
   }
   });
+  }
+  //metodo que descarga el correo y contraseña de la nueva cuenta
+  generar_cuenta(){
+    var date = Date.now();
+   
+    var fileContents = "Email: "+this.emps.email+" "+" "+"\n" +"Password: "+this.emps.password;
+    var filename = date+"_"+this.emps.nombre+"_"+this.emps.apellido+".txt";
+    var filetype = "text/plain";
+    
+    var a = document.createElement("a");
+    let dataURI = "data:" + filetype +
+        ";base64," + btoa(fileContents);
+    a.href = dataURI;
+    a['download'] = filename;
+    var e = document.createEvent("MouseEvents");
+    // Use of deprecated function to satisfy TypeScript.
+    e.initMouseEvent("click", true, false,
+        document.defaultView, 0, 0, 0, 0, 0,
+        false, false, false, false, 0, null);
+    a.dispatchEvent(e);
+  
   }
 }

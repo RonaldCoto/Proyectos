@@ -6,9 +6,9 @@ import { HttpClient } from '@angular/common/http';
 export class EmpleadosService {
   url = 'http://localhost/recursos/crud_empleados/';
   constructor(private http: HttpClient) { }
-  //lista de todos los empleados
-  listar() {
-    return this.http.get(`${this.url}listar.php`);
+  //lista de todos los empleados excepto el empleado que solicita los datos 
+  listar(codigo: number) {
+    return this.http.get(`${this.url}listar.php?codigo=${codigo}`);
   }
   //insertar nuevo empleado
   alta(empleado) {

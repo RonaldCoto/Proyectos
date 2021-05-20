@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { FederadosService } from '../../services/federados.service';
+import { DatePipe } from "@angular/common";
 @Component({
   selector: 'app-addfederado',
   templateUrl: './addfederado.component.html',
@@ -69,12 +70,34 @@ result = '';
   if (datos['resultado'] == 'OK') {
   
     alert(datos['mensaje']);
+    this.generar_cuenta();
   this.feds =  {id: 0,nombre: null,apellido: null,direccion: null,email:null,password:null,estado:null
   };
   }else{
     alert(datos['mensaje']);
   }
   });
+  }
+
+  generar_cuenta(){
+    var date = Date.now();
+   
+    var fileContents = "Email: "+this.feds.email+" "+" "+"\n"+"Password: "+this.feds.password;
+    var filename = date+"_"+this.feds.nombre+"_"+this.feds.apellido+".txt";
+    var filetype = "text/plain";
+    
+    var a = document.createElement("a");
+    let dataURI = "data:" + filetype +
+        ";base64," + btoa(fileContents);
+    a.href = dataURI;
+    a['download'] = filename;
+    var e = document.createEvent("MouseEvents");
+    // Use of deprecated function to satisfy TypeScript.
+    e.initMouseEvent("click", true, false,
+        document.defaultView, 0, 0, 0, 0, 0,
+        false, false, false, false, 0, null);
+    a.dispatchEvent(e);
+  
   }
 
 }
