@@ -69,7 +69,7 @@ export class AddempleadoComponent{
   this.empleadoServicio.alta(this.emps).subscribe(datos => {
   if (datos['resultado'] == 'OK') {
   alert(datos['mensaje']);
-  this.generar_cuenta();
+  //this.generar_cuenta();
   this.emps =  {id: 0,nombre: null,apellido: null,direccion: null,email:null,password:null,id_cate_empleado:0,estado:null
   };
   }else{
@@ -79,7 +79,7 @@ export class AddempleadoComponent{
   });
   }
   //metodo que descarga el correo y contraseña de la nueva cuenta
-  generar_cuenta(){
+  /*generar_cuenta(){
     var date = Date.now();
    
     var fileContents = "Email: "+this.emps.email+" "+" "+"\n" +"Password: "+this.emps.password;
@@ -98,5 +98,5 @@ export class AddempleadoComponent{
         false, false, false, false, 0, null);
     a.dispatchEvent(e);
   
-  }
+  }*/
 }

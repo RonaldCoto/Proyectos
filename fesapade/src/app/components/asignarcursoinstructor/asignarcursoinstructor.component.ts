@@ -79,7 +79,7 @@ export class AsignarcursoinstructorComponent{
 
      //metodo que consume el servicio de asignaciones_cursos para agregar una nueva asignacion
  alta() {
-  this.confirmationDialogService.confirm('¡ALERTA!', 'Esta a punto de designar a un instructor en un curso.,\n Si lo hace este instructor no podrá ser eliminado ni removido del curso.\n¿Desea continuar?')
+  this.confirmationDialogService.confirm('¡ALERTA!', 'Esta a punto de designar a un instructor en un curso., Si lo hace este instructor no podrá ser eliminado ni removido del curso.¿Desea continuar?')
   .then((confirmed) =>{
 
           if (confirmed){
