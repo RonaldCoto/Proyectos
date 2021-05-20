@@ -75,7 +75,7 @@ const routes: Routes = [
     {path: 'edit-publicacion', component:EditarpublicacionComponent,canActivate:[Auth2Guard]},
     {path: 'list-federados', component:ListafederadoComponent,canActivate:[Auth2Guard]},
     {path: 'edit-perfil', component:EditarperfilComponent,canActivate:[Auth2Guard]},
-    {path: 'notas-federado', component:NotasfederadoComponent},
+    {path: 'notas-federado', component:NotasfederadoComponent,canActivate:[Auth3Guard]},
     {path: 'edit-perfil-federado', component:EditarperfederadoComponent,canActivate:[Auth3Guard]},
     {path: 'add-empleado', component:AddempleadoComponent,canActivate:[AuthGuard]},
     {path: 'add-federado', component:AddfederadoComponent,canActivate:[AuthGuard]},

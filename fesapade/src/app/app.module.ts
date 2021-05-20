@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from "@angular/common";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 //Guardianes
 import { AuthGuard } from "./guard/auth.guard";
@@ -56,6 +57,7 @@ import { AdminlistafederadoComponent } from './components/adminlistafederado/adm
 import { AdminlistanotasComponent } from './components/adminlistanotas/adminlistanotas.component';
 import { ListCursosFedeFinalizadoComponent } from './components/list-cursos-fede-finalizado/list-cursos-fede-finalizado.component';
 import { ListNotasFedecurfinalizadooComponent } from './components/list-notas-fedecurfinalizadoo/list-notas-fedecurfinalizadoo.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 
 
@@ -103,6 +105,7 @@ import { ListNotasFedecurfinalizadooComponent } from './components/list-notas-fe
     AdminlistanotasComponent,
     ListCursosFedeFinalizadoComponent,
     ListNotasFedecurfinalizadooComponent,
+    ConfirmationDialogComponent,
     
   ],
   imports: [
@@ -110,7 +113,7 @@ import { ListNotasFedecurfinalizadooComponent } from './components/list-notas-fe
     AppRoutingModule,
     ToastrModule.forRoot(),
     FormsModule,  HttpClientModule,
-    BrowserAnimationsModule,ReactiveFormsModule,
+    BrowserAnimationsModule,ReactiveFormsModule,NgbModule
   ],
   providers: [AuthGuard, Auth2Guard, Auth3Guard, Auth4Guard,Auth5Guard],
   bootstrap: [AppComponent]

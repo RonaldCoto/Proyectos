@@ -89,6 +89,13 @@ if(($datos["porcentaje"] != $porcentaje) || ($datos["id_curso"] != $id_curso)){
     }
 }
 
+//validando fecha de finalizacion
+//variable que será true si la fecha de finalizacion es mayor o igual a la de inicio
+$const3 = false;
+if($params->fecha_fin >= $params->fecha_inicio ){
+    $const3 = true;
+}
+
 //-----------------------------FIN DE VALIDACION-----------------------------
 
 //si el nombre de evaluacion esta disponible en el curso
@@ -96,6 +103,9 @@ if($const2){
 
         //si el porcentaje no exede el maximo se actualiza la evaluacion
     if($const){
+        
+        //si la fecha de finalizacion es mayor que la de inicio
+        if($const3){
     
     $modificacion=$con->prepare("UPDATE evaluaciones SET nombre=:nombre,descripcion=:descripcion,porcentaje=:porcentaje,multimedia=:multimedia
                         ,extension=:extension,fecha_inicio=:fecha_inicio,fecha_fin=:fecha_fin,id_curso=:id_curso 
@@ -119,6 +129,19 @@ $modificacion->execute();
 
   header('Content-Type: application/json');
   echo json_encode($response);  
+            
+            //si la fecha de finalizacion es incorrecta
+            }else{
+             class Result {}
+
+  $response = new Result();
+  $response->resultado = 'ERROR';
+  $response->mensaje = 'ERROR. La fecha de finalización no pude ser menor a la de inicio.';
+
+  header('Content-Type: application/json');
+  echo json_encode($response); 
+        }
+        
         //si el porcentaje supera el 100%
         }else{
         

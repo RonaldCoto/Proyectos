@@ -7,9 +7,11 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
   //conexion a base de datos 
 require("../conexion.php");
 
-// consulta a tabla empleados
-$registros=$con->prepare("select emp.id_empleado, emp.nombre, emp.apellido, emp.direccion, emp.email, emp.password, emp.id_cate_empleado, emp.estado, cat.cargo from empleados AS emp INNER JOIN categorias_empleados AS cat ON emp.id_cate_empleado = cat.id_cate_empleado ");
-
+// lista de empleados sin tomar en cuenta al empleado que solicita los datos
+$registros=$con->prepare("select emp.id_empleado, emp.nombre, emp.apellido, emp.direccion, emp.email, emp.password, emp.id_cate_empleado, emp.estado, cat.cargo from empleados AS emp INNER JOIN categorias_empleados AS cat
+ON emp.id_cate_empleado = cat.id_cate_empleado 
+WHERE emp.id_empleado!=:codigo");
+ $registros->bindParam(':codigo',$_GET['codigo']);
 // Indicando los datos
 $registros->execute();
 

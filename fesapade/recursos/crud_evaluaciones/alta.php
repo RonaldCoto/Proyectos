@@ -51,10 +51,31 @@ $const=true;
 }
  
 }      
+    
+    //validando que las fechas ingresadas no sean menores a la actual
+$fecha_actual = date('Y-m-d');
+    //variable que será true si la fecha de inicio es correcta
+$const2 = false;
+      //variable que será true si la fecha_fin es mayor o igual a la de inicio
+$const3 = false;
+if($params->fecha_inicio >= $fecha_actual ){
+    $const2 = true;
+}
+if($params->fecha_fin >= $params->fecha_inicio ){
+    $const3 = true;
+}
+    
 //-----------------------------FIN DE VALIDACION-----------------------------
     
-        //si el porcentaje no exede el maximo se crea la nueva evaluación
+        //si el porcentaje no exede el maximo se validan las fechas
     if($const){
+        //si la fecha de inicio es correcta
+        if($const2){
+            //si la fecha de finalizacion es correcta
+            if($const3){
+                
+            
+       
         //se valida el ingreso de un archivo real para evitar generar un archivo vacio con nombre time()
     if($multimedia != ""){
         $archivo_evaluacion = $fecha."-".$multimedia;
@@ -82,7 +103,34 @@ $insertar->execute();
   $response->mensaje = 'Evaluación generada con éxito.';
 
   header('Content-Type: application/json');
-  echo json_encode($response);  
+  echo json_encode($response); 
+        
+                //si la fecha de finalizaicon es
+                }else{
+                     class Result {}
+
+  $response = new Result();
+  $response->resultado = 'ERROR';
+  $response->mensaje = 'ERROR. La fecha de finalización no puede ser menor a la de inicio.';
+
+  header('Content-Type: application/json');
+  echo json_encode($response); 
+            }
+                
+            // si la fecha de inicio es incorrecta
+         }else{
+            
+             class Result {}
+
+  $response = new Result();
+  $response->resultado = 'ERROR';
+  $response->mensaje = 'ERROR. La fecha de inicio no puede ser menor a la actual.';
+
+  header('Content-Type: application/json');
+  echo json_encode($response); 
+              
+ 
+         }
         //si el porcentaje supera el 100%
         }else{
         

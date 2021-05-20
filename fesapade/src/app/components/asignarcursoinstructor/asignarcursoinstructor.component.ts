@@ -5,7 +5,7 @@ import { CursosService } from '../../services/cursos.service';
 import { EmpleadosService } from '../../services/empleados.service';
 import {AsignacionesCursosService} from '../../services/asignaciones-cursos.service';
 import {ActivatedRoute} from '@angular/router'
-
+import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 @Component({
   selector: 'app-asignarcursoinstructor',
   templateUrl: './asignarcursoinstructor.component.html',
@@ -36,7 +36,8 @@ export class AsignarcursoinstructorComponent{
 
   constructor(public authService: AuthService,public cursoServicio: CursosService,
     public actualizarService: ActualizarService,public empleadoServicio: EmpleadosService,
-    public asignacionesCursosService:AsignacionesCursosService,private route:ActivatedRoute) { 
+    public asignacionesCursosService:AsignacionesCursosService,private confirmationDialogService: ConfirmationDialogService
+    ) { 
      
       authService.getLoggedInName.subscribe(name => this.changeName(name));
     if(this.authService.isLoggedIn())
@@ -78,33 +79,43 @@ export class AsignarcursoinstructorComponent{
 
      //metodo que consume el servicio de asignaciones_cursos para agregar una nueva asignacion
  alta() {
-   
-  if (confirm('¡ALERTA!\nEsta a punto de designar a un instructor en un curso.\nSi lo hace este instructor no podrá ser eliminado ni removido del curso.\n¿Desea continuar?')) {
-   //solo se pueden inscribir cursos en estado INICIADO
-    if(this.curs.estado == "INICIADO"){
+  this.confirmationDialogService.confirm('¡ALERTA!', 'Esta a punto de designar a un instructor en un curso.,\n Si lo hace este instructor no podrá ser eliminado ni removido del curso.\n¿Desea continuar?')
+  .then((confirmed) =>{
+
+          if (confirmed){
+             //solo se pueden inscribir cursos en estado INICIADO
+               if(this.curs.estado == "INICIADO"){
     
-    this.asignacionesCursosService.alta(this.curs).subscribe(datos => {
-      if (datos['resultado'] == 'OK') {
-      alert(datos['mensaje']);
-      
-      this.curs = { id_curso: 0,
-        nombre: null,
-        descripcion: null,
-       portada: null,
-       imagen1:null,
-       imagen2:null,
-       imagen3:null,
-       estado:null,
-        id_empleado:null};
-      this.empleados = null;
-      }else{
-        alert(datos['mensaje']);
-      }
-      });
-   }else{
-     alert("Este curso ya ha finalizado.\nCambie su estado a 'INICIADO' para que sea asignable.");
-   }
+                  this.asignacionesCursosService.alta(this.curs).subscribe(datos => {
+                    if (datos['resultado'] == 'OK') {
+                      alert(datos['mensaje']);
+    
+                       this.curs = { id_curso: 0,
+                        nombre: null,
+                        descripcion: null,
+                        portada: null,
+                        imagen1:null,
+                        imagen2:null,
+                        imagen3:null,
+                        estado:null,
+                        id_empleado:null};
+                        this.empleados = null;
+                     }else{
+                         alert(datos['mensaje']);
+                      }
+                    });
+                    }else{
+                alert("Este curso ya ha finalizado.\nCambie su estado a 'INICIADO' para que sea asignable.");
+                     }
+
+}
+
+  })
+  .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  
+  
    
-  }
+   
+  
  }
 }

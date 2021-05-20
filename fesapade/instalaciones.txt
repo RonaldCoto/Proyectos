@@ -14,3 +14,6 @@ instalaciones
 
    *npm i @types/node -D
    *npm install --save path-parse
+
+   *npm install --save @ng-bootstrap/ng-bootstrap
+   *ng add @angular/localize
