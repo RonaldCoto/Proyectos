@@ -1,6 +1,7 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link rel="icon" href="../../../assets/fesapadelogo.ico">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS GRID DASHBOARD</title>
@@ -43,54 +44,57 @@
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <label for="formGroupExampleInput">Nombre</label>
-                                <input type="text" required  class="form-control"
-                                    id="formGroupExampleInput" autocomplete="off" [(ngModel)]="curs.nombre" name="nombre" #nomC="ngModel" >
-                                    <div *ngIf="(nomC.invalid && (nomC.dirty || nomC.touched))">
-                                
-                                        <p class="text-danger" *ngIf="nomC.errors.required">Campo requerido</p>                    
-                                    </div>
+                                <input type="text" required class="form-control" id="formGroupExampleInput"
+                                    autocomplete="off" [(ngModel)]="curs.nombre" name="nombre" #nomC="ngModel">
+                                <div *ngIf="(nomC.invalid && (nomC.dirty || nomC.touched))">
+
+                                    <p class="text-danger" *ngIf="nomC.errors.required">Campo requerido</p>
                                 </div>
+                            </div>
 
                         </div>
                     </div>
                     <div class="alingboton">
                         <div class="form-group col-md-8">
                             <label for="exampleFormControlTextarea1">Descripción</label>
-                            <textarea class="form-control" required id="exampleFormControlTextarea1" rows="4" [(ngModel)]="curs.descripcion"  #desC="ngModel" name="descripcion"></textarea>
+                            <textarea class="form-control" required id="exampleFormControlTextarea1" rows="4"
+                                [(ngModel)]="curs.descripcion" #desC="ngModel" name="descripcion"></textarea>
                             <div *ngIf="(desC.invalid && (desC.dirty || desC.touched))">
-                                
-                                <p class="text-danger" *ngIf="desC.errors.required">Campo requerido</p>                    
+
+                                <p class="text-danger" *ngIf="desC.errors.required">Campo requerido</p>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-15">
                             <label for="inputState">Estado</label>
-                            <select id="inputState" class="form-control" required [(ngModel)]="curs.estado" name="estado" #estC="ngModel" >
-                                <option value="INICIADO" selected>INICIADO</option>                               
-                                <option value="VISUAL" >VISUAL</option>
+                            <select id="inputState" class="form-control" required [(ngModel)]="curs.estado"
+                                name="estado" #estC="ngModel">
+                                <option value="INICIADO" selected>INICIADO</option>
+                                <option value="VISUAL">VISUAL</option>
                             </select>
                             <div *ngIf="(estC.invalid && (estC.dirty || estC.touched))">
-                                
-                                <p class="text-danger"  *ngIf="estC.errors.required">Campo requerido</p>                    
+
+                                <p class="text-danger" *ngIf="estC.errors.required">Campo requerido</p>
                             </div>
                         </div>
-  
+
                     </div>
                     <div class="alingtitu">
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <div class="alingboton">
                                     <label for="exampleFormControlFile1">Imagen de portada</label>
-                                    <input type="file" accept="image/*" class="form-control-file" id="exampleFormControlFile1" 
-                                    #porC="ngModel" [(ngModel)]="curs.portada" name="portada" (change)="seleccionarArchivo($event)" >
+                                    <input type="file" accept="image/*" class="form-control-file"
+                                        id="exampleFormControlFile1" #porC="ngModel" [(ngModel)]="curs.portada"
+                                        name="portada" (change)="seleccionarArchivo($event)">
                                     <div *ngIf="(porC.invalid && (porC.dirty || porC.touched))">
-                                 
-                                        <p class="text-danger"  *ngIf="porC.errors.accept">Solo se admiten imagenes</p>                    
+
+                                        <p class="text-danger" *ngIf="porC.errors.accept">Solo se admiten imagenes</p>
                                     </div>
                                 </div>
                             </div>
-                           
+
 
                         </div>
                     </div>
@@ -99,33 +103,36 @@
                             <div class="form-group col-md-5">
                                 <div class="alingboton">
                                     <label for="exampleFormControlFile1">Imagen 1</label>
-                                    <input type="file" accept="image/*" class="form-control-file" id="exampleFormControlFile1" 
-                                    #porC="ngModel" [(ngModel)]="curs.imagen1" name="imagen1" (change)="seleccionarArchivo1($event)" >
+                                    <input type="file" accept="image/*" class="form-control-file"
+                                        id="exampleFormControlFile1" #porC="ngModel" [(ngModel)]="curs.imagen1"
+                                        name="imagen1" (change)="seleccionarArchivo1($event)">
                                     <div *ngIf="(porC.invalid && (porC.dirty || porC.touched))">
-                                 
-                                        <p class="text-danger"  *ngIf="porC.errors.accept">Solo se admiten imagenes</p>                    
+
+                                        <p class="text-danger" *ngIf="porC.errors.accept">Solo se admiten imagenes</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group col-md-5">
                                 <div class="alingboton">
                                     <label for="exampleFormControlFile1">Imagen 2</label>
-                                    <input type="file" accept="image/*" class="form-control-file" id="exampleFormControlFile1" 
-                                    #porC="ngModel" [(ngModel)]="curs.imagen2" name="imagen2" (change)="seleccionarArchivo2($event)" >
+                                    <input type="file" accept="image/*" class="form-control-file"
+                                        id="exampleFormControlFile1" #porC="ngModel" [(ngModel)]="curs.imagen2"
+                                        name="imagen2" (change)="seleccionarArchivo2($event)">
                                     <div *ngIf="(porC.invalid && (porC.dirty || porC.touched))">
-                                 
-                                        <p class="text-danger"  *ngIf="porC.errors.accept">Solo se admiten imagenes</p>                    
+
+                                        <p class="text-danger" *ngIf="porC.errors.accept">Solo se admiten imagenes</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group col-md-5">
                                 <div class="alingboton">
                                     <label for="exampleFormControlFile1">Imagen 3</label>
-                                    <input type="file" accept="image/*" class="form-control-file" id="exampleFormControlFile1" 
-                                    #porC="ngModel" [(ngModel)]="curs.imagen3" name="imagen3" (change)="seleccionarArchivo3($event)" >
+                                    <input type="file" accept="image/*" class="form-control-file"
+                                        id="exampleFormControlFile1" #porC="ngModel" [(ngModel)]="curs.imagen3"
+                                        name="imagen3" (change)="seleccionarArchivo3($event)">
                                     <div *ngIf="(porC.invalid && (porC.dirty || porC.touched))">
-                                 
-                                        <p class="text-danger"  *ngIf="porC.errors.accept">Solo se admiten imagenes</p>                    
+
+                                        <p class="text-danger" *ngIf="porC.errors.accept">Solo se admiten imagenes</p>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +144,8 @@
 
                     <br>
                     <div class="alingboton">
-                        <button  (click)="alta()" *ngIf="curs.id == 0" [disabled]="!addCursoForm.form.valid" type="submit" class="btn btn-primary btn-md">Crear</button>
+                        <button (click)="alta()" *ngIf="curs.id == 0" [disabled]="!addCursoForm.form.valid"
+                            type="submit" class="btn btn-primary btn-md">Crear</button>
                     </div>
                 </form>
 
@@ -191,7 +199,7 @@
                 <div class="sidebar__link">
                     <i class="fa fa-folder-open"></i>
                     <a routerLink="/admin-curso-baja">Cursos Finalizados</a>
-                  </div>
+                </div>
                 <div class="sidebar__link">
                     <i class="fa fa-graduation-cap"></i>
                     <a routerLink="/asign-curso-federado">Asignar federado a curso</a>

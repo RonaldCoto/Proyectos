@@ -50,9 +50,19 @@ export class FederadosService {
     return this.http.get(`${this.url}lista_evaluaciones_por_curso.php?idcurso=${idcurso}`);
   }
 
-  
+
   //lista todas las notas de las evaluaciones de los cursos que tiene inscrito con el id del federado logueado
   lista_notas(codigo: number) {
     return this.http.get(`${this.url}notas.php?codigo=${codigo}`);
+  }
+
+  //lista todos los cursos finalizados con el id del federado logueado
+  lista_cursos_finalizado(codigo: number) {
+    return this.http.get(`${this.url}list_cursos_finalizado.php?codigo=${codigo}`);
+  }
+
+  //lista todas las notas de curso finalizado segun la persona logueada
+  lista_notas_cursofinalizado(codigo: number, codigo2: number) {
+    return this.http.get(`${this.url}listar_notas_curso_finalizado.php?codigo=${codigo}&codigo2=${codigo2}`);
   }
 }

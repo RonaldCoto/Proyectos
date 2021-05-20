@@ -44,4 +44,10 @@ export class CursosService {
   listar_cursos_visual_detalle(codigo: number) {
     return this.http.get(`${this.url}detalle_curso.php?codigo=${codigo}`);
   }
+
+  setSelectedIdc(idselected) {
+    localStorage.setItem('SelectedIdcursfinal', idselected);
+  }
+
+
 }

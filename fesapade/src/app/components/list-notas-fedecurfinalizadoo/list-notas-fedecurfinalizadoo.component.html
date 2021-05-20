@@ -15,7 +15,7 @@
             </div>
             <div class="navbar__left">
 
-                <a class="active_link">Administrador</a>
+                <a class="active_link">Federado</a>
             </div>
             <div class="navbar__right">
                 <a href="#">
@@ -30,47 +30,44 @@
                 <!-- MAIN TITLE STARTS HERE -->
 
                 <div class="main__title">
-
                     <div class="main__greeting">
-                        <h1>Adminisitrar cursos</h1>
+                        <h1>Notas del curso: {{cursoname}}</h1>
                         <br>
                     </div>
                 </div>
 
+
+
+                <!-- MAIN TITLE ENDS HERE -->
+                <!--Inicio de contenido-->
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">Curso</th>
-                            <th scope="col">Descripción</th>
-                            <th scope="col">Estado</th>
-                            <th scope="col">Acción</th>
+                            <th scope="col">Evaluación</th>
+                            <th scope="col">Nota</th>
+                            <th scope="col">Porcentaje</th>
+                            <th scope="col">Promedio</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let curs of cursos">
-                            <th scope="row">{{curs.nombre}}</th>
-                            <td>{{curs.descripcion}}</td>
-                            <td>{{curs.estado}}</td>
-                            <td>
-                                <div class="btn-group">
-                                    <a type="button" (click)="listar_federados(curs.id_curso)"
-                                        routerLink="/admin-lista-federados" class="btn btn-primary btn-lg"
-                                        title="Federados matriculados"><i class="fa fa-address-book"
-                                            aria-hidden="true"></i></a>
-
-                                    <a type="button" class="btn btn-danger btn-lg" title="Eliminar"
-                                        (click)="eliminar(curs.id_curso)"><i class="fa fa-trash-o"
-                                            aria-hidden="true"></i></a>
-
-
-                                </div>
-                            </td>
+                        <tr *ngFor="let notas of nota">
+                            <th scope="row">{{notas.nombreevaluacion}}</th>
+                            <td>{{notas.nota}}</td>
+                            <td>{{notas.porcentaje}}%</td>
+                            <td>{{notas.promedio}}</td>
                         </tr>
+                        <tr>
 
+                            <td></td>
+                            <td></td>
+                            <td class="prom" scope="row">Nota Global</td>
+                            <td class="prom">{{suma}}</td>
+
+                        </tr>
                     </tbody>
                 </table>
-                <!-- MAIN TITLE ENDS HERE -->
-
+                <!--Fin de contenido-->
 
             </div>
         </main>
@@ -90,48 +87,24 @@
                     <i class="fa fa-home"></i>
                     <a routerLink="/index">Home</a>
                 </div>
-                <h2>Empleados</h2>
+                <h2>Acciones</h2>
                 <div class="sidebar__link">
-                    <i class="fa fa-user-plus"></i>
-                    <a routerLink="/add-empleado">Agregar empleado</a>
-                </div>
-                <div class="sidebar__link">
-                    <i class="fa fa-wrench"></i>
-                    <a routerLink="/administrador">Administrar empleados</a>
-                </div>
-
-                <h2>Federados</h2>
-                <div class="sidebar__link">
-                    <i class="fa fa-user-plus"></i>
-                    <a routerLink="/add-federado">Agregar federado</a>
+                    <i class="fa fa-th-list" aria-hidden="true"></i>
+                    <a routerLink="/dashfederado">Mis cursos</a>
                 </div>
                 <div class="sidebar__link">
-                    <i class="fa fa-wrench"></i>
-                    <a routerLink="/admin-federado">Administrar federado</a>
+                    <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                    <a routerLink="/notas-federado">Notas</a>
                 </div>
-
-                <h2>Cursos</h2>
-                <div class="sidebar__link">
-                    <i class="fa fa-plus"></i>
-                    <a routerLink="/crear-curso">Crear curso</a>
-                </div>
-                <div class="sidebar__link ">
-                    <i class="fa fa-wrench"></i>
-                    <a routerLink="/admin-curso">Administrar curso</a>
-                </div>
-                <div class="sidebar__link  active_menu_link">
-                    <i class="fa fa-folder-open"></i>
-                    <a routerLink="/admin-curso-baja">Cursos Finalizados</a>
-                </div>
-                <div class="sidebar__link">
-                    <i class="fa fa-graduation-cap"></i>
-                    <a routerLink="/asign-curso-federado">Asignar federado a curso</a>
+                <div class="sidebar__link active_menu_link">
+                    <i class="fa fa-archive" aria-hidden="true"></i>
+                    <a routerLink="/fedcursos-finalizados">Expediente de notas</a>
                 </div>
 
                 <h2>Perfil</h2>
                 <div class="sidebar__link">
                     <i class="fa fa-pencil-square-o"></i>
-                    <a routerLink="/edit-perfil-admin">Editar mi perfil</a>
+                    <a routerLink="/edit-perfil-federado">Editar mi perfil</a>
                 </div>
                 <div class="sidebar__logout" *ngIf="logoutbtn">
                     <i class="fa fa-sign-out"></i>

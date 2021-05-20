@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
     <meta charset="UTF-8" />
+    <link rel="icon" href="../../../assets/fesapadelogo.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS GRID DASHBOARD</title>
 </head>
@@ -46,19 +47,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr  *ngFor="let eva of evaluaciones">
+                        <tr *ngFor="let eva of evaluaciones">
                             <th scope="row">{{eva.nombre_evaluacion}}</th>
-                            <td>{{eva.porcentaje}}</td>
+                            <td>{{eva.porcentaje}}%</td>
                             <td>{{eva.nota}}</td>
                             <td>{{eva.promedio}}</td>
-                        
+
                         </tr>
-                        <tr >
+                        <tr>
                             <td></td>
                             <td></td>
-                            <td>Nota Final</td>
-                            <td>{{suma}}</td>
-                        
+                            <td class="prom">Nota Final</td>
+                            <td class="prom">{{suma}}</td>
+
                         </tr>
                     </tbody>
                 </table>
@@ -112,10 +113,10 @@
                     <i class="fa fa-wrench"></i>
                     <a routerLink="/admin-curso">Administrar curso</a>
                 </div>
-                <div class="sidebar__link  active_menu_link" >
+                <div class="sidebar__link  active_menu_link">
                     <i class="fa fa-folder-open"></i>
                     <a routerLink="/admin-curso-baja">Cursos Finalizados</a>
-                  </div>
+                </div>
                 <div class="sidebar__link">
                     <i class="fa fa-graduation-cap"></i>
                     <a routerLink="/asign-curso-federado">Asignar federado a curso</a>

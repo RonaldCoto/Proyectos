@@ -2,28 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { FederadosService } from 'src/app/services/federados.service';
-
+import { CursosService } from 'src/app/services/cursos.service';
 @Component({
-  selector: 'app-notasfederado',
-  templateUrl: './notasfederado.component.html',
-  styleUrls: ['./notasfederado.component.css']
+  selector: 'app-list-cursos-fede-finalizado',
+  templateUrl: './list-cursos-fede-finalizado.component.html',
+  styleUrls: ['./list-cursos-fede-finalizado.component.css']
 })
-export class NotasfederadoComponent {
+export class ListCursosFedeFinalizadoComponent {
   loginbtn: boolean;
   logoutbtn: boolean;
   public usuario = JSON.parse(localStorage.getItem('usuario'));
+  public cursoid = JSON.parse(localStorage.getItem('SelectedIdcursfinal'));
   //variable para mostrar u ocultar el sidebar
   contentHighlighted: boolean = false;
-  nota = null;
-  prom = null;
-  nomb = null;
-  suma = 0;
-  constructor(public authService: AuthService, public federado: FederadosService) {
 
+  //arreglo para almacenar cursos del federado segun su ID
+  fed = null;
+
+  suma=0;
+  constructor(public authService: AuthService, public federado: FederadosService, public curso: CursosService) {
     authService.getLoggedInName.subscribe(name => this.changeName(name));
     if (this.authService.isLoggedIn()) {
 
-      console.log("loggedin");
       this.loginbtn = false;
       this.logoutbtn = true
     }
@@ -44,28 +44,13 @@ export class NotasfederadoComponent {
   }
 
   ngOnInit() {
-    console.log(this.usuario);
-
+    //console.log(this.usuario);
     //si hay un empleado seleccionado para editar
     if (this.usuario != null) {
-      //se consume el servicio de federados, invocando el metodo que lista las publicaciones del curso...
-      //que ha seleccionado el federado
+      // se consume el servicio de federados, donde se invoca el metodo que trae los cursos a los que pertenece el
+      // federado actualmente logueado
       let codFederado = this.usuario.id_fed;
-
-      this.federado.lista_cursos(parseInt(codFederado)).subscribe(result => this.nomb = result);
-      this.federado.lista_notas(parseInt(codFederado)).subscribe(result => this.nota = result);
-      this.federado.lista_notas(parseInt(codFederado)).subscribe(result => {
-        this.prom = result
-
-        for (var i = 0; i < this.prom.length; i++) {
-
-          this.suma += Number(this.prom[i].promedio);
-          this.suma=Number(this.suma.toFixed(2));
-        }
-
-
-        console.log(this.suma);
-      });
+      this.federado.lista_cursos_finalizado(parseInt(codFederado)).subscribe(result => this.fed = result);
 
 
 
@@ -73,4 +58,9 @@ export class NotasfederadoComponent {
 
   }
 
+  listar_notas(codigo) {
+
+    this.curso.setSelectedIdc(codigo);
+
+  }
 }

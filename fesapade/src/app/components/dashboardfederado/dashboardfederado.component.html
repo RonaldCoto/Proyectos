@@ -1,6 +1,7 @@
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <link rel="icon" href="../../../assets/fesapadelogo.ico">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CSS GRID DASHBOARD</title>
@@ -31,7 +32,7 @@
         <div class="main__title">
 
           <div class="main__greeting">
-            <h1>Hola Javier</h1>
+            <h1>Hola {{usuario.nombre}}</h1>
             <p>Bienvenido al dashboard de alumno federado</p>
           </div>
         </div>
@@ -47,19 +48,21 @@
             <h1 class="text-dark">Mis cursos</h1>
 
             <div class="team row">
-              <div *ngFor="let curso of fed"  class="col-md-4 col-12 text-center">
+              <div *ngFor="let curso of fed" class="col-md-4 col-12 text-center">
                 <div class="card mr-2 d-inline-block shadow-lg">
                   <div class="card-img-top">
-                    <img src="http://localhost/recursos/imagenes/portadas_cursos/{{curso.portada}}" alt="Member" class="img-fluid">
+                    <img src="http://localhost/recursos/imagenes/portadas_cursos/{{curso.portada}}" alt="Member"
+                      class="img-fluid">
                   </div>
-   
+
                   <div class="card-body">
                     <h3 class="card-title">{{curso.nombrecurso}}</h3>
                     <p class="text-black-50">Instructor: {{curso.nombreempleado}}</p>
 
                     <br><br>
                     <div class="btn-content">
-                      <button  role="link" routerLink="/publicaciones-curso" class="btn2" (click)="pubscurso(curso.id_curso)">Ir al curso</button>
+                      <button role="link" routerLink="/publicaciones-curso" class="btn2"
+                        (click)="pubscurso(curso.id_curso)">Ir al curso</button>
 
                     </div>
                   </div>
@@ -101,6 +104,10 @@
         <div class="sidebar__link">
           <i class="fa fa-check-square-o" aria-hidden="true"></i>
           <a routerLink="/notas-federado">Notas</a>
+        </div>
+        <div class="sidebar__link">
+          <i class="fa fa-archive" aria-hidden="true"></i>
+          <a routerLink="/fedcursos-finalizados">Expediente de notas</a>
         </div>
 
         <h2>Perfil</h2>

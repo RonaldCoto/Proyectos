@@ -54,6 +54,8 @@ import { DetallecursoComponent } from './components/detallecurso/detallecurso.co
 import { AdministrarcursosbajaComponent } from './components/administrarcursosbaja/administrarcursosbaja.component';
 import { AdminlistafederadoComponent } from './components/adminlistafederado/adminlistafederado.component';
 import { AdminlistanotasComponent } from './components/adminlistanotas/adminlistanotas.component';
+import { ListCursosFedeFinalizadoComponent } from './components/list-cursos-fede-finalizado/list-cursos-fede-finalizado.component';
+import { ListNotasFedecurfinalizadooComponent } from './components/list-notas-fedecurfinalizadoo/list-notas-fedecurfinalizadoo.component';
 
 
 
@@ -99,6 +101,8 @@ import { AdminlistanotasComponent } from './components/adminlistanotas/adminlist
     AdministrarcursosbajaComponent,
     AdminlistafederadoComponent,
     AdminlistanotasComponent,
+    ListCursosFedeFinalizadoComponent,
+    ListNotasFedecurfinalizadooComponent,
     
   ],
   imports: [

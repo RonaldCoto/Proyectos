@@ -1,6 +1,7 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link rel="icon" href="../../../assets/fesapadelogo.ico">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS GRID DASHBOARD</title>
@@ -43,42 +44,47 @@
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <label for="formGroupExampleInput">Nombres</label>
-                                <input type="text" required pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" class="form-control"  #nomC="ngModel" 
-                                    id="formGroupExampleInput" autocomplete="off" [(ngModel)]="feds.nombre" name="nombre">
-                                    <div *ngIf="(nomC.invalid && (nomC.dirty || nomC.touched))">
-                                        <p class="text-danger" *ngIf="nomC.errors.pattern">Solo se permiten letras</p>
-                                        <p class="text-danger" *ngIf="nomC.errors.required">Campo requerido</p>                    
-                                    </div>
-  
+                                <input type="text" required pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" class="form-control"
+                                    #nomC="ngModel" id="formGroupExampleInput" autocomplete="off"
+                                    [(ngModel)]="feds.nombre" name="nombre">
+                                <div *ngIf="(nomC.invalid && (nomC.dirty || nomC.touched))">
+                                    <p class="text-danger" *ngIf="nomC.errors.pattern">Solo se permiten letras</p>
+                                    <p class="text-danger" *ngIf="nomC.errors.required">Campo requerido</p>
+                                </div>
+
                             </div>
                             <div class="form-group col-md-5">
                                 <label for="formGroupExampleInput">Apellidos</label>
-                                <input type="text" required pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" class="form-control" #apelC="ngModel" 
-                                    id="formGroupExampleInput1" autocomplete="off" [(ngModel)]="feds.apellido" name="apellido">
-                                    <div *ngIf="(apelC.invalid && (apelC.dirty || apelC.touched))">
-                                        <p class="text-danger" *ngIf="apelC.errors.pattern">Solo se permiten letras</p>
-                                        <p class="text-danger" *ngIf="apelC.errors.required">Campo requerido</p>                    
-                                    </div>
-  
+                                <input type="text" required pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$" class="form-control"
+                                    #apelC="ngModel" id="formGroupExampleInput1" autocomplete="off"
+                                    [(ngModel)]="feds.apellido" name="apellido">
+                                <div *ngIf="(apelC.invalid && (apelC.dirty || apelC.touched))">
+                                    <p class="text-danger" *ngIf="apelC.errors.pattern">Solo se permiten letras</p>
+                                    <p class="text-danger" *ngIf="apelC.errors.required">Campo requerido</p>
+                                </div>
+
                             </div>
                             <div class="form-group col-md-10">
                                 <label for="formGroupExampleInput">Dirección</label>
-                                <input type="text" required pattern="^[#.0-9a-zA-ZñÑáéíóúÁÉÍÓÚ\s,-]+$" class="form-control" #dirC="ngModel" 
-                                    id="formGroupExampleInput2" autocomplete="off" [(ngModel)]="feds.direccion" name="direccion">
-                                    <div *ngIf="(dirC.invalid && (dirC.dirty || dirC.touched))">    
-                                        <p class="text-danger" *ngIf="dirC.errors.required">Campo requerido</p>
-                                        <p class="text-danger" *ngIf="dirC.errors.pattern">Solo se permiten comas</p>                      
-                                    </div>
-  
+                                <input type="text" required pattern="^[#.0-9a-zA-ZñÑáéíóúÁÉÍÓÚ\s,-]+$"
+                                    class="form-control" #dirC="ngModel" id="formGroupExampleInput2" autocomplete="off"
+                                    [(ngModel)]="feds.direccion" name="direccion">
+                                <div *ngIf="(dirC.invalid && (dirC.dirty || dirC.touched))">
+                                    <p class="text-danger" *ngIf="dirC.errors.required">Campo requerido</p>
+                                    <p class="text-danger" *ngIf="dirC.errors.pattern">Solo se permiten comas</p>
+                                </div>
+
                             </div>
                             <div class="form-group col-md-5">
                                 <label for="formGroupExampleInput">Contraseña</label>
-                                <input type="password" required class="form-control" id="formGroupExampleInput4" #passwdC="ngModel" 
-                                    autocomplete="off"  minlength="8" [(ngModel)]="feds.password" name="password">
-                                    <div *ngIf="(passwdC.invalid && (passwdC.dirty || passwdC.touched))">                    
-                                        <p class="text-danger" *ngIf="passwdC.errors.required">Campo requerido</p>
-                                        <p class="text-danger" *ngIf="passwdC.errors.minlength">Debe tener 8 caracteres como minimo</p>                     
-                                    </div>
+                                <input type="password" required class="form-control" id="formGroupExampleInput4"
+                                    #passwdC="ngModel" autocomplete="off" minlength="8" [(ngModel)]="feds.password"
+                                    name="password">
+                                <div *ngIf="(passwdC.invalid && (passwdC.dirty || passwdC.touched))">
+                                    <p class="text-danger" *ngIf="passwdC.errors.required">Campo requerido</p>
+                                    <p class="text-danger" *ngIf="passwdC.errors.minlength">Debe tener 8 caracteres como
+                                        minimo</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -86,36 +92,39 @@
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <label for="formGroupExampleInput">Email</label>
-                                <input type="email" required  pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
-                                class="form-control" id="formGroupExampleInput3" autocomplete="off" 
-                                [(ngModel)]="feds.email" name="email" #emaC="ngModel">
+                                <input type="email" required
+                                    pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
+                                    class="form-control" id="formGroupExampleInput3" autocomplete="off"
+                                    [(ngModel)]="feds.email" name="email" #emaC="ngModel">
                                 <div *ngIf="(emaC.invalid && (emaC.dirty || emaC.touched))">
                                     <p class="text-danger" *ngIf="emaC.errors.pattern">Formato de email incorrecto</p>
-                                    <p class="text-danger" *ngIf="emaC.errors.required">Campo requerido</p>                    
+                                    <p class="text-danger" *ngIf="emaC.errors.required">Campo requerido</p>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-15">
                                     <label for="inputState">Estado</label>
-                                    <select id="inputState" class="form-control" required [(ngModel)]="feds.estado" name="estado" #estC="ngModel" >
+                                    <select id="inputState" class="form-control" required [(ngModel)]="feds.estado"
+                                        name="estado" #estC="ngModel">
                                         <option value="ALTA" selected>ALTA</option>
-                                        <option value="BAJA" >BAJA</option>
+                                        <option value="BAJA">BAJA</option>
                                     </select>
                                     <div *ngIf="(estC.invalid && (estC.dirty || estC.touched))">
-                                        
-                                        <p class="text-danger" *ngIf="estC.errors.required">Campo requerido</p>                    
+
+                                        <p class="text-danger" *ngIf="estC.errors.required">Campo requerido</p>
                                     </div>
                                 </div>
-          
+
                             </div>
-  
+
                         </div>
                     </div>
                     <br>
-                      <div class="alingboton">
-                          <button type="submit" class="btn btn-primary btn-md"  (click)="modificacion()"   *ngIf="feds.id_federado !== 0"
-                          [disabled]="!validatedForm.form.valid">Actualizar federado</button>
-                      </div>
+                    <div class="alingboton">
+                        <button type="submit" class="btn btn-primary btn-md" (click)="modificacion()"
+                            *ngIf="feds.id_federado !== 0" [disabled]="!validatedForm.form.valid">Actualizar
+                            federado</button>
+                    </div>
                 </form>
 
             </div>
@@ -168,7 +177,7 @@
                 <div class="sidebar__link">
                     <i class="fa fa-folder-open"></i>
                     <a routerLink="/admin-curso-baja">Cursos Finalizados</a>
-                  </div>
+                </div>
                 <div class="sidebar__link">
                     <i class="fa fa-graduation-cap"></i>
                     <a routerLink="/asign-curso-federado">Asignar federado a curso</a>
