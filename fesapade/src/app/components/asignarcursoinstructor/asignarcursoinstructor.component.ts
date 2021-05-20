@@ -6,6 +6,7 @@ import { EmpleadosService } from '../../services/empleados.service';
 import {AsignacionesCursosService} from '../../services/asignaciones-cursos.service';
 import {ActivatedRoute} from '@angular/router'
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-asignarcursoinstructor',
   templateUrl: './asignarcursoinstructor.component.html',
@@ -36,7 +37,7 @@ export class AsignarcursoinstructorComponent{
 
   constructor(public authService: AuthService,public cursoServicio: CursosService,
     public actualizarService: ActualizarService,public empleadoServicio: EmpleadosService,
-    public asignacionesCursosService:AsignacionesCursosService,private confirmationDialogService: ConfirmationDialogService
+    public asignacionesCursosService:AsignacionesCursosService,private confirmationDialogService: ConfirmationDialogService,public toastr: ToastrService
     ) { 
      
       authService.getLoggedInName.subscribe(name => this.changeName(name));
@@ -79,7 +80,7 @@ export class AsignarcursoinstructorComponent{
 
      //metodo que consume el servicio de asignaciones_cursos para agregar una nueva asignacion
  alta() {
-  this.confirmationDialogService.confirm('¡ALERTA!', 'Esta a punto de designar a un instructor en un curso.,\n Si lo hace este instructor no podrá ser eliminado ni removido del curso.\n¿Desea continuar?')
+  this.confirmationDialogService.confirm('¡ALERTA!', 'Esta a punto de designar a un instructor en un curso.Si lo hace este instructor no podrá ser eliminado ni removido del curso.¿Desea continuar?')
   .then((confirmed) =>{
 
           if (confirmed){
@@ -88,7 +89,8 @@ export class AsignarcursoinstructorComponent{
     
                   this.asignacionesCursosService.alta(this.curs).subscribe(datos => {
                     if (datos['resultado'] == 'OK') {
-                      alert(datos['mensaje']);
+                      this.toastr.success(datos['mensaje'], 'Perfecto!');
+                     // alert(datos['mensaje']);
     
                        this.curs = { id_curso: 0,
                         nombre: null,
@@ -101,7 +103,8 @@ export class AsignarcursoinstructorComponent{
                         id_empleado:null};
                         this.empleados = null;
                      }else{
-                         alert(datos['mensaje']);
+                      this.toastr.error(datos['mensaje'], 'Error!');
+                         
                       }
                     });
                     }else{
