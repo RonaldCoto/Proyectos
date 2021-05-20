@@ -1,6 +1,7 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link rel="icon" href="../../../assets/fesapadelogo.ico">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS GRID DASHBOARD</title>
@@ -41,12 +42,12 @@
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <label for="formGroupExampleInput">Curso</label>
-                                <input type="text"  class="form-control" required #curC="ngModel" [(ngModel)]="curs.nombre" name="curso"
-                                    id="formGroupExampleInput"  readonly>
-                                    <div *ngIf="(curC.invalid && (curC.dirty || curC.touched))">
-                                
-                                        <p class="text-danger" *ngIf="curC.errors.required">Campo requerido</p>                    
-                                    </div>
+                                <input type="text" class="form-control" required #curC="ngModel"
+                                    [(ngModel)]="curs.nombre" name="curso" id="formGroupExampleInput" readonly>
+                                <div *ngIf="(curC.invalid && (curC.dirty || curC.touched))">
+
+                                    <p class="text-danger" *ngIf="curC.errors.required">Campo requerido</p>
+                                </div>
                             </div>
 
                         </div>
@@ -55,21 +56,22 @@
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <label for="inputState">Instructor encargado</label>
-                                <select id="inputState" class="form-control"  required #instC="ngModel"
-                                 [(ngModel)]="curs.id_empleado" name="instructor">
-                                    <option *ngFor="let emps of empleados"  [value]="emps.id_empleado"
-                                    >{{emps.nombre + ' ' +emps.apellido}}</option> 
-                              </select>
-                              <div *ngIf="(instC.invalid && (instC.dirty || instC.touched))">
-                                
-                                <p class="text-danger" *ngIf="instC.errors.required">Campo requerido</p>                    
-                            </div>
+                                <select id="inputState" class="form-control" required #instC="ngModel"
+                                    [(ngModel)]="curs.id_empleado" name="instructor">
+                                    <option *ngFor="let emps of empleados" [value]="emps.id_empleado">{{emps.nombre + '
+                                        ' +emps.apellido}}</option>
+                                </select>
+                                <div *ngIf="(instC.invalid && (instC.dirty || instC.touched))">
+
+                                    <p class="text-danger" *ngIf="instC.errors.required">Campo requerido</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <br>
                     <div class="alingboton">
-                        <button type="submit"  (click)="alta()"  [disabled]="!validatedForm.form.valid" class="btn btn-primary btn-md">Asignar curso</button>
+                        <button type="submit" (click)="alta()" [disabled]="!validatedForm.form.valid"
+                            class="btn btn-primary btn-md">Asignar curso</button>
                     </div>
                 </form>
                 <!-- MAIN TITLE ENDS HERE -->
@@ -125,7 +127,7 @@
                 <div class="sidebar__link">
                     <i class="fa fa-folder-open"></i>
                     <a routerLink="/admin-curso-baja">Cursos Finalizados</a>
-                  </div>
+                </div>
                 <div class="sidebar__link">
                     <i class="fa fa-graduation-cap"></i>
                     <a routerLink="/asign-curso-federado">Asignar federado a curso</a>

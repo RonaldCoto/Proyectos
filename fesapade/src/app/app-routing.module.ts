@@ -40,6 +40,8 @@ import {DetallecursoComponent} from '../app/components/detallecurso/detallecurso
 import {AdministrarcursosbajaComponent} from '../app/components/administrarcursosbaja/administrarcursosbaja.component';
 import {AdminlistafederadoComponent} from '../app/components/adminlistafederado/adminlistafederado.component';
 import {AdminlistanotasComponent} from '../app/components/adminlistanotas/adminlistanotas.component';
+import{ListCursosFedeFinalizadoComponent} from '../app/components/list-cursos-fede-finalizado/list-cursos-fede-finalizado.component';
+import{ListNotasFedecurfinalizadooComponent} from '../app/components/list-notas-fedecurfinalizadoo/list-notas-fedecurfinalizadoo.component';
 //Guardianes 
 //admin
 import { AuthGuard } from "./guard/auth.guard";
@@ -95,6 +97,8 @@ const routes: Routes = [
     {path: 'list-notas-instructor', component:ListnotasinstructorComponent,canActivate:[Auth2Guard]},
     //{path: 'instructor', component:InstructorComponent,canActivate:[Auth2Guard]} cuando este el login
     {path: 'publicaciones-curso', component:ListpublicacionesComponent,canActivate:[Auth3Guard]},
+    {path: 'fedcursos-finalizados', component:ListCursosFedeFinalizadoComponent,canActivate:[Auth3Guard]},
+    {path: 'notascursos-finalizados', component:ListNotasFedecurfinalizadooComponent,canActivate:[Auth3Guard]}
 ];
 
 @NgModule({

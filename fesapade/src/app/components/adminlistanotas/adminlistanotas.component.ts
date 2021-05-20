@@ -60,6 +60,7 @@ export class AdminlistanotasComponent implements OnInit {
           this.evaluaciones = result2
           this.evaluaciones.forEach(element => {
             this.suma+= parseFloat(element.promedio);
+            this.suma= Number(this.suma.toFixed(2));
           });
         
         } 
@@ -71,7 +72,7 @@ export class AdminlistanotasComponent implements OnInit {
           
 
          //limpiamos el id del federado seleccionado despues de cargar la tabla
-         this.actualizarService.deleteSelectedId();
+         //this.actualizarService.deleteSelectedId();
         }
   
     private changeName(name: boolean): void {

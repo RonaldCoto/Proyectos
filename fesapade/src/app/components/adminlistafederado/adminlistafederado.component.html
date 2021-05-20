@@ -1,6 +1,7 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link rel="icon" href="../../../assets/fesapadelogo.ico">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS GRID DASHBOARD</title>
@@ -46,19 +47,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr  *ngFor="let fed of federados">
+                        <tr *ngFor="let fed of federados">
                             <th scope="row">{{fed.nombre}}</th>
                             <td>{{fed.apellido}}</td>
                             <td>{{fed.email}}</td>
                             <td>
                                 <div class="btn-group">
-                                    <a type="button"  (click)="listar_notas(fed.id_matricula)" routerLink="/admin-lista-notas" class="btn btn-primary btn-lg"
-                                        title="Notas de federado"  ><i class="fa fa-address-book" aria-hidden="true"></i></a>
-                       
+                                    <a type="button" (click)="listar_notas(fed.id_matricula)"
+                                        routerLink="/admin-lista-notas" class="btn btn-primary btn-lg"
+                                        title="Notas de federado"><i class="fa fa-address-book"
+                                            aria-hidden="true"></i></a>
+
                                 </div>
                             </td>
                         </tr>
-                       
+
                     </tbody>
                 </table>
                 <!-- MAIN TITLE ENDS HERE -->
@@ -111,10 +114,10 @@
                     <i class="fa fa-wrench"></i>
                     <a routerLink="/admin-curso">Administrar curso</a>
                 </div>
-                <div class="sidebar__link  active_menu_link" >
+                <div class="sidebar__link  active_menu_link">
                     <i class="fa fa-folder-open"></i>
                     <a routerLink="/admin-curso-baja">Cursos Finalizados</a>
-                  </div>
+                </div>
                 <div class="sidebar__link">
                     <i class="fa fa-graduation-cap"></i>
                     <a routerLink="/asign-curso-federado">Asignar federado a curso</a>
