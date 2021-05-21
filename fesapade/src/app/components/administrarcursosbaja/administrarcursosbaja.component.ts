@@ -21,6 +21,8 @@ export class AdministrarcursosbajaComponent implements OnInit {
 
   //arreglo para almacenar cursos
   cursos = null;
+  //variable que almacena lo digitado en el buscador 
+  texto: string;
   constructor(public authService: AuthService,private cursoServicio: CursosService,
     private router:Router,
     private actualizarService: ActualizarService,
@@ -55,7 +57,18 @@ export class AdministrarcursosbajaComponent implements OnInit {
      
       //invocando metodo para lista de cursos
       this.ListarCursos();
-   
+      this.cursos.snapshotChanges().subscribe(item => {
+        this.cursos = [];
+        item.forEach(element => {
+          let x = element.payload.toJSON();
+          x["$key"] = element.key;
+          
+          this.cursos.push(x);
+         
+        });
+     
+       
+      });
     }
   //metodo que consume el servicio de cursos para listar.
     ListarCursos() {

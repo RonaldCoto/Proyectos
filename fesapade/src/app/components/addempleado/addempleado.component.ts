@@ -55,6 +55,11 @@ export class AddempleadoComponent{
     }
 
     ngOnInit(){
+     this.clave_automatica();
+        
+    }
+
+    clave_automatica(){
       const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
       const charactersLength = characters.length;
       for (let i = 0; i <= 8 ; i++) {
@@ -62,7 +67,6 @@ export class AddempleadoComponent{
       }
 
       this.emps.password=this.result
-        
     }
 
  //metodo que consume el servicio de empleados para agregar un nuevo empleado
@@ -73,7 +77,10 @@ export class AddempleadoComponent{
     this.toastr.success(datos['mensaje'], 'Perfecto!');
   this.generar_cuenta();
   this.emps =  {id: 0,nombre: null,apellido: null,direccion: null,email:null,password:null,id_cate_empleado:0,estado:null
+  
   };
+  this.result = '';
+  this.clave_automatica();
   }else{
   
     this.toastr.error(datos['mensaje'], 'Error!');

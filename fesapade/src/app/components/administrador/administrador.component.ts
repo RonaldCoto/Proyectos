@@ -19,6 +19,9 @@ export class AdministradorComponent{
 
   //arreglo para almacenar empleados
   empleados = null;
+
+   //variable que almacena lo digitado en el buscador 
+   texto: string;
   constructor(public authService: AuthService, public empleadoServicio: EmpleadosService,
     public actualizarService: ActualizarService, public toastr: ToastrService,
     private confirmationDialogService: ConfirmationDialogService) { 
@@ -49,11 +52,26 @@ export class AdministradorComponent{
     ngOnInit(): void {
       //invocando metodo para lista de empleados
       this.ListarEmpleados();
+
+      this.empleados.snapshotChanges().subscribe(item => {
+        this.empleados = [];
+        item.forEach(element => {
+          let x = element.payload.toJSON();
+          x["$key"] = element.key;
+          
+          this.empleados.push(x);
+         
+        });
+     
+       
+      });
     }
     //metodo que consume el servicio de empleados para listar.
   ListarEmpleados() {
     
-    this.empleadoServicio.listar(parseInt(this.usuario.id_emp)).subscribe(result => this.empleados = result);
+    this.empleadoServicio.listar(parseInt(this.usuario.id_emp)).subscribe(result =>{
+      this.empleados = result;
+    } );
     }
 //metodo que consume el servicio de empleados para eliminar un empleado seleccionado
     eliminar(codigo) {

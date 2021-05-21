@@ -58,6 +58,10 @@ import { AdminlistanotasComponent } from './components/adminlistanotas/adminlist
 import { ListCursosFedeFinalizadoComponent } from './components/list-cursos-fede-finalizado/list-cursos-fede-finalizado.component';
 import { ListNotasFedecurfinalizadooComponent } from './components/list-notas-fedecurfinalizadoo/list-notas-fedecurfinalizadoo.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { BuscadorListPipe } from './components/administrador/buscador-list.pipe';
+import { BuscadorListFederadoPipe } from './components/administrarfederado/buscador-list-federado.pipe';
+import { BuscadorListCursosPipe } from './components/administrarcursos/buscador-list-cursos.pipe';
+import { BuscadorListCursosbPipe } from './components/administrarcursosbaja/buscador-list-cursosb.pipe';
 
 
 
@@ -106,6 +110,10 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     ListCursosFedeFinalizadoComponent,
     ListNotasFedecurfinalizadooComponent,
     ConfirmationDialogComponent,
+    BuscadorListPipe,
+    BuscadorListFederadoPipe,
+    BuscadorListCursosPipe,
+    BuscadorListCursosbPipe,
     
   ],
   imports: [

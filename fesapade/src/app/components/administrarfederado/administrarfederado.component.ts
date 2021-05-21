@@ -18,6 +18,9 @@ export class AdministrarfederadoComponent{
   contentHighlighted: boolean = false;
    //arreglo para almacenar federados
    federados = null;
+
+   //variable que almacena lo digitado en el buscador 
+   texto: string;
   constructor(public authService: AuthService,public federadoServicio:FederadosService,
     public actualizarService:ActualizarService,
     public toastr: ToastrService,
@@ -48,10 +51,26 @@ export class AdministrarfederadoComponent{
     ngOnInit(): void {
       //invocando metodo para lista de federados
       this.ListarFederados();
+
+      this.federados.snapshotChanges().subscribe(item => {
+        this.federados = [];
+        item.forEach(element => {
+          let x = element.payload.toJSON();
+          x["$key"] = element.key;
+          
+          this.federados.push(x);
+         
+        });
+     
+       
+      });
     }
     //metodo que consume el servicio de federados para listar.
   ListarFederados() {
-    this.federadoServicio.listar().subscribe(result => this.federados = result);
+    this.federadoServicio.listar().subscribe(result => {
+      this.federados = result;
+     
+    });
     }
 //metodo que consume el servicio de federados para eliminar un federado seleccionado
     eliminar(codigo) {

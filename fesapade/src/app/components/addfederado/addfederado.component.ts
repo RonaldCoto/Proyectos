@@ -56,6 +56,10 @@ result = '';
 
     ngOnInit(){
       //metodo que genera contraseñas por defecto
+     this.clave_automatica();
+    }
+
+    clave_automatica(){
       const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
       const charactersLength = characters.length;
       for (let i = 0; i <= 8 ; i++) {
@@ -63,7 +67,6 @@ result = '';
       }
 
       this.feds.password=this.result
-        
     }
 
     //metodo que consume el servicio de federados para agregar un nuevo federado
@@ -75,6 +78,8 @@ result = '';
     this.generar_cuenta();
   this.feds =  {id: 0,nombre: null,apellido: null,direccion: null,email:null,password:null,estado:null
   };
+  this.result = '';
+  this.clave_automatica();
   }else{
     this.toastr.error(datos['mensaje'], 'Error!');
   }

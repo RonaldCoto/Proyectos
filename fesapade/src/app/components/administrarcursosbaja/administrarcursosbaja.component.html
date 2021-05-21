@@ -17,6 +17,7 @@
 
                 <a class="active_link">Administrador</a>
             </div>
+           
             <div class="navbar__right">
                 <a href="#">
                     <img width="30" src="../../../assets/user.svg" alt="" />
@@ -36,8 +37,12 @@
                         <br>
                     </div>
                 </div>
-
-                <table class="table table-hover">
+                <br>
+                <label>Buscar curso:</label>    
+                <div class="form-group mb-4">
+                  <input class="form-control" type="text" [(ngModel)]="texto" placeholder="Ingrese el nombre del curso">
+                </div>
+                <table class="table table-hover" *ngIf="(cursos | buscadorListCursosb: texto).length > 0; else noResults">
                     <thead>
                         <tr>
                             <th scope="col">Curso</th>
@@ -47,7 +52,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let curs of cursos">
+                        <tr *ngFor="let curs of cursos | buscadorListCursosb: texto">
                             <th scope="row">{{curs.nombre}}</th>
                             <td>{{curs.descripcion}}</td>
                             <td>{{curs.estado}}</td>
@@ -69,6 +74,9 @@
 
                     </tbody>
                 </table>
+                <ng-template #noResults>
+                    <p>No hay resultados para: "{{texto}}".</p>
+                  </ng-template>
                 <!-- MAIN TITLE ENDS HERE -->
 
 
