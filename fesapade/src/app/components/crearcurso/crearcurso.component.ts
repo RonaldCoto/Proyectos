@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CursosService } from '../../services/cursos.service';
 import { AuthService } from "../../services/auth.service";
 import { HttpClient, HttpResponse } from '@angular/common/http';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-crearcurso',
   templateUrl: './crearcurso.component.html',
@@ -31,7 +31,8 @@ export class CrearcursoComponent{
    base64textString3: null
   }
   
-  constructor(public authService: AuthService,private cursoServicio: CursosService) { 
+  constructor(public authService: AuthService,private cursoServicio: CursosService,
+    public toastr: ToastrService) { 
     authService.getLoggedInName.subscribe(name => this.changeName(name));
     if(this.authService.isLoggedIn())
     {
@@ -138,7 +139,7 @@ _handleReaderLoaded3(readerEvent) {
    
     this.cursoServicio.alta(this.curs).subscribe(datos => {
     if (datos['resultado'] == 'OK') {
-    alert(datos['mensaje']);
+      this.toastr.success(datos['mensaje'], 'Perfecto!');
     
     this.curs = {
       id: 0,
@@ -155,7 +156,7 @@ _handleReaderLoaded3(readerEvent) {
      base64textString3: null
     }
     }else{
-      alert(datos['mensaje']);
+      this.toastr.error(datos['mensaje'], 'Error!');
     }
     });
     }

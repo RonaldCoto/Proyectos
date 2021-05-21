@@ -97,7 +97,7 @@ contentHighlighted: boolean = false;
     
     //metodo que consume el servicio de evaluaciones para modificar una evaluacion segun el id seleccionado
   modificacion() {
-    console.log(this.evalua);
+   
    
      this.evaluacionServicio.modificacion(this.evalua).subscribe(datos => {    
      if (datos['resultado'] == 'OK') {

@@ -3,7 +3,8 @@ import { AuthService } from "../../services/auth.service";
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { EmpleadosService } from '../../services/empleados.service';
 import { ActualizarService } from '../../services/actualizar.service';
-
+import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-administrador',
   templateUrl: './administrador.component.html',
@@ -19,7 +20,8 @@ export class AdministradorComponent{
   //arreglo para almacenar empleados
   empleados = null;
   constructor(public authService: AuthService, public empleadoServicio: EmpleadosService,
-    public actualizarService: ActualizarService) { 
+    public actualizarService: ActualizarService, public toastr: ToastrService,
+    private confirmationDialogService: ConfirmationDialogService) { 
     authService.getLoggedInName.subscribe(name => this.changeName(name));
     if(this.authService.isLoggedIn())
     {
@@ -55,17 +57,24 @@ export class AdministradorComponent{
     }
 //metodo que consume el servicio de empleados para eliminar un empleado seleccionado
     eliminar(codigo) {
-      if (confirm('¿Desea eliminar este empleado?')) {
+      this.confirmationDialogService.confirm('¡ALERTA!', 'Esta a punto de eliminar a un empleado, todas sus publicaciones y evaluaciones serán eliminadas. ¿Desea continuar?')
+    .then((confirmed) =>{
+
+         if (confirmed){
       this.empleadoServicio.baja(codigo).subscribe(datos => {
       if (datos['resultado'] == 'OK') {
-      alert(datos['mensaje']);
+        this.toastr.success(datos['mensaje'], 'Perfecto!');
       this.ListarEmpleados();
       }else{
-        alert(datos['mensaje']);
+        this.toastr.error(datos['mensaje'], 'Error!');
       }
       });
       }
+    })
+    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+    
       }
+      
 //metodo que invoca al servicio "actualizar" donde se almacenan los id 
       editar(codigo){
         this.actualizarService.setSelectedId(codigo);

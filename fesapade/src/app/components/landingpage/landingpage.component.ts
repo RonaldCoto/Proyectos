@@ -20,8 +20,7 @@ export class LandingpageComponent {
   {
     //si hay un usuario logueado podremos deshabilitar botones con *ngIf="loginbtn" y habilitar con *ngIf="logoutbtn"
   var varuser = localStorage.getItem("usuario");
-  console.log(varuser);
-  console.log("loggedin");
+  
   this.loginbtn=false;
   this.logoutbtn=true
   }

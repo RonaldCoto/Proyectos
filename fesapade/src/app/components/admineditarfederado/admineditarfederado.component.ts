@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { FederadosService } from '../../services/federados.service';
-import { ActualizarService } from '../../services/actualizar.service'
+import { ActualizarService } from '../../services/actualizar.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-admineditarfederado',
   templateUrl: './admineditarfederado.component.html',
@@ -25,7 +26,7 @@ export class AdmineditarfederadoComponent{
    estado:null
   }
   constructor(public authService: AuthService,public federadoServicio:FederadosService,
-     public actualizarService: ActualizarService) { 
+     public actualizarService: ActualizarService,public toastr: ToastrService) { 
     authService.getLoggedInName.subscribe(name => this.changeName(name));
     if(this.authService.isLoggedIn())
     {
@@ -69,13 +70,13 @@ export class AdmineditarfederadoComponent{
    
     this.federadoServicio.modificacion(this.feds).subscribe(datos => {    
     if (datos['resultado'] == 'OK') {
-    alert(datos['mensaje']);
+      this.toastr.success(datos['mensaje'], 'Perfecto!');
     
     
     this.feds =  {id_federado: 0,nombre: null,apellido: null,direccion: null,email:null,password:null,estado:null
     };
     }else{
-      alert(datos['mensaje']);
+      this.toastr.error(datos['mensaje'], 'Error!');
     }
     });
     }

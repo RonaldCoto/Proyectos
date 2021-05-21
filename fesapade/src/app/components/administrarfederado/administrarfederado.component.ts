@@ -3,6 +3,8 @@ import { AuthService } from "../../services/auth.service";
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { FederadosService } from '../../services/federados.service';
 import { ActualizarService } from '../../services/actualizar.service';
+import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-administrarfederado',
   templateUrl: './administrarfederado.component.html',
@@ -17,7 +19,9 @@ export class AdministrarfederadoComponent{
    //arreglo para almacenar federados
    federados = null;
   constructor(public authService: AuthService,public federadoServicio:FederadosService,
-    public actualizarService:ActualizarService) { 
+    public actualizarService:ActualizarService,
+    public toastr: ToastrService,
+    private confirmationDialogService: ConfirmationDialogService) { 
     authService.getLoggedInName.subscribe(name => this.changeName(name));
     if(this.authService.isLoggedIn())
     {
@@ -51,16 +55,22 @@ export class AdministrarfederadoComponent{
     }
 //metodo que consume el servicio de federados para eliminar un federado seleccionado
     eliminar(codigo) {
-      if (confirm('¿Desea eliminar este federado?')) {
+      this.confirmationDialogService.confirm('¡ALERTA!', 'Esta a punto de eliminar un perfil de federado. ¿Desea continuar?')
+      .then((confirmed) =>{
+  
+      if (confirmed) {
       this.federadoServicio.baja(codigo).subscribe(datos => {
       if (datos['resultado'] == 'OK') {
-      alert(datos['mensaje']);
+        this.toastr.success(datos['mensaje'], 'Perfecto!');
       this.ListarFederados();
       }else{
-        alert(datos['mensaje']);
+        this.toastr.error(datos['mensaje'], 'Error!');
       }
       });
       }
+    })
+    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+    
       }
 //metodo que invoca al servicio "actualizar" donde se almacenan los id 
       editar(codigo){

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { EmpleadosService } from '../../services/empleados.service'
-import { ActualizarService } from '../../services/actualizar.service'
+import { EmpleadosService } from '../../services/empleados.service';
+import { ActualizarService } from '../../services/actualizar.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-admineditarempleado',
   templateUrl: './admineditarempleado.component.html',
@@ -28,7 +29,7 @@ export class AdmineditarempleadoComponent{
    estado:null
   }
   constructor(public authService: AuthService, public empleadoServicio: EmpleadosService,
-    public actualizarService: ActualizarService) { 
+    public actualizarService: ActualizarService,public toastr: ToastrService) { 
     authService.getLoggedInName.subscribe(name => this.changeName(name));
     if(this.authService.isLoggedIn())
     {
@@ -74,13 +75,13 @@ export class AdmineditarempleadoComponent{
    
     this.empleadoServicio.modificacion(this.emps).subscribe(datos => {    
     if (datos['resultado'] == 'OK') {
-    alert(datos['mensaje']);
+      this.toastr.success(datos['mensaje'], 'Perfecto!');
     
     
     this.emps =  {id_empleado: 0,nombre: null,apellido: null,direccion: null,email:null,password:null,id_cate_empleado:0,estado:null
     };
     }else{
-      alert(datos['mensaje']);
+      this.toastr.error(datos['mensaje'], 'Error!');
     }
     });
     }

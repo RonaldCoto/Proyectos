@@ -5,6 +5,8 @@ import { ActualizarService } from '../../services/actualizar.service';
 import { AuthService } from "../../services/auth.service";
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-administrarcursosbaja',
   templateUrl: './administrarcursosbaja.component.html',
@@ -21,7 +23,9 @@ export class AdministrarcursosbajaComponent implements OnInit {
   cursos = null;
   constructor(public authService: AuthService,private cursoServicio: CursosService,
     private router:Router,
-    private actualizarService: ActualizarService) { 
+    private actualizarService: ActualizarService,
+    public toastr: ToastrService,
+    private confirmationDialogService: ConfirmationDialogService) { 
       authService.getLoggedInName.subscribe(name => this.changeName(name));
       if(this.authService.isLoggedIn())
       {
@@ -59,18 +63,25 @@ export class AdministrarcursosbajaComponent implements OnInit {
     
       }
   //metodo que consume el servicio de cursos para eliminar un curso seleccionado
-      eliminar(codigo) {
-        if (confirm('¡PELIGRO!\nEsta a punto de eliminar un curso.\nSi continua se eliminarán todas las publicaciones, notas y evaluaciones realizadas.\n¿Desea continuar?')) {
-        this.cursoServicio.baja(codigo).subscribe(datos => {
-        if (datos['resultado'] == 'OK') {
-        alert(datos['mensaje']);
-        this.ListarCursos();
-        }else{
-          alert('¡Ha ocurrido un error!');
-        }
-        });
-        }
-        }
+  eliminar(codigo) {
+    this.confirmationDialogService.confirm('¡ALERTA!', 'Esta a punto de eliminar un curso. Si continua se eliminarán todas las publicaciones, notas y evaluaciones realizadas. ¿Desea continuar?')
+    .then((confirmed) =>{
+
+
+    if (confirmed) {
+    this.cursoServicio.baja(codigo).subscribe(datos => {
+    if (datos['resultado'] == 'OK') {
+      this.toastr.success(datos['mensaje'], 'Perfecto!');
+    this.ListarCursos();
+    }else{
+      this.toastr.error(datos['mensaje'], 'Error!');
+    }
+    });
+    }
+  })
+  .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  
+    }
   //metodo que invoca al servicio "actualizar" donde se almacenan los id 
         listar_federados(codigo){
           

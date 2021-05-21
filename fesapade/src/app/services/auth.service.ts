@@ -41,7 +41,7 @@ baseUrl:string = "http://localhost/recursos/login";
   
         //validando si la cuenta de usuario usuario esta de baja
       if(Users[0].estado=="BAJA"){
-       alert("Su cuenta ha sido dada de baja.\nContacte con el administrador para solucionar este problema."); 
+        this.toastr.error("Contacte con el administrador para solucionar este problema.", 'Su cuenta ha sido dada de baja!');
        this.redirectUrl='/login';
       }else{
         this.setToken(Users[0].name);

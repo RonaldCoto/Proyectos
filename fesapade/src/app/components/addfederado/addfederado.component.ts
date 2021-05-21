@@ -3,6 +3,7 @@ import { AuthService } from "../../services/auth.service";
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { FederadosService } from '../../services/federados.service';
 import { DatePipe } from "@angular/common";
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-addfederado',
   templateUrl: './addfederado.component.html',
@@ -26,7 +27,8 @@ result = '';
    password:null,
    estado:null
   }
-  constructor(public authService: AuthService,public federadoServicio:FederadosService) { 
+  constructor(public authService: AuthService,public federadoServicio:FederadosService,
+    public toastr: ToastrService) { 
     authService.getLoggedInName.subscribe(name => this.changeName(name));
     if(this.authService.isLoggedIn())
     {
@@ -69,17 +71,17 @@ result = '';
   this.federadoServicio.alta(this.feds).subscribe(datos => {
   if (datos['resultado'] == 'OK') {
   
-    alert(datos['mensaje']);
-   // this.generar_cuenta();
+    this.toastr.success(datos['mensaje'], 'Perfecto!');
+    this.generar_cuenta();
   this.feds =  {id: 0,nombre: null,apellido: null,direccion: null,email:null,password:null,estado:null
   };
   }else{
-    alert(datos['mensaje']);
+    this.toastr.error(datos['mensaje'], 'Error!');
   }
   });
   }
 
-  /*generar_cuenta(){
+  generar_cuenta(){
     var date = Date.now();
    
     var fileContents = "Email: "+this.feds.email+" "+" "+"\n"+"Password: "+this.feds.password;
@@ -98,6 +100,6 @@ result = '';
         false, false, false, false, 0, null);
     a.dispatchEvent(e);
   
-  }*/
+  }
 
 }

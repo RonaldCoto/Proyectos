@@ -80,7 +80,7 @@ export class AddnotaComponent  {
 
     alta(){
   
-      console.log(this.nota.id_matricula);
+      
       this.notasService.alta(this.nota).subscribe(datos => {
         if (datos['resultado'] == 'OK') {
         

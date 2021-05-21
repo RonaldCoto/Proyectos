@@ -3,8 +3,10 @@ import { AuthService } from "../../services/auth.service";
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { CursosService } from '../../services/cursos.service';
 import { FederadosService } from '../../services/federados.service';
-import { AsignacionesCursosService} from '../../services/asignaciones-cursos.service'
-import { MatriculasService} from '../../services/matriculas.service'
+import { AsignacionesCursosService} from '../../services/asignaciones-cursos.service';
+import { MatriculasService} from '../../services/matriculas.service';
+import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-asignarcurso',
   templateUrl: './asignarcurso.component.html',
@@ -50,7 +52,8 @@ export class AsignarcursoComponent{
    });
   }
   constructor(public authService: AuthService,public federadoServicio: FederadosService,
-    public asignacionCursoService: AsignacionesCursosService,public matriculaService: MatriculasService) { 
+    public asignacionCursoService: AsignacionesCursosService,public matriculaService: MatriculasService,
+    private confirmationDialogService: ConfirmationDialogService,public toastr: ToastrService) { 
 
     authService.getLoggedInName.subscribe(name => this.changeName(name));
     if(this.authService.isLoggedIn())
@@ -66,18 +69,7 @@ export class AsignarcursoComponent{
   }
   ngOnInit() {
      //metodo que consume el servicio de federados para listar los que estan de ALTA.
-    this.federadoServicio.lista_de_alta().subscribe(result => {
-      //almacenamos a los federados en estado de ALTA y BAJA
-      this.federados_pro = result;
-      //Recorremos el arreglo y excluimos a los que estan de BAJA
-      this.federados_pro.forEach(element => {
-        if(element.estado == "ALTA"){
-          //almacenamos unicamente a los federados en estado de ALTA
-          this.federados.push(element);
-         
-        }
-      });
-    });
+   this.listafederados();
   //metodo que consume el servicio asignacionCurso para obtener los datos de cursos que tengan... 
   //un instructor y esten en estado INICIADO
  this.asignacionCursoService.seleccionar_cursos_asignados_iniciados().subscribe(
@@ -85,6 +77,22 @@ export class AsignarcursoComponent{
   
   );  
        }
+
+       listafederados(){
+        this.federadoServicio.lista_de_alta().subscribe(result => {
+          //almacenamos a los federados en estado de ALTA y BAJA
+          this.federados_pro = result;
+          //Recorremos el arreglo y excluimos a los que estan de BAJA
+          this.federados_pro.forEach(element => {
+            if(element.estado == "ALTA"){
+              //almacenamos unicamente a los federados en estado de ALTA
+              this.federados.push(element);
+             
+            }
+          });
+        });
+       }
+
   private changeName(name: boolean): void {
     this.logoutbtn = name;
     this.loginbtn = !name;
@@ -98,27 +106,31 @@ export class AsignarcursoComponent{
    
  //metodo que consume el servicio de matriculas para agregar una nueva matricula
  alta() {
-   
-   console.log(this.matricula);
+  this.confirmationDialogService.confirm('¡ALERTA!', 'Esta a punto de asignar a un federado en un curso.\nSi lo hace este federado no podrá ser eliminado ni removido del curso.\n¿Desea continuar?')
+  .then((confirmed) =>{
 
-  if (confirm('¡ALERTA!\nEsta a punto de asignar a un federado en un curso.\nSi lo hace este federado no podrá ser eliminado ni removido del curso.\n¿Desea continuar?')) {
+  if (confirmed) {
 
     this.matriculaService.alta(this.matricula).subscribe(datos => {
       if (datos['resultado'] == 'OK') {
-      alert(datos['mensaje']);
-     
+        this.toastr.success(datos['mensaje'], 'Perfecto!');
+       
       this.matricula={
         id_asignacion_curso:null,
         id_federado:null
       }
       this.selectedIns= '';
-     
+      this.federados=[];
+      this.listafederados();
       }else{
-        alert(datos['mensaje']);
+        this.toastr.error(datos['mensaje'], 'Error!');
       }
       });
    
   }
+})
+.catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+
  }
 
 }

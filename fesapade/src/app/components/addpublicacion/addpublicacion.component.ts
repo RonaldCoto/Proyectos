@@ -33,7 +33,7 @@ export class AddpublicacionComponent {
     authService.getLoggedInName.subscribe(name => this.changeName(name));
     if (this.authService.isLoggedIn()) {
 
-      console.log("loggedin");
+    
       this.loginbtn = false;
       this.logoutbtn = true
     }

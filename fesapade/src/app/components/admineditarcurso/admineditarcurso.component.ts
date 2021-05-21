@@ -5,7 +5,8 @@ import { parse } from 'path';
 import { AuthService } from "../../services/auth.service";
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { SelectMultipleControlValueAccessor } from '@angular/forms';
-
+import { ToastrService } from 'ngx-toastr';
+import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 @Component({
   selector: 'app-admineditarcurso',
   templateUrl: './admineditarcurso.component.html',
@@ -36,7 +37,8 @@ export class AdmineditarcursoComponent{
   }
   
   constructor(public authService: AuthService,public cursoServicio: CursosService,
-    public actualizarService: ActualizarService) { 
+    public actualizarService: ActualizarService, public toastr: ToastrService,
+    private confirmationDialogService: ConfirmationDialogService) { 
     authService.getLoggedInName.subscribe(name => this.changeName(name));
     if(this.authService.isLoggedIn())
     {
@@ -153,9 +155,16 @@ _handleReaderLoaded3(readerEvent) {
   //metodo que se activa al hacer click en el boton "modificar"
   modificacion() {
    if(this.curs.estado == "FINALIZADO"){
-    if (confirm('¡ALERTA!\nEsta a punto de finalizar un curso.\nUn curso FINALIZADO no será accesible para ningun instructor ni podrá ser INICIADO de nuevo.\n¿Desea continuar?')){
- this.update();
-  }
+
+    this.confirmationDialogService.confirm('¡ALERTA!', 'Esta a punto de finalizar un curso. \nUn curso FINALIZADO no será accesible para ningún instructor ni podrá ser INICIADO de nuevo. \n¿Desea continuar?')
+    .then((confirmed) =>{
+
+         if (confirmed){
+         this.update();
+        }
+})
+.catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+
 }else{
   this.update();
 }
@@ -165,7 +174,7 @@ _handleReaderLoaded3(readerEvent) {
     update(){
       this.cursoServicio.modificacion(this.curs).subscribe(datos => {    
         if (datos['resultado'] == 'OK') {
-          alert(datos['mensaje']);
+          this.toastr.success(datos['mensaje'], 'Perfecto!');
           this.curs = {
             id_curso: 0,
             nombre: null,
@@ -181,7 +190,7 @@ _handleReaderLoaded3(readerEvent) {
            base64textString3: null
           }
         }else{
-          alert(datos['mensaje']);
+          this.toastr.error(datos['mensaje'], 'Error!');
         }
         });
     }

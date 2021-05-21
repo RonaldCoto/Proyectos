@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { EmpleadosService } from '../../services/empleados.service'
+import { EmpleadosService } from '../../services/empleados.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-addempleado',
   templateUrl: './addempleado.component.html',
@@ -26,7 +27,8 @@ export class AddempleadoComponent{
    id_cate_empleado:0,
    estado:null
   }
-  constructor(public authService: AuthService,public empleadoServicio:EmpleadosService) { 
+  constructor(public authService: AuthService,public empleadoServicio:EmpleadosService,
+    public toastr: ToastrService) { 
     authService.getLoggedInName.subscribe(name => this.changeName(name));
     if(this.authService.isLoggedIn())
     {
@@ -68,18 +70,18 @@ export class AddempleadoComponent{
    
   this.empleadoServicio.alta(this.emps).subscribe(datos => {
   if (datos['resultado'] == 'OK') {
-  alert(datos['mensaje']);
-  //this.generar_cuenta();
+    this.toastr.success(datos['mensaje'], 'Perfecto!');
+  this.generar_cuenta();
   this.emps =  {id: 0,nombre: null,apellido: null,direccion: null,email:null,password:null,id_cate_empleado:0,estado:null
   };
   }else{
   
-    alert(datos['mensaje']);
+    this.toastr.error(datos['mensaje'], 'Error!');
   }
   });
   }
   //metodo que descarga el correo y contraseña de la nueva cuenta
-  /*generar_cuenta(){
+  generar_cuenta(){
     var date = Date.now();
    
     var fileContents = "Email: "+this.emps.email+" "+" "+"\n" +"Password: "+this.emps.password;
@@ -98,5 +100,5 @@ export class AddempleadoComponent{
         false, false, false, false, 0, null);
     a.dispatchEvent(e);
   
-  }*/
+  }
 }

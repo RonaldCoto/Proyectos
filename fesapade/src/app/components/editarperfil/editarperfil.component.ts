@@ -50,7 +50,7 @@ inst = {
     }
 
     ngOnInit() {
-      console.log(this.usuario);
+     
          //si hay un empleado seleccionado para editar
          if(this.usuario!=null)
        {

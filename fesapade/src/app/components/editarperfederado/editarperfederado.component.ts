@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import {FederadosService} from '../../services/federados.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-editarperfederado',
   templateUrl: './editarperfederado.component.html',
@@ -22,7 +23,7 @@ export class EditarperfederadoComponent{
    password:null,
    estado:"ALTA"
   }
-  constructor(public authService: AuthService, public federadoServicio: FederadosService) { 
+  constructor(public authService: AuthService, public federadoServicio: FederadosService,public toastr: ToastrService) { 
     authService.getLoggedInName.subscribe(name => this.changeName(name));
     if(this.authService.isLoggedIn())
     {
@@ -47,8 +48,8 @@ export class EditarperfederadoComponent{
     
     }
     ngOnInit() {
-      console.log(this.usuario);
-         //si hay un empleado seleccionado para editar
+      
+         //si hay un federado seleccionado para editar
          if(this.usuario!=null)
        {
         //almacenamos el id del localstorage en una variable y mediante el servicio de empleado...
@@ -61,19 +62,19 @@ export class EditarperfederadoComponent{
        }
        }
    
-        //metodo que consume el servicio de empleados para modificar un empleado segun el id seleccionado
+        //metodo que consume el servicio de federados para modificar un federado segun el id seleccionado
      modificacion() {
       
       
        this.federadoServicio.modificacion(this.feds).subscribe(datos => {    
        if (datos['resultado'] == 'OK') {
-       alert(datos['mensaje']);
+        this.toastr.success(datos['mensaje'], 'Perfecto!');
        
        
        this.feds =  {id_federado: 0,nombre: null,apellido: null,direccion: null,email:null,password:null,estado:"ALTA"
        };
        }else{
-         alert(datos['mensaje']);
+        this.toastr.error(datos['mensaje'], 'Error!');
        }
        });
        }

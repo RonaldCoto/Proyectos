@@ -4,6 +4,7 @@ import { FormsModule, FormGroup, FormBuilder, Validators, NgForm } from '@angula
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 declare var ventana4:any;//para utilizar las funciones de javascript
 @Component({
@@ -23,7 +24,7 @@ export class LogInComponent implements OnInit {
   }
   
   constructor(public authservice:AuthService,private formBuilder: FormBuilder, 
-    private http:HttpClient, private router:Router) { }
+    private http:HttpClient, private router:Router,public toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.contacto = this.formBuilder.group({
@@ -66,8 +67,8 @@ export class LogInComponent implements OnInit {
        this.router.navigate([redirect]);
     },
     error => {
-      console.log(error);
-    alert("Email o password incorrectos"); //ventana de mensaje cuando esta incorrectos los datos
+      this.toastr.error("Email o password incorrectos", 'Error!');
+  
     
     });
     }

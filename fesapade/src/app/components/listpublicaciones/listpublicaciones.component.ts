@@ -23,7 +23,7 @@ export class ListpublicacionesComponent {
     authService.getLoggedInName.subscribe(name => this.changeName(name));
     if (this.authService.isLoggedIn()) {
 
-      console.log("loggedin");
+      
       this.loginbtn = false;
       this.logoutbtn = true
     }
@@ -45,7 +45,7 @@ export class ListpublicacionesComponent {
   }
 
   ngOnInit() {
-    console.log(this.usuario);
+    
        //si hay un empleado seleccionado para editar
        if(this.usuario!=null)
      {
