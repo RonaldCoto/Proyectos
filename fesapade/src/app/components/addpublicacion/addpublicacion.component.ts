@@ -4,6 +4,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { EmpleadosService } from 'src/app/services/empleados.service';
 import { AsignacionesCursosService } from 'src/app/services/asignaciones-cursos.service';
 import { PublicacionesService } from 'src/app/services/publicaciones.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-addpublicacion',
   templateUrl: './addpublicacion.component.html',
@@ -29,7 +30,7 @@ export class AddpublicacionComponent {
   }
   constructor(public authService: AuthService,
     public asignacionesCursosService: AsignacionesCursosService,
-     public publicacionesService:PublicacionesService) {
+    public publicacionesService: PublicacionesService, public toastr: ToastrService) {
     authService.getLoggedInName.subscribe(name => this.changeName(name));
     if (this.authService.isLoggedIn()) {
 
@@ -54,13 +55,13 @@ export class AddpublicacionComponent {
   }
 
   ngOnInit() {
-   
+
     //si hay un empleado seleccionado para editar
     if (this.usuario != null) {
       //se consume el servicio de asignacionesCursos para listar los cursos en los que un...
       // instructor logueado puede publicar
       let codInstructor = this.usuario.id_emp;
-     this.asignacionesCursosService.lista_cursos_select(parseInt(codInstructor)).subscribe(result => this.curs = result);
+      this.asignacionesCursosService.lista_cursos_select(parseInt(codInstructor)).subscribe(result => this.curs = result);
       //una vez traidos los datos limipiamos el id del localstorage
 
     }
@@ -84,19 +85,19 @@ export class AddpublicacionComponent {
     this.pub.base64textString = btoa(binaryString);
   }
 
-    //metodo que consume el servicio de publicaciones para agregar una nueva publicacion
-    publicar() {
-   
-      this.publicacionesService.agregar_publicacion(this.pub).subscribe(datos => {
+  //metodo que consume el servicio de publicaciones para agregar una nueva publicacion
+  publicar() {
+
+    this.publicacionesService.agregar_publicacion(this.pub).subscribe(datos => {
       if (datos['resultado'] == 'OK') {
-      alert(datos['mensaje']);
-      
-      this.pub = {id: 0, titulo: null, descripcion: null, multimedia: null,id_asignacion_curso:null,base64textString:null};
-      }else{
-        alert(datos['mensaje']);
+        this.toastr.success(datos['mensaje'], 'Perfecto!');
+
+        this.pub = { id: 0, titulo: null, descripcion: null, multimedia: null, id_asignacion_curso: null, base64textString: null };
+      } else {
+        this.toastr.error(datos['mensaje'], 'Error!');
       }
-      });
-      }
-  
+    });
+  }
+
 
 }

@@ -98,17 +98,35 @@ $const=true;
     
 //variable que sera true si el curso en estado visual recibe las 3 imagenes necesarias para publicar, o si esta INICIADO o FINALIZADO
     $const2=false;
-    
+//variable que será true si el curso no tiene asignaciones 
+  $const3=false;
+
     if($params->estado == "VISUAL"){
-        //si el curso nuevo es de tipo VISUAL y tiene todas las imagenes asignadas se puede crear
+        //si el curso nuevo es de tipo VISUAL y tiene todas las imagenes asignadas
         if(($portada != "") && ($imagen1 != "") && ($imagen2 != "") && ($imagen3 != "")){
-            $const2=true;
+             $const2=true;
         }
+         //se valida si el curso ya tiene asignado un instructor
+            $registros2=$con->prepare("SELECT  id_asignacion_curso FROM asignaciones_cursos WHERE id_curso=:codigo" );
+            $registros2->bindParam(':codigo',$codigo);
+            $registros2->execute();
+
+             //almacenamiento de datos de curso en arreglo en caso de que exista
+             $vec2=[];  
+             $vec2=$registros2->fetchAll(PDO::FETCH_ASSOC);
+            
+            if($vec2 == null){
+                $const3=true;
+            }
+            
         //si el curso no es de tipo VISUAL se puede crear sin importar las fotos asignadas
     }else{
         $const2=true;
+        $const3=true;
     }
   //------------------------------fin de validacion de tipo VISUAL------------------------------------
+
+  
 
 
 //-----------------------------FINALIZANDO VALIDACION-----------------------------
@@ -118,6 +136,9 @@ $const=true;
 //-----------------------------REALIZANDO ACTUALIZACION-----------------------------
 //si $const y $const2 son verdaderos se puede actualizar el curso
 if($const){
+    if($const3){
+        
+    
     if($const2){
         
   $modificacion=$con->prepare("UPDATE cursos SET nombre=:nombre, descripcion=:descripcion,portada=:portada,imagen1=:imagen1,
@@ -141,23 +162,37 @@ $modificacion->execute();
 
   header('Content-Type: application/json');
   echo json_encode($response);  
-      }else{
+     //si no se subieron las fotos
+    }else{
          class Result {}
 
   $response = new Result();
   $response->resultado = 'ERROR';
-  $response->mensaje = 'Error. Un curso en modo VISUAL requiere una portada y 3 fotos.';
+  $response->mensaje = 'Un curso en modo VISUAL requiere una portada y 3 fotos.';
 
   header('Content-Type: application/json');
   echo json_encode($response);  
     }
+     
+        //si el curso ya tiene un instructor
+        }else{
+         class Result {}
+
+  $response = new Result();
+  $response->resultado = 'ERROR';
+  $response->mensaje = 'El curso ya tiene un instructor y no puede ser VISUAL.';
+
+  header('Content-Type: application/json');
+  echo json_encode($response); 
+    }
     
+    // si el nombre de curso no esta disponible
 }else{
      class Result {}
 
   $response = new Result();
   $response->resultado = 'ERROR';
-  $response->mensaje = 'ERROR, el curso ingresado ya esta registrado.';
+  $response->mensaje = 'El nombre de curso ingresado ya está registrado.';
 
   header('Content-Type: application/json');
   echo json_encode($response); 

@@ -37,7 +37,7 @@ $insertar->execute();
 
   $response = new Result();
   $response->resultado = 'OK';
-  $response->mensaje = 'Federado generado con exito.';
+  $response->mensaje = 'Federado generado con éxito.';
 
   header('Content-Type: application/json');
   echo json_encode($response);  
@@ -46,7 +46,7 @@ $insertar->execute();
 
   $response = new Result();
   $response->resultado = 'ERROR';
-  $response->mensaje = 'Error. El correo ingresado ya esta en uso.';
+  $response->mensaje = 'El correo ingresado ya está en uso.';
 
   header('Content-Type: application/json');
   echo json_encode($response); 

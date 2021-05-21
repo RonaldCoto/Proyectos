@@ -21,7 +21,7 @@ if($vec==null){
 
 $response = new Result();
 $response -> resultado = 'OK';
-$response -> mensaje = 'Federado eliminado con exito';
+$response -> mensaje = 'Federado eliminado con éxito';
 
 header('Content-Type: application/json');
 echo json_encode($response);  
@@ -31,8 +31,7 @@ echo json_encode($response);
 class Result { }
 $response = new Result();
 $response -> resultado = 'ERROR';
-$response -> mensaje = 'Este federado no puede ser eliminado ya que esta asignado a un curso.
-Sin embargo puede cabiar el estado del perfil a "BAJA" en "Administrar Federados" para que deje de ser accesible.';
+$response -> mensaje = 'Este federado no puede ser eliminado, cambie el estado del perfil a "BAJA"';
 header('Content-Type: application/json');
 echo json_encode($response);
     }

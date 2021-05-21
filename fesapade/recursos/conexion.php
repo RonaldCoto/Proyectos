@@ -8,4 +8,5 @@ try{
 }catch(PDOException $e){
     echo "Conexión fallida: ".$e->getMessage();
 }
+date_default_timezone_set('America/Guatemala');
 ?>

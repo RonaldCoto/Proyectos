@@ -40,7 +40,7 @@ $insertar->execute();
     class Result { }
 $response = new Result();
 $response -> resultado = 'ERROR';
-$response -> mensaje = 'ERROR, este curso ya tiene un instructor asignado.';
+$response -> mensaje = 'Este curso ya tiene un instructor asignado.';
 header('Content-Type: application/json');
 echo json_encode($response);
 }

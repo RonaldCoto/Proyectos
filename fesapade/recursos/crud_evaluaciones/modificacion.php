@@ -136,7 +136,7 @@ $modificacion->execute();
 
   $response = new Result();
   $response->resultado = 'ERROR';
-  $response->mensaje = 'ERROR. La fecha de finalización no pude ser menor a la de inicio.';
+  $response->mensaje = 'La fecha de finalización no pude ser menor a la de inicio.';
 
   header('Content-Type: application/json');
   echo json_encode($response); 
@@ -149,7 +149,7 @@ $modificacion->execute();
 
   $response = new Result();
   $response->resultado = 'ERROR';
-  $response->mensaje = 'ERROR. Con el porcentaje ingresado se supera el 100% de la nota para este curso.';
+  $response->mensaje = 'Con el porcentaje ingresado se supera el 100% de la nota para este curso.';
 
   header('Content-Type: application/json');
   echo json_encode($response); 
@@ -162,7 +162,7 @@ $modificacion->execute();
 
   $response = new Result();
   $response->resultado = 'ERROR';
-  $response->mensaje = 'Error. El título ingresado ya esta en uso para el curso seleccionado.';
+  $response->mensaje = 'El título ingresado ya está en uso para el curso seleccionado.';
 
   header('Content-Type: application/json');
   echo json_encode($response); 

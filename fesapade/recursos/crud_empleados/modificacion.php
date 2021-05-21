@@ -73,7 +73,7 @@ $actualizacion->execute();
 
   $response = new Result();
   $response->resultado = 'OK';
-  $response->mensaje = 'Datos modificados con exito.';
+  $response->mensaje = 'Datos modificados con éxito.';
 
   header('Content-Type: application/json');
   echo json_encode($response);  
@@ -82,7 +82,7 @@ $actualizacion->execute();
 
   $response = new Result();
   $response->resultado = 'ERROR';
-  $response->mensaje = 'ERROR, el correo ingresado ya esta ocupado.';
+  $response->mensaje = 'El correo ingresado ya está ocupado.';
 
   header('Content-Type: application/json');
   echo json_encode($response); 

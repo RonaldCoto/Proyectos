@@ -98,7 +98,7 @@ $insertar->execute();
 
   $response = new Result();
   $response->resultado = 'OK';
-  $response->mensaje = 'Curso generado con exito.';
+  $response->mensaje = 'Curso generado con éxito.';
 
   header('Content-Type: application/json');
   echo json_encode($response);  
@@ -108,7 +108,7 @@ $insertar->execute();
 
   $response = new Result();
   $response->resultado = 'ERROR';
-  $response->mensaje = 'Error. Un curso en modo VISUAL requiere una portada y 3 fotos.';
+  $response->mensaje = 'Un curso en modo VISUAL requiere una portada y 3 fotos.';
 
   header('Content-Type: application/json');
   echo json_encode($response);  
@@ -120,7 +120,7 @@ $insertar->execute();
 
   $response = new Result();
   $response->resultado = 'ERROR';
-  $response->mensaje = 'Error. El curso ingresado ya esta en uso.';
+  $response->mensaje = 'El nombre de curso ingresado ya esta en uso.';
 
   header('Content-Type: application/json');
   echo json_encode($response); 

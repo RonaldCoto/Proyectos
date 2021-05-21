@@ -42,7 +42,7 @@ $insertar->execute();
     class Result { }
 $response = new Result();
 $response -> resultado = 'ERROR';
-$response -> mensaje = 'ERROR, este federado ya esta matriculado en este curso.';
+$response -> mensaje = 'Este federado ya está matriculado en este curso.';
 header('Content-Type: application/json');
 echo json_encode($response);
 }

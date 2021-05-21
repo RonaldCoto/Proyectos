@@ -54,7 +54,7 @@ $modificacion->execute();
 
   $response = new Result();
   $response->resultado = 'ERROR';
-  $response->mensaje = 'Error. La nota ingresada es mayor a 10.00.';
+  $response->mensaje = 'La nota ingresada es mayor a 10.00.';
 
   header('Content-Type: application/json');
   echo json_encode($response); 
