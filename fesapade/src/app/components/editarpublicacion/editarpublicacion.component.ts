@@ -5,6 +5,7 @@ import { NullTemplateVisitor } from '@angular/compiler';
 import { ActualizarService } from '../../services/actualizar.service';
 import { PublicacionesService } from '../../services/publicaciones.service';
 import { AsignacionesCursosService } from 'src/app/services/asignaciones-cursos.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-editarpublicacion',
   templateUrl: './editarpublicacion.component.html',
@@ -32,7 +33,7 @@ export class EditarpublicacionComponent{
   curs = null;
   constructor(public authService: AuthService, public asignacionesCursosService: AsignacionesCursosService,
      public actualizarService: ActualizarService,
-    public publicacionesService: PublicacionesService) { 
+    public publicacionesService: PublicacionesService,  public toastr: ToastrService) { 
     authService.getLoggedInName.subscribe(name => this.changeName(name));
     if(this.authService.isLoggedIn())
     {
@@ -103,7 +104,7 @@ _handleReaderLoaded(readerEvent) {
     if (datos['resultado'] == 'OK') {
    
     
-      alert(datos['mensaje']);
+      this.toastr.success(datos['mensaje'], 'Perfecto!');
       this.pub = {  id_publicacion: 0,
         titulo: null,
         descripcion: null,
@@ -113,7 +114,7 @@ _handleReaderLoaded(readerEvent) {
         id_asignacion_curso: null,
         base64textString: null};
     }else{
-      alert(datos['mensaje']);
+      this.toastr.error(datos['mensaje'], 'Error!');
     }
     });
     }
