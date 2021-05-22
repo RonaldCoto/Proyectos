@@ -50,12 +50,34 @@ $const=true;
 }else{
     $const=true;
 }
-}   
+}
+//validando si el empleado a editar se quiere modificar en administrador mientras esta asignado a un curso
+if($id_cate_empleado==1){
+$registros3=$con->prepare("SELECT id_asignacion_curso FROM asignaciones_cursos WHERE id_empleado=:codigo ");
+$registros3->bindParam(':codigo',$codigo);
+$registros3->execute();
+//almacenamiento de datos de asignacion de curso en arreglo en caso de que exista
+$vec3=[];  
+$vec3=$registros3->fetchAll(PDO::FETCH_ASSOC);
+//variable que será true si el empleado no esta asignado a nigun curso
+$const2=false;
+
+if($vec3 == null){
+    $const2=true;
+}
+}else{
+    $const2=true;
+}
+
 //-----------------------------FINALIZANDO VALIDACION-----------------------------
 
 //-----------------------------REALIZANDO ACTUALIZACION-----------------------------
-//si $const es verdadero se puede actualizar
+//si el correo esta disponible
 if($const){
+    //si el empleado no tiene asignaciones
+    if($const2){
+        
+   
      $actualizacion=$con->prepare("UPDATE empleados SET nombre=:nombre, apellido=:apellido, direccion=:direccion,email=:email,password=:password 
                     ,id_cate_empleado=:id_cate_empleado ,estado=:estado WHERE id_empleado=:id_empleado");
     
@@ -77,6 +99,16 @@ $actualizacion->execute();
 
   header('Content-Type: application/json');
   echo json_encode($response);  
+     }else{
+          class Result {}
+
+  $response = new Result();
+  $response->resultado = 'ERROR';
+  $response->mensaje = 'Este empleado ya esta asignado como instructor.';
+
+  header('Content-Type: application/json');
+  echo json_encode($response);  
+    }
     }else{
      class Result {}
 
