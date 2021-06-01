@@ -1,0 +1,424 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+:root{
+    --background-color:#333647;
+    --musg-color:#87A64E;
+    --secondary-color: #789463;
+    --bar-color:#c1e0a8;
+    --bar-color-ok:#92bb47;
+
+}
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: var(--background-color) !important;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, td, a {
+    cursor: pointer;
+}
+
+canvas.particles-js-canvas-el{
+    position: absolute;
+    height: 100% !important;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: -1000;
+    margin: 0px;
+}
+/* NAVBAR */
+.nav_section .navbar-brand{
+    font-size: 22px;
+
+}
+
+.nav_section .navbar-brand span{
+    color: var(--musg-color);
+
+}
+
+.nav_section .navbar-nav li{
+    margin: 0px 8px;
+}
+
+.nav_section .navbar-nav li a{
+    color: white !important;
+    font-size: 15px;
+}
+
+.nav_section .navbar-nav .nav-link::before{
+    content: ' ';
+    width: 0px;
+    height: 0px;
+    background-color: white;
+    position: absolute;
+    bottom: 7px;
+    transition: 0.5s;
+}
+
+.nav_section .navbar-nav .nav-link:hover::before{
+    content: '';
+    height: 2px;
+    width: 17px;
+    background-color: white;
+    position: absolute;
+    bottom: 7px;
+}
+/* END NAVBAR */
+
+/* HERO SECTION */
+.hero_section .row{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.hero_section .row h1,h2,h3,p{
+    color: white;
+}
+
+.hero_section .row h3{
+    font-size: 19px;
+    font-weight: 300;
+    margin-bottom: 15px;
+}
+
+.hero_section .row h3::after{
+    content: '';
+    position: absolute;
+    text-align: center;
+    top:10px;
+    width: 90px;
+    height:2px;
+    background-color: white;
+    margin-left: 6px;
+}
+
+.hero_section .row h1{
+    font-size: 65px;
+    font-weight: 800;
+}
+
+.hero_section .row h2{
+    font-size: 20px;
+    font-weight: 100;
+    margin: 8px 0px;
+}
+
+.hero_section .row p{
+    font-size: 13px;
+    margin-top: 13px;
+    line-height: 21px;
+}
+
+.hero_section .row button{
+    border-radius: 10px;
+    font-size: 19px;
+    color: white;
+    background-color: var(--secondary-color);
+    border: 3px solid var(--secondary-color);
+    width: 113px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 10px;
+}
+
+.hero_section .row button:hover{
+    animation: swing;
+    animation-duration: 0.5s;
+    background: white;
+    color: black;
+    border-color: white;
+}
+
+.hero_section .row img{
+    width: 60%;
+
+}
+
+
+@media (max-width: 1200px) and (min-width: 993px){
+    .hero_section .row h1{
+        font-size: 58px;
+    }
+}
+
+@media (max-width: 993px) and (min-width: 763px){
+    .hero_section .row h1{
+        font-size: 42px;
+    }
+    .hero_section .row h2{
+        font-size: 15px;
+    }
+    .hero_section .row p{
+        font-size: 11px;
+    }
+    .hero_section .row h3{
+        font-size: 15px;
+    }
+    .hero_section .row button{
+        font-size: 15px;
+    }
+    
+}
+
+@media (max-width: 763px) and (min-width: 500px){
+    .hero_section{
+        margin: 35px 0px;
+    }
+    .hero_section .row h1{
+        font-size: 46px;
+        text-align: center;
+    }
+    .hero_section .row h2{
+        font-size: 15px;
+        text-align: center;
+    }
+    .hero_section .row p{
+        font-size: 11px;
+        text-align: center;
+    }
+    .hero_section .btn_container{
+        justify-content: center;
+        text-align: center;
+    }
+    .hero_section .row center img{
+        margin-top: -80px;
+    }
+    .hero_section .row h3{
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 0px;
+    }
+    .hero_section .row h3::after{
+        width: 0px;
+    }
+    .hero_section .btn_container button{
+        width: 100;
+        height: 43px;
+        font-size: 15px;
+        text-align: center;
+    } 
+}
+/* END HERO SECTION */
+
+/* ABOUT SECTION */
+.about_section{
+    background-color: #282A39;
+    padding: 170px 0px;
+}
+
+.about_section #heading{
+    font-weight: 600;
+    font-size: 40px;
+    letter-spacing: 0.5px;
+    line-height: 57px;
+}
+
+.about_section .lets_talk{
+    color: white;
+    font-weight: 400;
+    margin-top: 14px;
+}
+
+.about_section #info_gmail{
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--secondary-color);
+    margin-top: 35px;
+    word-spacing: 6px;
+}
+
+.about_section .about_me_section #txt{
+    font-size: 15px;
+    margin-top: 13px;
+    line-height: 25px;
+    text-align: justify;
+}
+
+.about_section .about_me_section hr{
+    margin: 0px;
+    border: 0.5px solid var(--secondary-color) ;
+    width: 13rem;
+}
+
+.about_section .about_me_section button{
+    border-radius: 7px;
+    font-size: 15px;
+    color: white;
+    background-color: var(--secondary-color);
+    border: 3px solid var(--secondary-color);
+    font-family: 'Poppins', sans-serif;
+}
+
+.about_section .about_me_section button:hover{
+    animation: swing;
+    animation-duration: 0.5s;
+}
+
+@media (max-width: 993px) and (min-width: 768px){
+    .about_section .about_me_section #txt{
+        font-size: 12px; 
+    }
+    .about_section #heading{
+        font-size: 28px !important;
+    }
+}
+/* END ABOUT SECTION */
+
+/* SKILLS SECTION */
+.section{
+    padding: 100px 0px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.section hr{
+    margin: 0px;
+    border: 0.5px solid var(--secondary-color) ;
+    width: 11rem;
+    margin-bottom: 40px;
+}
+
+.section_title{
+    font-weight: 600;
+    font-size: 40px;
+    letter-spacing: 0.5px;
+    line-height: 57px;
+}
+
+.skills_container{
+    row-gap: 0;
+}
+
+.conten{
+    text-align: center;
+}
+
+.skills_header{
+    display:flex;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    cursor: pointer;
+    color: white;
+}
+
+.skills_icon, .skills_arrow{
+    font-size: 2rem;
+    color: var(--secondary-color);
+}
+
+.skills_icon{
+    margin-right: .75rem;
+}
+
+.skills_title{
+    font-size: 1.2rem;
+}
+
+.skills_subtitle{
+    font-size: .813rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.skills_arrow{
+    margin-left: auto;
+    transition: .4s; 
+}
+
+.skills_list{
+    row-gap: 1.5rem;
+    padding-left: 2.7rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.skills_titles{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+}
+
+.skills_name{
+    font-size: .938rem;
+    font-weight: 500;
+}
+
+.skills_bar, .skills_percentage{
+    height: 5px;
+    border-radius: .25rem;
+}
+
+.skills_bar{
+    background-color: var(--bar-color);
+    margin-bottom: 1.6rem;
+}
+
+.skills_percentage{
+    display: block;
+    background-color: var(--bar-color-ok);
+}
+
+.skills_html{
+    width: 90%;
+}
+.skills_css{
+    width: 80%;
+}
+.skills_boots{
+    width: 90%;
+}
+.skills_js{
+    width: 50%;
+}
+.skills_angular{
+    width: 75%;
+}
+.skills_php{
+    width: 80%;
+}
+.skills_firebase{
+    width: 90%;
+}
+.skills_java{
+    width: 50%;
+}
+.skills_csharp{
+    width: 65%;
+}
+.skills_adobexd{
+    width: 80%;
+}
+.skills_mysql{
+    width: 90%;
+}
+.skills_sql{
+    width: 90%;
+}
+.skills_postg{
+    width: 40%;
+}
+
+.skills_close .skills_list{
+    height: 0;
+    overflow: hidden;
+}
+
+.skills_open .skills_list{
+    height: max-content;
+    margin-bottom: 2.5rem;
+}
+
+.skills_open .skills_arrow{
+    transform: rotate(-180deg);
+}
+
+
+@media screen and (max-width: 350px){
+    .skills_title{
+        font-size: .938rem;
+    }
+}
+
+/* END SKILLS SECTION */
