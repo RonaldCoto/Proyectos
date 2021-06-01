@@ -16,8 +16,11 @@ body{
     background-color: var(--background-color) !important;
 }
 
-h1, h2, h3, h4, h5, h6, p, span, td, a {
+a {
     cursor: pointer;
+}
+h1, h2, h3, h4, h5, h6, p, span, td{
+    cursor:default;
 }
 
 canvas.particles-js-canvas-el{
@@ -422,3 +425,41 @@ canvas.particles-js-canvas-el{
 }
 
 /* END SKILLS SECTION */
+
+/*  PORTFOLIO SECTION */
+.portfolio_section{
+    background:#282A39;
+    padding: 170px 0px;
+}
+
+.portfolio_section .nav-tabs{
+    border: none;
+    width: 30%;
+    text-align: center;
+}
+
+.portfolio_section .nav-tabs .nav-link.active{
+    border: none;
+    color: white;
+    border-bottom: 2px solid var(--secondary-color) !important;
+    background: transparent;
+}
+
+.portfolio_section .nav-tabs .nav-link.active:hover{
+    border-bottom: 2px solid var(--secondary-color) !important;
+}
+
+.portfolio_section .nav-tabs .nav-item.show .nav-link{
+    font-weight: 400;
+    font-size: 14px;
+    background: transparent !important;
+}
+
+.portfolio_section .nav-tabs .nav-link:hover{
+    border: none;
+}
+
+.portfolio_section .tab-content .card img{
+    border: 2px solid white;
+}
+/* END PORTFOLIO SECTION */
