@@ -118,7 +118,7 @@ canvas.particles-js-canvas-el{
     line-height: 21px;
 }
 
-.hero_section .row button{
+.hero_section .row a{
     border-radius: 10px;
     font-size: 19px;
     color: white;
@@ -129,7 +129,7 @@ canvas.particles-js-canvas-el{
     margin-top: 10px;
 }
 
-.hero_section .row button:hover{
+.hero_section .row a:hover{
     animation: swing;
     animation-duration: 0.5s;
     background: white;
@@ -162,7 +162,7 @@ canvas.particles-js-canvas-el{
     .hero_section .row h3{
         font-size: 15px;
     }
-    .hero_section .row button{
+    .hero_section .row a{
         font-size: 15px;
     }
     
@@ -199,7 +199,7 @@ canvas.particles-js-canvas-el{
     .hero_section .row h3::after{
         width: 0px;
     }
-    .hero_section .btn_container button{
+    .hero_section .btn_container a{
         width: 100;
         height: 43px;
         font-size: 15px;
@@ -248,7 +248,7 @@ canvas.particles-js-canvas-el{
     width: 13rem;
 }
 
-.about_section .about_me_section button{
+.about_section .about_me_section a{
     border-radius: 7px;
     font-size: 15px;
     color: white;
@@ -257,7 +257,7 @@ canvas.particles-js-canvas-el{
     font-family: 'Poppins', sans-serif;
 }
 
-.about_section .about_me_section button:hover{
+.about_section .about_me_section a:hover{
     animation: swing;
     animation-duration: 0.5s;
 }
@@ -463,3 +463,114 @@ canvas.particles-js-canvas-el{
     border: 2px solid white;
 }
 /* END PORTFOLIO SECTION */
+
+/* FOOTER SECTION */
+.footer-area{
+    background: #282A39;
+    border-top: 2px solid #6c757d;
+    padding: 40px 0px;
+}
+
+.footer-area .navbar-brand{
+    font-size: 23px;
+}
+
+.footer-area .logo-area .fa{
+    color: var(--secondary-color);
+    font-size: 17px !important;
+    border: 2px solid var(--secondary-color);
+    padding: 10px;
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    border-radius: 100%;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.footer-area .logo-area .fa:hover{
+    animation: swing;
+    animation-duration: .5s;
+    background: white;
+}
+
+.footer-area .list-group .list-group-item{
+    margin: -3px 0px;
+    color: white;
+    cursor: pointer !important;
+    transition: 0.5s !important;
+}
+
+.footer-area .list-group .list-group-item:hover i{
+    padding-right: 10px;
+}
+
+.footer-area .list-group .list-group-item i{
+    font-size: 10px;
+    cursor: pointer !important;
+    color: var(--secondary-color);
+    transition: 0.5s;
+}
+
+.footer-area .list-group .list-group-item a{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (max-width: 767px) and (min-width: 500px){
+    .footer-area .links{
+        margin-bottom: 30px;
+    }
+
+    .footer-area .list-group .list-group-item{
+        font-size: 13px;
+    }
+    .footer-area .list-group{
+        margin-bottom: 30px;
+    }
+}
+/* END FOOTER SECTION */
+
+/* SCROLL */
+.scrollup{
+    position: fixed;
+    right: 1rem;
+    bottom: -20%;
+    background-color: var(--secondary-color);
+    opacity: .8;
+    padding: 0 .3rem;
+    border-radius: .4rem;
+    z-index: 10;
+    transition: .6s;
+}
+
+.scrollup:hover{
+    background-color: var(--bar-color-ok);
+}
+
+.scrollup_icon{
+    font-size: 1.5rem;
+    color: white;
+}
+
+.show-scroll{
+    bottom: 5rem;
+}
+/* END SCROLL */
+
+/* SCROLLBAR */
+::-webkit-scrollbar{
+    width: .60rem;
+    background-color: #6c757d;
+    opacity: 0.4;
+    border-radius: .5rem;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #575e64 !important;
+    border-radius: .5rem;
+}
+/* END SCROLLBAR */

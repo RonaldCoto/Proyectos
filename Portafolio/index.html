@@ -19,20 +19,22 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
     <link rel="stylesheet" href="styles/index.css" type="text/css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="topp">
         <div class="nav_section">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand text-white" href="#">My Portfolio <span>.</span></a>
+                <a class="navbar-brand text-white" href="#">Personal Portfolio <span>.</span></a>
                 <button class="navbar-toggler" style="border: none;" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -45,16 +47,13 @@
                             <a class="nav-link" style="color: #789463 !important;" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="#aboutt">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Skills</a>
+                            <a class="nav-link" href="#skills">Skills</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Portfolio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="#portf">Portfolio</a>
                         </li>
                     </ul>
                 </div>
@@ -72,7 +71,8 @@
                     <h2>Web Developer & Designer</h2>
                     <p>Good level experience in web design and development knowledge, producing quality work.</p>
                     <div class="btn_container">
-                        <button class="btn btn-light animate_animated">Hire me</button>
+                        <a target="_blank" href="https://www.linkedin.com/in/ronald-coto/"
+                            class="btn btn-light animate_animated">Hire me</a>
 
                     </div>
                 </div>
@@ -86,7 +86,7 @@
     </div>
 
     <!--About section -->
-    <div class="about_section">
+    <div class="about_section" id="aboutt">
         <div class="container">
             <div class="row m-0">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -109,7 +109,8 @@
                         effective way
                         possible.</p>
 
-                    <button class="btn btn-light btn-sm animate_animated">Download CV</button>
+                    <a download="" target="_blank" class="btn btn-light btn-sm animate_animated"
+                        href="cv/Curriculum-VITAE-Ronald-Coto-ENG.pdf">Download CV</a>
                 </div>
             </div>
         </div>
@@ -331,7 +332,7 @@
     </section>
 
     <!--Portfolio section -->
-    <div class="portfolio_section">
+    <div class="portfolio_section" id="portf">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -359,7 +360,10 @@
                                     <img class="card-img-top" src="images/portfolio/rsz_fesapadess.png" alt="">
                                 </div>
                                 <div class="card border-0 padding-0">
-                                    <img class="card-img-top" src="images/portfolio/rsz_2petyaangular_1.png" alt="">
+                                    <a target="_blank"
+                                        href="https://github.com/RonaldCoto/Proyectos/tree/master/Veterinaria%20Pet-YA"><img
+                                            class="card-img-top" src="images/portfolio/rsz_2petyaangular_1.png"
+                                            alt=""></a>
                                 </div>
 
                             </div>
@@ -375,6 +379,12 @@
                                 <div class="card border-0 padding-0">
                                     <img class="card-img-top" src="images/portfolio/rsz_segundodesafio.png" alt="">
                                 </div>
+                                <div class="card border-0 padding-0">
+                                    <a target="_blank"
+                                        href="https://github.com/RonaldCoto/Proyectos/tree/master/Sistema%20bibliotecario"><img
+                                            class="card-img-top" src="images/portfolio/rszsistema-bibliotecario.png"
+                                            alt=""></a>
+                                </div>
 
                             </div>
                         </div>
@@ -384,6 +394,46 @@
             </div>
         </div>
     </div>
+
+    <!--Footer section -->
+    <div class="footer-area">
+        <div class="container">
+            <div class="row py-5">
+                <div class="logo-area col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <a class="navbar-brand text-white">Ronald Coto <br> <span style="color: #789463;">Web
+                            Developer & Designer</span></a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 column">
+                    <ul class="list-group">
+                        <li class="list-group-item border-0 bg-transparent">
+                            <i class="fa fa-chevron-right"></i><a href="#aboutt">About</a>
+                        </li>
+                        <li class="list-group-item border-0 bg-transparent">
+                            <i class="fa fa-chevron-right"></i><a href="#skills">Skills</a>
+                        </li>
+                        <li class="list-group-item border-0 bg-transparent">
+                            <i class="fa fa-chevron-right"></i><a href="#portf">Portfolio</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="logo-area col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="links">
+                        <a target="_blank" href="https://www.facebook.com/ronaldernesto.cotohernandez/"><i
+                                class="fa fa-facebook animate-animated"></i></a>
+                        <a target="_blank" href="https://www.instagram.com/ronald_cto/"><i
+                                class="fa fa-instagram px-1 animate-animated"></i></a>
+                        <a target="_blank" href="https://www.linkedin.com/in/ronald-coto/"><i
+                                class="fa fa-linkedin animate-animated"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Scroll top -->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="uil uil-arrow-up scrollup_icon"></i>
+    </a>
 
     <div id="particles-js"></div>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
